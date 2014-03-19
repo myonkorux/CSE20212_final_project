@@ -1,3 +1,7 @@
+// nvahrenb
+// Lab 7-8 progress evidence
+
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
