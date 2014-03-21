@@ -9,6 +9,7 @@ COMPILE COMMAND:	make
 
 EXECUTION COMMAND:	./Move
 
+gitHub repository:	https://github.com/nvahrenb/CSE20212_final_project
 
 	The program Move opens a window and allows a user to 
 move a figure up, down, left, or right.  Internally, Move is
@@ -43,4 +44,4 @@ receive those last 20 points because we were able to fulfill
 all of the requirements listed in that document and have
 provided evidence in our respective dropboxes.  I have also 
 uploaded a copy of the code I wrote over the break to our
-
+gitHub repository under the directory "Move".
