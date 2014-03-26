@@ -1,3 +1,12 @@
+/******************
+
+Chris Ray
+Nathan Vahrenberg
+
+board.cpp
+
+*******************/
+
 #include <iostream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"

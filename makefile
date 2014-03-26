@@ -1,7 +1,5 @@
 EXEC = main
 
-
-
 $(EXEC): main.o board.o
 	g++ main.o board.o -o $(EXEC)
 	
