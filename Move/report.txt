@@ -1,0 +1,47 @@
+Christopher Ray
+Professor Scott
+CSE 20212
+19 March 2014
+
+Lab 7/8 Report
+
+COMPILE COMMAND:	make
+
+EXECUTION COMMAND:	./Move
+
+gitHub repository:	https://github.com/nvahrenb/CSE20212_final_project
+
+	The program Move opens a window and allows a user to 
+move a figure up, down, left, or right.  Internally, Move is
+composed of a class Screen and relies on several calls to its
+member functions.  The program first calls Screen's constructor
+to initialize the private data members governing window 
+dimensions and bits per pixel as well as the SDL surfaces that
+represent the screen and the figure.  It then calls the function
+initialize() to initialize the SDL functions, create the white
+screen, load the PNG image of the figure, and set the window
+caption.  The function will cause the program to end immediately
+if any of those objects fails to initialize.  Move then calls
+the function animate(), which places the figure on the screen
+before entering a while loop.  The user now has 2 options:  
+close the window or press 1 of the arrow keys.  Choosing the
+former breaks the loop and returns control to the main function,
+which then calls the function cleanUp() to free the figure and
+quit SDL.  Choosing the latter results in the screen's background
+being set to white and the figure being placed at a new location 
+on the screen depending on which arrow was pressed.  Once the 
+arrow key is released the screen is once again set to white and
+the figure is placed back at its original location.  
+	I verfied the program by testing whether or not the
+figure would only move when the arrow keys were pressed and
+whether or not the program properly ended once the window was
+closed.  
+
+
+	I have included the rubric that my partner an I drafted
+during the first week of March.  I believe that we should 
+receive those last 20 points because we were able to fulfill 
+all of the requirements listed in that document and have
+provided evidence in our respective dropboxes.  I have also 
+uploaded a copy of the code I wrote over the break to our
+gitHub repository under the directory "Move".
