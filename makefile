@@ -17,3 +17,7 @@ item.o: item.cpp item.h
 	
 unit.o: unit.cpp unit.h
 	g++ -c unit.cpp
+	
+clean:
+	rm -f *.o
+	rm $(EXEC)
