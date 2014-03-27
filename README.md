@@ -1,6 +1,7 @@
 Chris Ray
-
 Nathan Vahrenberg
+
+University of Notre Dame
 
 CSE20212 Final Project
 
