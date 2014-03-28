@@ -1,0 +1,23 @@
+Christopher Ray
+Professor Scott
+CSE 20212
+27 March 2014
+
+Lab 9
+
+report.txt
+
+gitHub Repo:  		https://github.com/nvahrenb/CSE20212_final_project
+
+			(our code and sprite sheets are in the folder lab9)
+
+COMPILE COMMAND:  	make
+
+EXECUTION COMMAND:  	./menu
+
+	The program menu opens up a screen displaying the start menu for our
+game “Zombie Slayerz” (note that the name is still being worked on).  Closing that window causes the program to end.  Internally, menu relies on 4 function calls.  The program first calls the constructor for the object Menu to initialize integer data members such as the screen width and height, the SDL surfaces and fonts, and the font color.  It then calls the function initialize() to initialize SDL and SDL_ttf, create the screen surface (aka the window that’s opened), upload the background image, and upload the text for the title and the “start” option.  The program then calls displayMenu(), which places the background image and text on to the screen before entering
+and infinite while loop.  This loop is broken when the user closes the window.  Once control is returned to the main function, the program calls Clean() to free the background image and text as well as close SDL and SDL_ttf.  
+	I verified the output of the program by simply running it to see if the window would remain open until I closed it and if the text and background image were properly loaded.  
+
+	We fulfilled the requirements stated in our rubric for last lab.  We both researched various sprite makers before settling on the software we are currently using to generate sprites, including the sprite sheets in our repository.  We wrote code for generating a preliminary start menu screen.  And, perhaps most importantly, we created an updated project outline listing all of the classes, compositions, inheritance hierarchies, etc needed for our project, which should provide us much needed guidance when deciding on what tasks should be completed each week.  
