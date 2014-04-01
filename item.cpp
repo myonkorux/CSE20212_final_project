@@ -25,8 +25,6 @@ Item::Item(){
 
 void Item::display( SDL_Surface* source, SDL_Surface* destination ){
 
-  // not quite done...
-
 	SDL_Rect offset;
     
   offset.x = x;
@@ -45,5 +43,17 @@ int Item::getx(){
 int Item::gety(){
 
 	return y;
+
+}
+
+void Item::setx( int newx ){
+
+	x = newx;
+
+}
+
+void Item::sety( int newy ){
+
+	y = newy;
 
 }

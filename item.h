@@ -21,6 +21,8 @@ class Item{
 		virtual void update() = 0;
 		int getx();
 		int gety();
+		void setx( int );
+		void sety( int );
 	
 	protected:
 		int x;
