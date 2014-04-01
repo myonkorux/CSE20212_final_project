@@ -19,6 +19,8 @@ class Item{
 		Item();
 		void display();
 		virtual void update() = 0;
+		int getx();
+		int gety();
 	
 	protected:
 		int x;
