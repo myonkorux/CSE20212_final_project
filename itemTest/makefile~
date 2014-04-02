@@ -1,12 +1,12 @@
 all:  terrainTest
 
-terrainTest:  main.o terrain.o
+terrainTest:  main.o terrain.o item.h item.cpp
 	g++ -o terrainTest main.o terrain.o -lSDL -lSDL_image
 
 main.o:  terrain.h main.cpp
 	g++ -c main.cpp
 
-terrain.o:  terrain.h item.h terrain.cpp
+terrain.o:  terrain.h item.h terrain.cpp item.cpp
 	g++ -c terrain.cpp
 
 clean:

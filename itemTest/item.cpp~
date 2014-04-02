@@ -69,3 +69,8 @@ void Item::sety( int newy )
 	y = newy;
 
 }
+
+void Item::setType(int newType)
+{
+	type = newType;
+}

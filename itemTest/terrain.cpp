@@ -1,4 +1,5 @@
 #include"terrain.h"
+#include"item.h"
 
 Terrain::Terrain(int newX, int newY, int newType)
 {

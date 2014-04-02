@@ -3,7 +3,7 @@
 
 #include"item.h"
 
-class Terrain : public Terrain
+class Terrain : public Item
 {
 	public:
 		Terrain(int, int, int);
