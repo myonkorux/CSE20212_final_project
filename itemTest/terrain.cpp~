@@ -17,14 +17,14 @@ Terrain::Terrain(int newX, int newY, int newType)
 	}
 }
 
-void Terrain::display( SDL_Surface* object, SDL_Surface* destination )
+void Terrain::display(SDL_Surface* destination )
 {
 
 	SDL_Rect offset;
 
-	offset.x = x;
-	offset.y = y;
+	offset.x = getX();
+	offset.y = getY();
 
-	SDL_BlitSurface( object, NULL, destination, &offset );
+	SDL_BlitSurface( TerrainImage, NULL, destination, &offset );
 
 }

@@ -7,7 +7,8 @@ class Terrain : public Item
 {
 	public:
 		Terrain(int, int, int);
-		void display(SDL_Surface *, SDL_Surface *);
+		void display(SDL_Surface *);
+		void cleanImage();
 	private:
 		SDL_Surface * TerrainImage;
 		

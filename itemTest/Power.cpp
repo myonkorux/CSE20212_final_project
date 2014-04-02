@@ -16,7 +16,7 @@ Power::Power(int newX, int newY, int newType)
 	}
 }
 
-void Power::display( SDL_Surface* object, SDL_Surface* destination )
+void Power::display(SDL_Surface* destination )
 {
 	if ( offsetDirection == 1 ){
 	
@@ -49,5 +49,10 @@ void Power::display( SDL_Surface* object, SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY() + yOffset;
 
-	SDL_BlitSurface( object, NULL, destination, &offset );
+	SDL_BlitSurface( PowerImage, NULL, destination, &offset );
+}
+
+void Terrain::cleanImage()
+{
+	SDL_FreeSurface(PowerImage);
 }

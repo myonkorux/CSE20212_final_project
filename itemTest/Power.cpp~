@@ -12,11 +12,11 @@ Power::Power(int newX, int newY, int newType)
 
 	if(getType() >= 3)
 	{
-		TerrainImage = loadImage("dot.bmp");
+		PowerImage = loadImage("dot.bmp");
 	}
 }
 
-void Power::display( SDL_Surface* object, SDL_Surface* destination )
+void Power::display(SDL_Surface* destination )
 {
 	if ( offsetDirection == 1 ){
 	
@@ -49,5 +49,5 @@ void Power::display( SDL_Surface* object, SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY() + yOffset;
 
-	SDL_BlitSurface( object, NULL, destination, &offset );
+	SDL_BlitSurface( PowerImage, NULL, destination, &offset );
 }

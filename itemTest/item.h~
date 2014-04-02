@@ -35,8 +35,6 @@ class Item
 		int x;
 		int y;
 		int type;
-		int yOffset;          // Used for
-		int offsetDirection;  // float effect
 
 };
 
