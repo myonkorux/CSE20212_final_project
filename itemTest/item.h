@@ -7,12 +7,8 @@ item.h
 
 *******************/
 
-#ifndef ITEM_H
-#define ITEM_H
-
 #include <iostream>
 #include<iomanip>
-#include<string>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -20,9 +16,11 @@ using namespace std;
 
 class Item
 {
+
 	public:
 		Item();
 		void display(SDL_Surface *, SDL_Surface *);
+		virtual void update() = 0;
 		int getx();
 		int gety();
 		int getType();
@@ -30,11 +28,9 @@ class Item
 		void sety( int );
 		void setType(int);
 	
-	private:
+	protected:
 		int x;
 		int y;
 		int type;
 
 };
-
-#endif

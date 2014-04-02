@@ -7,9 +7,7 @@ item.cpp
 
 *******************/
 
-#include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
+#include"item.h"
 
 using namespace std;
 
@@ -20,6 +18,7 @@ Item::Item()
 	//default values
 	x = 0;
 	y = 0;
+	type = 0;
 	
 
 }
@@ -36,26 +35,40 @@ void Item::display( SDL_Surface* source, SDL_Surface* destination )
 
 }
 
-int Item::getx(){
+int Item::getx()
+{
 
 	return x;
 
 }
 
-int Item::gety(){
+int Item::gety()
+{
 
 	return y;
 
 }
 
-void Item::setx( int newx ){
+int Item::getType()
+{
+	return type;
+}
+
+void Item::setx( int newx )
+{
 
 	x = newx;
 
 }
 
-void Item::sety( int newy ){
+void Item::sety( int newy )
+{
 
 	y = newy;
 
 }
+
+void Item::setType(int newType)
+{
+	type = newType;
+]

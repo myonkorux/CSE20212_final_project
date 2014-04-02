@@ -20,6 +20,7 @@ using namespace std;
 
 class Item
 {
+
 	public:
 		Item();
 		void display(SDL_Surface *, SDL_Surface *);

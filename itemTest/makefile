@@ -1,0 +1,13 @@
+all:  terrainTest
+
+terrainTest:  main.o terrain.o
+	g++ -o terrainTest main.o terrain.o -lSDL -lSDL_image
+
+main.o:  terrain.h main.cpp
+	g++ -c main.cpp
+
+terrain.o:  terrain.h item.h terrain.cpp item.cpp
+	g++ -c terrain.cpp
+
+clean:
+	rm -f core* *.o

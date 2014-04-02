@@ -7,6 +7,9 @@ item.cpp
 
 *******************/
 
+#include <iostream>
+#include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
 #include"item.h"
 
 using namespace std;
@@ -18,7 +21,6 @@ Item::Item()
 	//default values
 	x = 0;
 	y = 0;
-	type = 0;
 	
 
 }
@@ -66,4 +68,9 @@ void Item::sety( int newy )
 
 	y = newy;
 
+}
+
+void Item::setType(int newType)
+{
+	type = newType;
 }
