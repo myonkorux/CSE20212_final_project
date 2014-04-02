@@ -17,7 +17,7 @@ int main( int argc, char* args[] )
 	screen = SDL_SetVideoMode( screenWidth, screenHeight, screenBPP, SDL_SWSURFACE );
 
 	Terrain rock(10, 10, 1);
-	Terrain tree(500, 10. 2);
+	Terrain tree(500, 10, 2);
 	Power dot(320, 240, 3);
 
 		

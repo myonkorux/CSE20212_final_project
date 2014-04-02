@@ -51,3 +51,8 @@ void Power::display(SDL_Surface* destination )
 
 	SDL_BlitSurface( PowerImage, NULL, destination, &offset );
 }
+
+void Terrain::cleanImage()
+{
+	SDL_FreeSurface(PowerImage);
+}

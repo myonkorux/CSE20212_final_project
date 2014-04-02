@@ -41,7 +41,9 @@ int main( int argc, char* args[] )
 
 	}	
 
-	SDL_FreeSurface( dotimg );
+	rock.cleanImage();
+	tree.cleanImage();
+	dot.cleanImage();
 	
 	SDL_Quit();
 	
