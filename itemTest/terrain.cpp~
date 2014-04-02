@@ -17,27 +17,14 @@ Terrain::Terrain(int newX, int newY, int newType)
 	}
 }
 
-SDL_Surface * Terrain::loadTerrainImage(string filename)
+void Item::display( SDL_Surface* object, SDL_Surface* destination )
 {
-	SDL_Surface* loadedImage = NULL;
 
-	SDL_Surface* optimizedImage = NULL;
+	SDL_Rect offset;
 
-	loadedImage = IMG_Load( filename.c_str() );
+	offset.x = x;
+	offset.y = y;
 
-	if( loadedImage != NULL )
-	{
-		optimizedImage = SDL_DisplayFormat( loadedImage );
+	SDL_BlitSurface( object, NULL, destination, &offset );
 
-		SDL_FreeSurface( loadedImage );
-
-		if( optimizedImage != NULL )
-		{
-			Uint32 colorkey = SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF );
-
-			SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, colorkey );
-		}
-	}
-
-	return optimizedImage;
 }

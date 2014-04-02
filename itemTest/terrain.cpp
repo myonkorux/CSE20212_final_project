@@ -16,3 +16,15 @@ Terrain::Terrain(int newX, int newY, int newType)
 		TerrainImage = loadImage("tree.png");
 	}
 }
+
+void Terrain::display( SDL_Surface* object, SDL_Surface* destination )
+{
+
+	SDL_Rect offset;
+
+	offset.x = x;
+	offset.y = y;
+
+	SDL_BlitSurface( object, NULL, destination, &offset );
+
+}

@@ -1,7 +1,7 @@
 all:  terrainTest
 
-terrainTest:  main.o terrain.o item.o
-	g++ -o terrainTest main.o terrain.o item.o -lSDL -lSDL_image
+terrainTest:  main.o terrain.o item.o Power.o
+	g++ -o terrainTest main.o terrain.o item.o Power.o -lSDL -lSDL_image
 
 main.o:  terrain.h main.cpp
 	g++ -c main.cpp
@@ -11,6 +11,9 @@ terrain.o:  terrain.h item.h terrain.cpp
 
 item.o:  item.h item.cpp
 	g++ -c item.cpp
+
+Power.o:  item.h Power.h Power.cpp
+	g++ -c Power.cpp
 
 clean:
 	rm -f core* terrainTest *.o
