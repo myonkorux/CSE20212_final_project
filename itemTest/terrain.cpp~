@@ -1,6 +1,5 @@
 #include"terrain.h"
 #include"item.h"
-#include"item.cpp"
 
 Terrain::Terrain(int newX, int newY, int newType)
 {
@@ -10,11 +9,11 @@ Terrain::Terrain(int newX, int newY, int newType)
 
 	if(getType() == 1)
 	{
-		TerrainImage = loadTerrainImage("rock2f.png");
+		TerrainImage = loadImage("rock2f.png");
 	}
 	else if(getType() == 2)
 	{
-		TerrainImage = loadTerrainImage("tree.png");
+		TerrainImage = loadImage("tree.png");
 	}
 }
 

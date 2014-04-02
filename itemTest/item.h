@@ -29,15 +29,12 @@ class Item
 		void setX( int );
 		void setY( int );
 		void setType(int);
+		SDL_Surface * loadImage(string);
 	
 	private:
 		int x;
 		int y;
 		int type;
-		int yOffset;          // Used for
-		int offsetDirection;  // float effect
-
-		SDL_Surface * loadImage(string);
 
 };
 
