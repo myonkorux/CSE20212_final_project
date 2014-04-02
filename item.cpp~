@@ -14,8 +14,7 @@ item.cpp
 using namespace std;
 
 // Constructor
-Item::Item()
-{
+Item::Item(){
 
 	//default values
 	x = 0;
@@ -24,15 +23,14 @@ Item::Item()
 
 }
 
-void Item::display( SDL_Surface* source, SDL_Surface* destination )
-{
+void Item::display( SDL_Surface* source, SDL_Surface* destination ){
 
 	SDL_Rect offset;
-
-	offset.x = x;
-	offset.y = y;
-
-	SDL_BlitSurface( source, NULL, destination, &offset );
+    
+  offset.x = x;
+  offset.y = y;
+    
+  SDL_BlitSurface( source, NULL, destination, &offset );
 
 }
 
