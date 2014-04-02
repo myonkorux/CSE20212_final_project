@@ -9,6 +9,8 @@ Nathan Vahrenberg
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
+#include "unit.h"
+
 using namespace std;
 
 // Constructor

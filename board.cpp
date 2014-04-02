@@ -12,6 +12,8 @@ board.cpp
 #include "SDL/SDL_image.h"
 #include <deque>
 
+#include "board.h"
+
 using namespace std;
 
 // Constructor
@@ -31,14 +33,15 @@ void Board::display(){
 
 }
 
-void Board::update(){
+void Board::update(SDL_Surface* screen ){
 
-
+	SDL_Flip( screen );
 
 }
 
-void Board::clean(){
+void Board::clean( SDL_Surface* screen ){
 
-
+	// Fill with white space
+	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
 
 }

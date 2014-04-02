@@ -11,6 +11,8 @@ box.cpp
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
+#include "box.h"
+
 using namespace std;
 
 // Constructor

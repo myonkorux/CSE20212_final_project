@@ -22,6 +22,6 @@ using namespace std;
 
 int main(){
 
-
+	Board gameBoard;
 
 }

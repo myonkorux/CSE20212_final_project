@@ -23,17 +23,19 @@ class Item
 	public:
 		Item();
 		void display(SDL_Surface *, SDL_Surface *);
-		int getx();
-		int gety();
+		int getX();
+		int getY();
 		int getType();
-		void setx( int );
-		void sety( int );
+		void setX( int );
+		void setY( int );
 		void setType(int);
 	
 	private:
 		int x;
 		int y;
 		int type;
+		int yOffset;          // Used for
+		int offsetDirection;  // float effect
 
 };
 

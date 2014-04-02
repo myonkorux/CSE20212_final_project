@@ -12,6 +12,10 @@ board.h
 #include "SDL/SDL_image.h"
 #include <deque>
 
+#include "box.h"
+#include "item.h"
+#include "unit.h"
+
 using namespace std;
 
 class Board{
@@ -19,20 +23,20 @@ class Board{
 	public:
 		Board();
 		void display();
-		void update();
-		void clean();
+		void update( SDL_Surface* );
+		void clean( SDL_Surface* );
 	
 	private:
 		int start;
 		int game;
 		int pause;
 		int over;
-		Player player;
-		deque<Zombie> zombies;
-		deque<Text> textboxes;
-		deque<Button> buttons;
-		deque<Counter> counters;
-		deque<PowerUp> PowerUps;
-		deque<Terrain> boardTerrain;
+		//Player player;
+		//deque<Zombie> zombies;
+		deque<Box> textboxes;
+		//deque<Button> buttons;
+		//deque<Counter> counters;
+		deque<Item> Items;
+		//deque<Terrain> boardTerrain;
 
 };
