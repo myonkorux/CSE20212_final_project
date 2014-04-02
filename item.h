@@ -22,20 +22,19 @@ class Item
 {
 	public:
 		Item();
-		void display(SDL_Surface *, SDL_Surface *);
+		virtual void display(SDL_Surface *, SDL_Surface *) = 0;
 		int getX();
 		int getY();
 		int getType();
 		void setX( int );
 		void setY( int );
 		void setType(int);
+		SDL_Surface * loadImage(string);
 	
 	private:
 		int x;
 		int y;
 		int type;
-		int yOffset;          // Used for
-		int offsetDirection;  // float effect
 
 };
 

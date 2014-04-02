@@ -3,8 +3,8 @@
 
 Terrain::Terrain(int newX, int newY, int newType)
 {
-	setx(newX);
-	sety(newY);
+	setX(newX);
+	setY(newY);
 	setType(newType);
 
 	if(getType() == 1)
@@ -17,7 +17,7 @@ Terrain::Terrain(int newX, int newY, int newType)
 	}
 }
 
-void Item::display( SDL_Surface* object, SDL_Surface* destination )
+void Terrain::display( SDL_Surface* object, SDL_Surface* destination )
 {
 
 	SDL_Rect offset;

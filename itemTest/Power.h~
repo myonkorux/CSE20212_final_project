@@ -9,7 +9,7 @@ class Power : public Item
 		Power(int, int ,int);
 		void display(SDL_Surface *, SDL_Surface *);
 	private:
-		SDL_Surface * PowerImage;
+		SDL_Surface * powerImage;
 		int yOffset;          // Used for
 		int offsetDirection;  // float effect
 			

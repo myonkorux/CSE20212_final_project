@@ -3,8 +3,8 @@
 
 Power::Power(int newX, int newY, int newType)
 {
-	setx(newX);
-	sety(newY);
+	setX(newX);
+	setY(newY);
 	setType(newType);
 
 	yOffset = 0;
@@ -12,18 +12,42 @@ Power::Power(int newX, int newY, int newType)
 
 	if(getType() >= 3)
 	{
-		TerrainImage = loadImage("dot.bmp");
+		PowerImage = loadImage("dot.bmp");
 	}
 }
 
 void Power::display( SDL_Surface* object, SDL_Surface* destination )
 {
+	if ( offsetDirection == 1 ){
+	
+		if ( yOffset < 10 ){
+		
+			yOffset++;
+		
+		} else {
+		
+			offsetDirection = -1;
+		
+		}
+	
+	} else {
+	
+		if ( yOffset > 0 ){
+		
+			yOffset--;
+		
+		} else {
+		
+			offsetDirection = 1;
+		
+		}
+	
+	}
 
 	SDL_Rect offset;
 
-	offset.x = x;
-	offset.y = y;
+	offset.x = getX();
+	offset.y = getY() + yOffset;
 
 	SDL_BlitSurface( object, NULL, destination, &offset );
-
 }
