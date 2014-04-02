@@ -12,6 +12,7 @@ item.h
 
 #include <iostream>
 #include<iomanip>
+#include<string>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -19,21 +20,22 @@ using namespace std;
 
 class Item
 {
-
 	public:
 		Item();
 		void display(SDL_Surface *, SDL_Surface *);
-		int getx();
-		int gety();
+		int getX();
+		int getY();
 		int getType();
-		void setx( int );
-		void sety( int );
+		void setX( int );
+		void setY( int );
 		void setType(int);
 	
-	protected:
+	private:
 		int x;
 		int y;
 		int type;
+		int yOffset;          // Used for
+		int offsetDirection;  // float effect
 
 };
 

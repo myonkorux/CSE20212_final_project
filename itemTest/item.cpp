@@ -20,29 +20,57 @@ Item::Item()
 	y = 0;
 	type = 0;
 	
+	yOffset = 0;
+	offsetDirection = 1;
 
 }
 
-void Item::display( SDL_Surface* source, SDL_Surface* destination )
+void Item::display( SDL_Surface* object, SDL_Surface* destination )
 {
+
+	if ( offsetDirection == 1 ){
+	
+		if ( yOffset < 10 ){
+		
+			yOffset++;
+		
+		} else {
+		
+			offsetDirection = -1;
+		
+		}
+	
+	} else {
+	
+		if ( yOffset > 0 ){
+		
+			yOffset--;
+		
+		} else {
+		
+			offsetDirection = 1;
+		
+		}
+	
+	}
 
 	SDL_Rect offset;
 
 	offset.x = x;
-	offset.y = y;
+	offset.y = y + yOffset;
 
-	SDL_BlitSurface( source, NULL, destination, &offset );
+	SDL_BlitSurface( object, NULL, destination, &offset );
 
 }
 
-int Item::getx()
+int Item::getX()
 {
 
 	return x;
 
 }
 
-int Item::gety()
+int Item::getY()
 {
 
 	return y;
@@ -54,14 +82,14 @@ int Item::getType()
 	return type;
 }
 
-void Item::setx( int newx )
+void Item::setX( int newx )
 {
 
 	x = newx;
 
 }
 
-void Item::sety( int newy )
+void Item::setY( int newy )
 {
 
 	y = newy;
@@ -70,5 +98,7 @@ void Item::sety( int newy )
 
 void Item::setType(int newType)
 {
+
 	type = newType;
+
 }
