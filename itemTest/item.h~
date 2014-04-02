@@ -7,6 +7,9 @@ item.h
 
 *******************/
 
+#ifndef ITEM_H
+#define ITEM_H
+
 #include <iostream>
 #include<iomanip>
 #include "SDL/SDL.h"
@@ -34,3 +37,5 @@ class Item
 		int type;
 
 };
+
+#endif

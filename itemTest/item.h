@@ -23,7 +23,6 @@ class Item
 	public:
 		Item();
 		void display(SDL_Surface *, SDL_Surface *);
-		virtual void update() = 0;
 		int getx();
 		int gety();
 		int getType();

@@ -7,9 +7,6 @@ item.cpp
 
 *******************/
 
-#include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
 #include"item.h"
 
 using namespace std;
