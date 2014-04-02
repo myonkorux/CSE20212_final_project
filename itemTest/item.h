@@ -22,7 +22,7 @@ class Item
 {
 	public:
 		Item();
-		void display(SDL_Surface *, SDL_Surface *);
+		virtual void display(SDL_Surface *, SDL_Surface *) = 0;
 		int getX();
 		int getY();
 		int getType();
@@ -36,6 +36,8 @@ class Item
 		int type;
 		int yOffset;          // Used for
 		int offsetDirection;  // float effect
+
+		SDL_Surface * loadImage(string);
 
 };
 
