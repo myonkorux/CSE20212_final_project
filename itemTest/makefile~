@@ -1,7 +1,7 @@
 all:  terrainTest
 
-terrainTest:  main.o terrain.o item.o item.cpp item.h
-	g++ -o terrainTest main.o terrain.o -lSDL -lSDL_image
+terrainTest:  main.o terrain.o item.o
+	g++ -o terrainTest main.o terrain.o item.o -lSDL -lSDL_image
 
 main.o:  terrain.h main.cpp
 	g++ -c main.cpp
