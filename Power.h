@@ -11,8 +11,8 @@ class Power : public Item
 		void cleanImage();
 	private:
 		SDL_Surface * PowerImage;
-		int yOffset;          // Used for
-		int offsetDirection;  // float effect
+		float yOffset;
+		float t;
 			
 };
 
