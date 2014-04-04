@@ -1,3 +1,4 @@
+#include <cmath>
 #include"item.h"
 #include"Power.h"
 
@@ -7,8 +8,8 @@ Power::Power(int newX, int newY, int newType)
 	setY(newY);
 	setType(newType);
 
-	yOffset = 0;
-	offsetDirection = 1;
+	yOffset = 0.0;
+	t = 0.0;
 
 	if(getType() >= 3)
 	{
@@ -18,30 +19,10 @@ Power::Power(int newX, int newY, int newType)
 
 void Power::display(SDL_Surface* destination )
 {
-	if ( offsetDirection == 1 ){
-	
-		if ( yOffset < 10 ){
-		
-			yOffset++;
-		
-		} else {
-		
-			offsetDirection = -1;
-		
-		}
-	
-	} else {
-	
-		if ( yOffset > 0 ){
-		
-			yOffset--;
-		
-		} else {
-		
-			offsetDirection = 1;
-		
-		}
-	
+	yOffset = 8*sin( t );
+	t += 0.1;
+	if (t >= 2*M_PI){
+		t = 0;
 	}
 
 	SDL_Rect offset;
