@@ -31,7 +31,6 @@ class Box
 		int getY();
 		int getHeight();
 		int getWidth();
-		void renderBox();
 		virtual void update() = 0;
 	
 	private:
