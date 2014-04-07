@@ -23,6 +23,7 @@ Box::Box()
 	box.y = y;
 	box.w = width;
 	box.h = height;
+	
 }
 
 void Box::setX(int newX)
@@ -72,6 +73,11 @@ int Box::getHeight()
 int Box::getWidth()
 {
 	return width;
+}
+
+string Box::getMessage()
+{
+	return message;
 }
 
 void Box::display(SDL_Surface* destination )
