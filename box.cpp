@@ -81,7 +81,7 @@ void Box::display(SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY();
 
-	SDL_BlitSurface( box, NULL, destination, &offset );
+	SDL_BlitSurface( /*box*/ NULL, NULL, destination, &offset );
 }
 
 void Box::renderBox()

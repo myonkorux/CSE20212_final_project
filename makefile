@@ -1,7 +1,7 @@
 EXEC = main
 
-$(EXEC): main.o board.o box.o item.o unit.o
-	g++ main.o board.o box.o item.o unit.o -o $(EXEC) -lSDL -lSDL_image
+$(EXEC): main.o board.o box.o item.o unit.o player.o
+	g++ main.o board.o box.o item.o unit.o player.o -o $(EXEC) -lSDL -lSDL_image
 	
 main.o: main.cpp board.h
 	g++ -c main.cpp
@@ -17,6 +17,9 @@ item.o: item.cpp item.h
 	
 unit.o: unit.cpp unit.h
 	g++ -c unit.cpp
+	
+player.o: player.cpp player.h unit.h
+	g++ -c player.cpp -lSDL -lSDL_image
 	
 clean:
 	rm -f *.o
