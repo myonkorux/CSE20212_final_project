@@ -1,16 +1,16 @@
 all:  boxTest
 
 boxTest:  main.o text.o box.o
-	g++ -o boxTest main.o text.o box.o -lSDL -lSDL_image -lSDL_ttf
+	g++ -o boxTest -g main.o text.o box.o -lSDL -lSDL_image -lSDL_ttf
 
 main.o:  main.cpp text.h
-	g++ -c main.cpp
+	g++ -c -g main.cpp
 
 text.o:  text.cpp text.h
-	g++ -c text.cpp
+	g++ -c -g text.cpp
 
 box.o:  box.cpp box.h
-	g++ -c box.cpp -std=c++0x
+	g++ -c -g box.cpp -std=c++0x
 
 clean:
-	rm -f core* boxTest textTest *.o
+	rm -f core* boxTest *.o

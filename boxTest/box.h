@@ -27,30 +27,30 @@ class Box
 		void setY(int);
 		void setHeight(int);
 		void setWidth(int);
-		void setMessage(char *);
+		void setMessage(string);
 		void setFontSize(int);
 		int getX();
 		int getY();
 		int getHeight();
 		int getWidth();
-		char * getMessage();
+		string getMessage();
 		int getFontSize();
 		void renderBox();
-		virtual void update() = 0;
+		void cleanBox();
+		//virtual void update() = 0;
 	
 	private:
 		int height;
 		int width;
 		int x;
 		int y;
-		char * message;
+		string message;
 
 		int fontSize;
 		SDL_Rect box;
 		TTF_Font * font;
 		SDL_Color textColor;
-		SDL_Surface * messageSurface;
-		
+		SDL_Surface * messageSurface;		
 };
 
 #endif

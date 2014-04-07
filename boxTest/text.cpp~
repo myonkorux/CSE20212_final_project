@@ -10,6 +10,8 @@ Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, str
 	
 	setFontSize(newFontSize);
 	setMessage(newMessage);
+	textColor = {0, 0, 0};
+	messageSurface = TTF_RenderText_Solid(font, getMessage().c_str(), textColor);
 }
 
 

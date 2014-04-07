@@ -1,7 +1,7 @@
 #include"box.h"
 #include"text.h"
 
-Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, char * newMessage)
+Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, string newMessage)
 {
 	setWidth(newWidth);
 	setHeight(newHeight);
@@ -10,6 +10,8 @@ Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, cha
 	
 	setFontSize(newFontSize);
 	setMessage(newMessage);
+
+	renderBox();
 }
 
 
