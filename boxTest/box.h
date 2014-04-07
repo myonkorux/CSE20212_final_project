@@ -11,7 +11,7 @@ box.h
 
 #include <iostream>
 #include<iomanip>
-#include<string>
+#include<cstring>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include"SDL/SDL_ttf.h"
@@ -27,13 +27,13 @@ class Box
 		void setY(int);
 		void setHeight(int);
 		void setWidth(int);
-		void setMessage(string);
+		void setMessage(char *);
 		void setFontSize(int);
 		int getX();
 		int getY();
 		int getHeight();
 		int getWidth();
-		string getMessage();
+		char * getMessage();
 		int getFontSize();
 		void renderBox();
 		virtual void update() = 0;
@@ -43,11 +43,11 @@ class Box
 		int width;
 		int x;
 		int y;
-		string message;
+		char * message;
 
 		int fontSize;
 		SDL_Rect box;
-		TTF_font * font;
+		TTF_Font * font;
 		SDL_Color textColor;
 		SDL_Surface * messageSurface;
 		

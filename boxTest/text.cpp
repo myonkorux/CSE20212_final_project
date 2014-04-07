@@ -1,28 +1,17 @@
 #include"box.h"
 #include"text.h"
 
-Text::Text(int newWidth, int newHeight, int newX, int newY, int fontSize, string newMessage)
+Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, char * newMessage)
 {
 	setWidth(newWidth);
 	setHeight(newHeight);
 	setX(newX);
 	setY(newY);
-
-	size = fontSize;
 	
-	message = newMessage;
-
-	initialize();
+	setFontSize(newFontSize);
+	setMessage(newMessage);
 }
 
-void Text::initialize()
-{
-	TTF_Init();
-
-	textColor = {255, 255, 255};
-	
-	font = TTF_OpenFont("LIVINGBY.TTF", size);
-}
 
 
 

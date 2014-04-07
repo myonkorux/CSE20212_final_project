@@ -7,7 +7,6 @@ class Text : public Box
 {
 	public:
 		Text(int, int, int, int, int, string);
-	private:
 };	
 
 #endif

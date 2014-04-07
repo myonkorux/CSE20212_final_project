@@ -6,7 +6,7 @@
 class Text : public Box
 {
 	public:
-		Text(int, int, int, int, int, string);
+		Text(int, int, int, int, int, char *);
 };	
 
 #endif
