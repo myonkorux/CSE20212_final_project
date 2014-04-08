@@ -29,26 +29,38 @@ Player::Player(){
 	health = 100;
 	speed = 0;
 	power = 0;
+	isStanding = 1;
 	
 	clipSelect = 0;
 	
 	spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
 	
-	int width = 43;
+	int swidth = 43;
+	int mwidth = 50;
 	int i;
 	
 	for (i = 0; i <= 7; i++){
-		standing[i].x = width*i + 5; 
+		standing[i].x = swidth*i + 5; 
 		standing[i].y = 0;
-		standing[i].w = width;
+		standing[i].w = swidth;
 		standing[i].h = 68;
+	}
+	for (i = 0; i <= 7; i++){
+		moving[i].x = mwidth*i;
+		moving[i].y = 80;
+		moving[i].w = mwidth;
+		moving[i].h = 66;
 	}
 }
 
 void Player::display( SDL_Surface* source ){
 
-	apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
-
+	if (isStanding){
+		apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
+	}else{
+		apply_PC_sprite( x, y, spritePC, source, &moving[ clipSelect ] );
+	}
+		
 	clipSelect++;
 	
 	if( clipSelect >= 8 ){
@@ -59,7 +71,21 @@ void Player::display( SDL_Surface* source ){
 
 void Player::update(){
 
-
+	while( SDL_PollEvent( &event ) ){
+		if( event.type == SDL_KEYDOWN ){
+			switch( event.key.keysym.sym ){
+				case SDLK_RIGHT:
+					isStanding = 0;
+					break;
+			}
+		}else if( event.type == SDL_KEYUP ){
+			switch( event.key.keysym.sym ){
+				case SDLK_RIGHT:
+					isStanding = 1;
+					break;
+			}
+		}
+	}
 
 }
 

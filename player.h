@@ -32,6 +32,9 @@ class Player{
 		int power;
 		SDL_Surface* spritePC;
 		SDL_Rect standing[8];
+		SDL_Rect moving[8];
+		SDL_Event event;
 		int clipSelect;
+		int isStanding;
 
 };

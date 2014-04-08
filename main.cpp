@@ -40,8 +40,8 @@ int main(){
 	
 	while (quit == 0){
 	
-		while( SDL_PollEvent( &event ) ){
-			//handle_input();
+		if( SDL_PollEvent( &event ) ){
+			P1.update();
 			if( event.type == SDL_QUIT ){
 				quit = 1;
 			}
