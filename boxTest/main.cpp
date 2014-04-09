@@ -1,4 +1,5 @@
 #include"text.h"
+#include"button.h"
 
 int main( int argc, char* args[] )
 {
@@ -18,7 +19,8 @@ int main( int argc, char* args[] )
 	SDL_WM_SetCaption("Box Test", NULL);
 	
 	Text textBox(300, 50, 10, 10, 40, "WEESNAW");
-	
+	Button testButton(300, 50, 500, 10, 40, "NOOT NOOT");
+
 	while (quit == 0){
 	
 		while( SDL_PollEvent( &event ) )
@@ -27,12 +29,12 @@ int main( int argc, char* args[] )
 			{
 				quit = 1;
 			}
+			testButton.update(event);
 
 			textBox.display(screen);
+			testButton.display(screen);
 	
 			SDL_Flip( screen );
-	
-			SDL_Delay( 100 );
 		}
 	
 	}

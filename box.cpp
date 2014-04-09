@@ -18,11 +18,16 @@ Box::Box()
 	width = 100;
 	x = 0;
 	y = 0;
+	message = "Foo";
+	fontSize = 40;
 
 	box.x = x;
 	box.y = y;
 	box.w = width;
-	box.h = height;
+	box.h = height;	
+	boxR = 255;
+	boxG = 255;
+	boxB = 255;
 }
 
 void Box::setX(int newX)
@@ -54,6 +59,23 @@ void Box::setMessage(string newMessage)
 	message = newMessage;
 }
 
+void Box::setFontSize(int newFontSize)
+{
+	fontSize = newFontSize;
+}
+
+void Box::setTextColor(Uint8 red, Uint8 green, Uint8 blue)
+{
+	textColor = {red, green, blue};
+}
+
+void Box::setBoxColor(Uint8 red, Uint8 green, Uint8 blue)
+{
+	boxR = red;
+	boxG = green;
+	boxB = blue;
+}
+
 int Box::getX()
 {
 	return x;
@@ -74,6 +96,11 @@ int Box::getWidth()
 	return width;
 }
 
+string Box::getMessage()
+{
+	return message;
+}
+
 void Box::display(SDL_Surface* destination )
 {
 	SDL_Rect offset;
@@ -81,10 +108,20 @@ void Box::display(SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY();
 
-	SDL_BlitSurface( /*box*/ NULL, NULL, destination, &offset );
+	SDL_FillRect(destination, &box, SDL_MapRGB(destination->format, boxR, boxG, boxB));
+
+	SDL_BlitSurface( messageSurface, NULL, destination, &offset );
 }
 
 void Box::renderBox()
 {
-	
+	font = TTF_OpenFont("LIVINGBY.TTF", fontSize);
+	setTextColor(0, 0, 0);
+	messageSurface = TTF_RenderText_Solid(font, message.c_str(), textColor);
+}
+
+void Box::cleanBox()
+{
+	SDL_FreeSurface(messageSurface);
+	TTF_CloseFont(font);
 }

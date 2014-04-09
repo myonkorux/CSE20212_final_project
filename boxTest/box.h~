@@ -29,6 +29,8 @@ class Box
 		void setWidth(int);
 		void setMessage(string);
 		void setFontSize(int);
+		void setTextColor(Uint8, Uint8, Uint8);
+		void setBoxColor(Uint8, Uint8, Uint8);
 		int getX();
 		int getY();
 		int getHeight();
@@ -37,7 +39,7 @@ class Box
 		int getFontSize();
 		void renderBox();
 		void cleanBox();
-		//virtual void update() = 0;
+		virtual void update(SDL_Event *) = 0;
 	
 	private:
 		int height;
@@ -50,8 +52,11 @@ class Box
 		SDL_Rect box;
 		TTF_Font * font;
 		SDL_Color textColor;
-		SDL_Surface * messageSurface;
-		
+		SDL_Surface * messageSurface;	
+		Uint8 boxR;
+		Uint8 boxG;
+		Uint8 boxB;
+			
 };
 
 #endif

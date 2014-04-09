@@ -6,7 +6,8 @@
 class Text : public Box
 {
 	public:
-		Text(int, int, int, int, int, char *);
+		Text(int, int, int, int, int, string);
+		virtual void update(SDL_Event *);
 };	
 
 #endif
