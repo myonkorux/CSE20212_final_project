@@ -24,8 +24,6 @@ using namespace std;
 
 
 int main(){
-
-	// Test item display properties
 	
 	SDL_Surface* screen = NULL;
 	SDL_Event event;
@@ -41,9 +39,10 @@ int main(){
 	while (quit == 0){
 	
 		if( SDL_PollEvent( &event ) ){
-			P1.update();
 			if( event.type == SDL_QUIT ){
 				quit = 1;
+			}else{
+				P1.update( event );
 			}
 		}
 		

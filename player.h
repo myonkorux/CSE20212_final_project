@@ -18,7 +18,7 @@ class Player{
 	public:
 		Player();
 		void display( SDL_Surface* );
-		void update();
+		void update( SDL_Event );
 		void move();
 		void attack();
 		void isDead();
@@ -27,12 +27,17 @@ class Player{
 	private:
 		int x;
 		int y;
+		int xVel;
+		int direction;
 		int health;
 		int speed;
 		int power;
 		SDL_Surface* spritePC;
+		SDL_Surface* spritePCL;
 		SDL_Rect standing[8];
 		SDL_Rect moving[8];
+		SDL_Rect standingL[8];
+		SDL_Rect movingL[8];
 		SDL_Event event;
 		int clipSelect;
 		int isStanding;
