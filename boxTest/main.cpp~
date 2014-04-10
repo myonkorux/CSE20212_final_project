@@ -1,5 +1,6 @@
 #include"text.h"
 #include"button.h"
+#include"counter.h"
 
 int main( int argc, char* args[] )
 {
@@ -20,6 +21,7 @@ int main( int argc, char* args[] )
 	
 	Text textBox(300, 50, 10, 10, 40, "WEESNAW");
 	Button testButton(300, 50, 500, 10, 40, "NOOT NOOT");
+	Counter testCounter(300, 50, 10, 500, 40, "10", 10);
 
 	while (quit == 0){
 	
@@ -29,14 +31,15 @@ int main( int argc, char* args[] )
 			{
 				quit = 1;
 			}
+			testCounter.setCountValue(testCounter.getCountValue() + 1);
+			testCounter.update(event);
 			testButton.update(event);
 
 			textBox.display(screen);
 			testButton.display(screen);
+			testCounter.display(screen);
 	
 			SDL_Flip( screen );
-	
-			SDL_Delay( 100 );
 		}
 	
 	}

@@ -35,8 +35,8 @@ class Box
 		int getY();
 		int getHeight();
 		int getWidth();
-		string getMessage();
 		int getFontSize();
+		string getMessage();
 		void renderBox();
 		void cleanBox();
 		virtual void update(SDL_Event) = 0;

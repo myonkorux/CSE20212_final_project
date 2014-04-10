@@ -1,7 +1,7 @@
 all:  boxTest
 
-boxTest:  main.o text.o box.o button.o
-	g++ -o boxTest -g main.o text.o box.o button.o -lSDL -lSDL_image -lSDL_ttf
+boxTest:  main.o text.o box.o button.o counter.o
+	g++ -o boxTest -g main.o text.o box.o button.o counter.o -lSDL -lSDL_image -lSDL_ttf
 
 main.o:  main.cpp text.h
 	g++ -c -g main.cpp
@@ -14,6 +14,9 @@ box.o:  box.cpp box.h
 
 button.o:  button.cpp button.h
 	g++ -c -g button.cpp
+
+counter.o:  counter.cpp counter.h
+	g++ -c -g counter.cpp
 
 clean:
 	rm -f core* boxTest *.o
