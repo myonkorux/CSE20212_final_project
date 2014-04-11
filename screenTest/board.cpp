@@ -127,18 +127,114 @@ void Board::selectState()
 	texBoxes.push_back(versionLabel);	
 }
 
-void Board::display()
+void Board::gameState()
 {
+	clearDeques();
+	Counter health(160, 40, 40, 40, 30, "100", 100);
+	Counter score(240, 40, 600, 40, 30, "0", 0);
+	counters.push_back(health);
+	counters.push_back(score);
 
+	Text cseLabel(160, 40, 40, 720, 30, "Zombie Slayerz");
+	Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
+	Text diffLabel(320, 40, 280, 720, 30, diffString);
+	textBoxes.push_back(cseLabel);
+	textBoxes.push_back(versionLabel);
+	textBoxes.push_back(diffLabel);
 }
 
-void Board::update(SDL_Surface* screen )
+void Board::pauseState()
 {
+	Button continueButton(240, 80, 320, 160, 70, "Continue");
+	Button menuButton(240, 80, 320, 280, 70, "Menu");
+	Button quitButton(240, 80, 320, 400, 70, "Quit");
+	buttons.push_back(continueButton);
+	buttons.push_back(menuButton);
+	buttons.push_back(quitButton);
+}
+
+void Board::continueGame()
+{
+	int i = 0;
+	for(i = 0; i < 3; i++)
+	{	
+		*(buttons.end() - 1).cleanBox;
+		buttons.pop_back();
+	}
+}
+
+void Board::overState()
+{
+	clearDeques();
+	Text titleCard(720, 120, 80, 40, 110, "Bye, Please Close Window");
+}
+
+void Board::stateInterpret()
+{
+	if(start == 1)
+	{
+		startState();
+	}
+	else if(select == 1)
+	{
+		selectState();
+	}
+	else if(game == 1)
+	{
+		gameState();
+	}
+	else if(pause == 1)
+	{
+		pauseState();
+	}
+	else if(over == 1)
+	{
+		overState();
+	}
+}
+
+void Board::display()
+{
+	SDL_Rect offset;
+	offset.x = 0;
+	offset.y = 0;
+	SDL_BliSurface(background, NULL, screen, &offset);
+	
+	deque<Text>::const_iterator i;
+	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
+	{
+		*i.display();
+	}
+
+	deque<Button>::const_iterator j;
+	for(j = buttons.begin(); j != buttons.end(); ++j)
+	{
+		*j.display();
+	}
+
+	deque<Counter>::const_iterator k;
+	for(k = counters.begin(); k != counters.end(); ++k)
+	{
+		*k.display();
+	}
+
 	SDL_Flip( screen );
 }
 
-void Board::wipe( SDL_Surface* screen )
+void Board::update()
+{
+	
+}
+
+void Board::wipe()
 {
 	// Fill with white space
 	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+}
+
+void Board::clean()
+{
+	clearDeques();
+	TTF_Quit();
+	SDL_Quit();
 }

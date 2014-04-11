@@ -41,6 +41,8 @@ class Board{
 		int game;
 		int pause;
 		int over;
+		int difficulty;
+		string diffString;
 
 		int screenWidth;
 		int screenHeight;
@@ -61,6 +63,7 @@ class Board{
 		void startState();
 		void selectState();
 		void pauseState();
+		void continueGame();
 		void gameState();
 		void overState();
 		void clearDeques();

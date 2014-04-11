@@ -30,8 +30,8 @@ class Board{
 		void initialize();
 		void loadBackground();
 		void display();
-		void update( SDL_Surface* );
-		void wipe( SDL_Surface* );
+		void update();
+		void wipe();
 		void clean();
 		void stateInterpret();
 	
@@ -42,6 +42,7 @@ class Board{
 		int pause;
 		int over;
 		int difficulty;
+		string diffString;
 
 		int screenWidth;
 		int screenHeight;
@@ -62,6 +63,7 @@ class Board{
 		void startState();
 		void selectState();
 		void pauseState();
+		void continueGame();
 		void gameState();
 		void overState();
 		void clearDeques();
