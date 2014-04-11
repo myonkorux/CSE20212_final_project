@@ -1,0 +1,15 @@
+Christopher Ray (partners with Nathan Vahrenberg)
+Professor Scott
+CSE 20212
+11 April 2014
+
+repo url:	https://github.com/nvahrenb/CSE20212_final_project
+
+Final Lab Report
+
+	Our project is moving along very well.  My partner and I have spent the past week working on and testing the player character sprite animations and creating the counters, buttons, and text boxes for the menus and in-game user interface, respectively.  While we still do not have a working prototype for the game, Professor Scott said that the driver programs that we currently have in our repository that demonstrate how we animated the player character and how we can add UI elements to the screen should suffice.  The driver program for the player character animation is in the main directory of the repository and the driver program for the UI elements is in the subdirectory "boxTest".  
+	I have also been working on the class that will handle the different screen configurations for the various game states (start, pause, difficulty select, etc).  This code can be found in the subdirectory "screenTest".  Since I am still working on the code, I have not checked whether or not it can be compiled.  My partner and I have also implemented a series of deques for storing buttons, counters, and text boxes for creating UI's as well as for storing the various enemy characters in the code for this class.
+	One interesting thing that I am currently implementing is a function for dynamically filling, modifying, clearing the deques for text boxes, buttons, enemies, etc in order to avoid constantly having massive data structures stored in memory.  Since my partner and I worked on the code for the game in a very modular fashion; have completed, tested, and verified all the key parts of the game; and already have our sprites and backgrounds, we are pretty much in a position to create any type of game using the components we have created.  All we would ahve to do is program the actual mechanics for each game.  I'd say that all of this would count for about 15 points.
+	I think my partner should be assigned all 3 bonus points.  He not only worked on the sprite animations (which I consider to be one of the harder tasks that has to be done), but also created the GitHub repository, added the initial versions of all of the classes to the repository, and even edited the sprites and backgrounds using GIMP whenever it was needed.  
+	
+	
