@@ -44,4 +44,5 @@ int Button::update(SDL_Event event)
 			}
 		}
 	}
+	return 0;
 }

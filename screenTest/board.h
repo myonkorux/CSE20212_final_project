@@ -28,12 +28,10 @@ class Board{
 	public:
 		Board();
 		void initialize();
-		void loadBackground();
 		void display();
 		void update();
 		void wipe();
 		void clean();
-		void stateInterpret();
 	
 	private:
 		int start;
@@ -67,5 +65,7 @@ class Board{
 		void gameState();
 		void overState();
 		void clearDeques();
-
+		void stateInterpret();
+		void loadBackground();
+		void resetStates();
 };

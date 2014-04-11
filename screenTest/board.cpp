@@ -35,6 +35,7 @@ void Board::initialize()
 	screen = SDL_SetVideoMode(screenWidth, screenHeight, screenBPP, SDL_SWSURFACE);
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
+	loadBackground();
 }
 
 SDL_Surface * Board::optimizeImage(string filename)
@@ -62,6 +63,15 @@ SDL_Surface * Board::optimizeImage(string filename)
 void Board::loadBackground()
 {
 	background = optimizeImage("forest.jpg");
+}
+
+void Board::resetStates()
+{
+	start = 0;
+	select = 0;
+	game = 0;
+	pause = 0;
+	over = 0;
 }
 
 void Board::clearDeques()
@@ -223,7 +233,66 @@ void Board::display()
 
 void Board::update()
 {
-	
+	if(start == 1)
+	{
+		resetStates();		
+		select = *(buttons.begin()).update();
+		over = *(buttons.begin() + 1).update();
+		stateInterpret();	
+	}
+	else if(select == 1)
+	{
+		resetStates();	
+		if(*(buttons.begin()).update() == 1)	
+		{
+			game = 1;
+			difficulty = 4;
+			diffString = "Hardcore";
+		}
+		else if(*(buttons.begin() + 1).update() == 1)	
+		{
+			game = 1;
+			difficulty = 1;
+			diffString = "Easy";
+			
+		}
+		else if(*(buttons.begin() + 2).update() == 1)	
+		{
+			game = 1;
+			difficulty = 2;
+			diffString = "Normal";	
+		}
+		else if(*(buttons.begin() + 3).update() == 1)	
+		{
+			game = 1;
+			difficulty = 3;
+			diffString = "Hard";
+		}
+		stateInterpret();
+	}
+	else if(game == 1)
+	{
+		resetStates();
+		pause = 1;
+		stateInterpret();
+	}
+	else if(pause == 1)
+	{
+		if(*(buttons.begin()).update() == 1)	
+		{
+			game = 1;
+			continueGame();
+		}
+		else if(*(buttons.begin() + 1).update() == 1)	
+		{
+			start = 1;
+		}
+		else if(*(buttons.begin() + 2).update() == 1)	
+		{
+			over = 1;
+		}
+		stateInterpret();
+	}
 }
 
 void Board::wipe()
