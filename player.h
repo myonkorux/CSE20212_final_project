@@ -36,10 +36,13 @@ class Player{
 		SDL_Surface* spritePCL;
 		SDL_Rect standing[8];
 		SDL_Rect moving[8];
+		SDL_Rect attacking[6];
 		SDL_Rect standingL[8];
 		SDL_Rect movingL[8];
+		SDL_Rect attackingL[6];
 		SDL_Event event;
 		int clipSelect;
 		int isStanding;
+		int isAttacking;
 
 };

@@ -32,6 +32,7 @@ Player::Player(){
 	speed = 10;
 	power = 0;
 	isStanding = 1;
+	isAttacking = 0;
 	
 	clipSelect = 0;
 	
@@ -54,6 +55,14 @@ Player::Player(){
 		standingL[i].h = 68;
 		movingL[i].y = moving[i].y;
 		movingL[i].h = moving[i].h;
+		
+	}
+	
+	for (i = 0; i <= 5; i++){
+		attacking[i].y = 145;
+		attacking[i].h = 207-145;
+		attackingL[i].y = 145;
+		attackingL[i].h = 207-145;
 	}
 	
 		moving[0].x = 0;
@@ -90,20 +99,54 @@ Player::Player(){
 		movingL[7].x = 413-405;
 		movingL[7].w = 405-355;
 		
+		attacking[0].x = 0;
+		attacking[0].w = 63-0;
+		attacking[1].x = 63;
+		attacking[1].w = 117-63;
+		attacking[2].x = 120;
+		attacking[2].w = 195-120;
+		attacking[3].x = 195;
+		attacking[3].w = 265-192;
+		attacking[4].x = 267;
+		attacking[4].w = 317-267;
+		attacking[5].x = 323;
+		attacking[5].w = 390-323;
 		
+		attackingL[0].x = 413-63;
+		attackingL[0].w = 63-0;
+		attackingL[1].x = 413-117;
+		attackingL[1].w = 117-63;
+		attackingL[2].x = 413-195;
+		attackingL[2].w = 195-120;
+		attackingL[3].x = 413-265;
+		attackingL[3].w = 265-192;
+		attackingL[4].x = 413-317;
+		attackingL[4].w = 317-267;
+		attackingL[5].x = 413-390;
+		attackingL[5].w = 390-323;
+		
+
 }
 
 void Player::display( SDL_Surface* source ){
 
 	x += xVel;
 	if (direction == 1){
-		if (isStanding){
+		if (isAttacking){
+			apply_PC_sprite( x, y, spritePC, source, &attacking[ clipSelect ] );
+		}else if (isStanding){
 			apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
 		}else{
 			apply_PC_sprite( x, y, spritePC, source, &moving[ clipSelect ] );
 		}
 	}else if (direction == -1){
-		if (isStanding){
+		if (isAttacking){
+			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5){
+				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] );
+			}else{
+				apply_PC_sprite( x, y, spritePCL, source, &attackingL[ clipSelect ] );
+			}
+		}else if (isStanding){
 			apply_PC_sprite( x, y, spritePCL, source, &standingL[ clipSelect ] );
 		}else{
 			apply_PC_sprite( x, y, spritePCL, source, &movingL[ clipSelect ] );
@@ -111,6 +154,11 @@ void Player::display( SDL_Surface* source ){
 	}
 		
 	clipSelect++;
+	
+	if( isAttacking && clipSelect == 6 ){
+		isAttacking = 0;
+		clipSelect = 0;
+	}
 	
 	if( clipSelect >= 8 ){
 		clipSelect = 0;
@@ -120,26 +168,37 @@ void Player::display( SDL_Surface* source ){
 
 void Player::update( SDL_Event event ){
 
-	if( event.type == SDL_KEYDOWN ){
-		switch( event.key.keysym.sym ){
-			case SDLK_RIGHT:
-				isStanding = 0;
-				direction = 1;
-				xVel = speed;
-				break;
-			case SDLK_LEFT:
-				isStanding = 0;
-				direction = -1;
-				xVel = -speed;
-				break;
-		}
-	}else if( event.type == SDL_KEYUP ){
-		switch( event.key.keysym.sym ){
-			case SDLK_RIGHT:
-			case SDLK_LEFT:
-				isStanding = 1;
-				xVel = 0;
-				break;
+	if(!isAttacking){
+		if( event.type == SDL_KEYDOWN ){
+			switch( event.key.keysym.sym ){
+				case SDLK_RIGHT:
+					isStanding = 0;
+					direction = 1;
+					xVel = speed;
+					break;
+				case SDLK_LEFT:
+					isStanding = 0;
+					direction = -1;
+					xVel = -speed;
+					break;
+				case SDLK_SPACE:
+					isStanding = 1;
+					isAttacking = 1;
+					xVel = 0;
+					clipSelect = 0;
+					break;
+			}
+		}else if( event.type == SDL_KEYUP ){
+			switch( event.key.keysym.sym ){
+				case SDLK_RIGHT:
+				case SDLK_LEFT:
+					isStanding = 1;
+					xVel = 0;
+					break;
+				case SDLK_SPACE:
+					break;
+		
+			}
 		}
 	}
 
