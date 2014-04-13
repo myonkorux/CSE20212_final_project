@@ -55,6 +55,10 @@ Player::Player(){
 		standingL[i].h = 68;
 		movingL[i].y = moving[i].y;
 		movingL[i].h = moving[i].h;
+		jumping[i].y = 415;
+		jumping[i].h = 486-415;
+		jumpingL[i].y = 415;
+		jumpingL[i].h = 486-415;
 		
 	}
 	
@@ -125,6 +129,41 @@ Player::Player(){
 		attackingL[5].x = 413-390;
 		attackingL[5].w = 390-323;
 		
+		jumping[0].x = 0;
+		jumping[0].w = 50-0;
+		jumping[1].x = 50;
+		jumping[1].w = 103-50;
+		jumping[2].x = 105;
+		jumping[2].w = 152-105;
+		jumping[3].x = 162;
+		jumping[3].w = 195-162;
+		jumping[4].x = 203;
+		jumping[4].w = 240-203;
+		jumping[5].x = 244;
+		jumping[5].w = 276-244;
+		jumping[6].x = 280;
+		jumping[6].w = 315-280;
+		jumping[7].x = 324;
+		jumping[7].w = 370-324;
+		
+		jumpingL[0].x = 413-50;
+		jumpingL[0].w = 50-0;
+		jumpingL[1].x = 413-103;
+		jumpingL[1].w = 103-50;
+		jumpingL[2].x = 413-152;
+		jumpingL[2].w = 152-105;
+		jumpingL[3].x = 413-195;
+		jumpingL[3].w = 195-162;
+		jumpingL[4].x = 413-240;
+		jumpingL[4].w = 240-203;
+		jumpingL[5].x = 413-276;
+		jumpingL[5].w =	276-244;
+		jumpingL[6].x = 413-315;
+		jumpingL[6].w = 315-280;
+		jumpingL[7].x = 413-370;
+		jumpingL[7].w = 370-324;
+		
+		
 
 }
 
@@ -134,6 +173,8 @@ void Player::display( SDL_Surface* source ){
 	if (direction == 1){
 		if (isAttacking){
 			apply_PC_sprite( x, y, spritePC, source, &attacking[ clipSelect ] );
+		}else if (isJumping){
+			apply_PC_sprite( x, y, spritePC, source, &jumping[ clipSelect ] );
 		}else if (isStanding){
 			apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
 		}else{
@@ -142,10 +183,12 @@ void Player::display( SDL_Surface* source ){
 	}else if (direction == -1){
 		if (isAttacking){
 			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5){
-				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] );
+				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] ); // This block adds an offset to fix a glitch with the left-hand attack animation
 			}else{
 				apply_PC_sprite( x, y, spritePCL, source, &attackingL[ clipSelect ] );
 			}
+		}else if (isJumping){
+				apply_PC_sprite( x, y, spritePCL, source, &jumpingL[ clipSelect ] );
 		}else if (isStanding){
 			apply_PC_sprite( x, y, spritePCL, source, &standingL[ clipSelect ] );
 		}else{
@@ -158,6 +201,17 @@ void Player::display( SDL_Surface* source ){
 	if( isAttacking && clipSelect == 6 ){
 		isAttacking = 0;
 		clipSelect = 0;
+	}
+	
+	if( isJumping ){
+		if( clipSelect <= 3 ){
+			y -= 10*( 3-clipSelect );
+		}else if( clipSelect <= 6 && clipSelect >= 4 ){ 
+			y += 10*( 3-(clipSelect-3) );
+		}else{
+			isJumping = 0;
+			clipSelect = 0;
+		}
 	}
 	
 	if( clipSelect >= 8 ){
@@ -185,6 +239,10 @@ void Player::update( SDL_Event event ){
 					isStanding = 1;
 					isAttacking = 1;
 					xVel = 0;
+					clipSelect = 0;
+					break;
+				case SDLK_UP:
+					isJumping = 1;
 					clipSelect = 0;
 					break;
 			}

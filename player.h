@@ -40,9 +40,12 @@ class Player{
 		SDL_Rect standingL[8];
 		SDL_Rect movingL[8];
 		SDL_Rect attackingL[6];
+		SDL_Rect jumping[8];
+		SDL_Rect jumpingL[8];
 		SDL_Event event;
 		int clipSelect;
 		int isStanding;
 		int isAttacking;
+		int isJumping;
 
 };
