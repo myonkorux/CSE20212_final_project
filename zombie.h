@@ -11,17 +11,16 @@ Nathan Vahrenberg
 
 using namespace std;
 
-class Unit{
+class Zombie{
 
 	public:
-		Unit();
-		virtual void display() = 0;
-		virtual void update() = 0;
-		virtual void move() = 0;
-		virtual void attack() = 0;
-		virtual void isDead() = 0;
+		Zombie();
+		void update( int );
+		void display( SDL_Surface* );
+		void Free_Memory();
 	
-	protected:
+	
+	private:
 		int x;
 		int y;
 		int health;
@@ -31,5 +30,11 @@ class Unit{
 		int direction;
 		int isStanding;
 		int isAttacking;
-
+		SDL_Surface* SpriteZombie;
+		SDL_Rect moving[3];
+		SDL_Rect attacking[3];
+		SDL_Rect movingL[3];
+		SDL_Rect attackingL[3];
+		int clipSelect;
+	
 };

@@ -23,6 +23,7 @@ class Player{
 		void attack();
 		void isDead();
 		void Free_Memory();
+		int getX();
 		
 	private:
 		int x;

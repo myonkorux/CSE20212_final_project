@@ -262,8 +262,15 @@ void Player::update( SDL_Event event ){
 
 }
 
+int Player::getX(){
+
+	return x;
+
+}
+
 void Player::Free_Memory(){
 
 	SDL_FreeSurface( spritePC );
+	SDL_FreeSurface( spritePCL );
 
 }

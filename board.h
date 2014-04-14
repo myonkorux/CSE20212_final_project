@@ -14,7 +14,6 @@ board.h
 
 #include "box.h"
 #include "item.h"
-#include "unit.h"
 
 using namespace std;
 
