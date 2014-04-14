@@ -17,6 +17,7 @@ class Zombie{
 		Zombie();
 		void update( int );
 		void display( SDL_Surface* );
+		int attack( int );
 		void Free_Memory();
 	
 	

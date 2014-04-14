@@ -26,6 +26,8 @@ using namespace std;
 
 int main(){
 	
+	int damage;
+	
 	SDL_Surface* screen = NULL;
 	SDL_Event event;
 	
@@ -39,7 +41,9 @@ int main(){
 	Zombie Z1;
 	
 	while (quit == 0){
-	
+		
+		damage = 0;
+		
 		if( SDL_PollEvent( &event ) ){
 			if( event.type == SDL_QUIT ){
 				quit = 1;
@@ -54,6 +58,9 @@ int main(){
 		P1.display( screen );
 		
 		Z1.update( P1.getX() );
+		damage += Z1.attack( P1.getX() );
+		
+		P1.apply_damage( damage );
 	
 		SDL_Flip( screen );
 	

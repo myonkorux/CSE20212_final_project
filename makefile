@@ -10,7 +10,7 @@ board.o: board.cpp board.h
 	g++ -c board.cpp
 	
 box.o: box.cpp box.h
-	g++ -c box.cpp
+	g++ -c box.cpp -std=c++0x
 	
 item.o: item.cpp item.h
 	g++ -c item.cpp

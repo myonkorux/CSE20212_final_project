@@ -30,7 +30,7 @@ Zombie::Zombie(){
 	direction = 1;
 	health = 100;
 	speed = 2;
-	power = 0;
+	power = 15;
 	isStanding = 1;
 	isAttacking = 0;
 	
@@ -87,8 +87,6 @@ void Zombie::display( SDL_Surface* source ){
 
 void Zombie::update( int playerX ){
 
-	
-
 	if( playerX < x ){
 		direction = -1;
 		if( x <= playerX + 45  ){
@@ -105,7 +103,15 @@ void Zombie::update( int playerX ){
 		}
 	}
 	
-	
+}
+
+int Zombie::attack( int playerX ){
+
+	if ( x <= playerX + 50 && x + 35 >= playerX ){
+		return power;
+	}else{
+		return 0;
+	}
 
 }
 

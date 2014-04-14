@@ -33,6 +33,8 @@ Player::Player(){
 	power = 0;
 	isStanding = 1;
 	isAttacking = 0;
+	Dead = 0;
+	recoil = 0;
 	
 	clipSelect = 0;
 	
@@ -170,6 +172,11 @@ Player::Player(){
 void Player::display( SDL_Surface* source ){
 
 	x += xVel;
+	x += recoil*speed*(-1)*direction;
+	if (health <= 0){
+		Dead = 1;
+	}
+	
 	if (direction == 1){
 		if (isAttacking){
 			apply_PC_sprite( x, y, spritePC, source, &attacking[ clipSelect ] );
@@ -216,6 +223,7 @@ void Player::display( SDL_Surface* source ){
 	
 	if( clipSelect >= 8 ){
 		clipSelect = 0;
+		recoil = 0;
 	}
 
 }
@@ -265,6 +273,21 @@ void Player::update( SDL_Event event ){
 int Player::getX(){
 
 	return x;
+
+}
+
+void Player::apply_damage( int damage ){
+
+	if(damage > 0){
+		health -= damage;
+		recoil = 1;
+	}
+
+}
+
+int Player::isDead(){
+
+	return Dead;
 
 }
 

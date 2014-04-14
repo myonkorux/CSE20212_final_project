@@ -21,7 +21,8 @@ class Player{
 		void update( SDL_Event );
 		void move();
 		void attack();
-		void isDead();
+		void apply_damage( int );
+		int isDead();
 		void Free_Memory();
 		int getX();
 		
@@ -48,5 +49,7 @@ class Player{
 		int isStanding;
 		int isAttacking;
 		int isJumping;
+		int Dead;
+		int recoil;
 
 };
