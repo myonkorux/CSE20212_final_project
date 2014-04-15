@@ -208,6 +208,7 @@ void Board::stateInterpret()
 
 void Board::display()
 {
+	wipe();
 	SDL_Rect offset;
 	offset.x = 0;
 	offset.y = 0;
@@ -304,6 +305,7 @@ void Board::update(SDL_Event event)
 		}
 		stateInterpret();
 	}
+	display();
 }
 
 void Board::wipe()
