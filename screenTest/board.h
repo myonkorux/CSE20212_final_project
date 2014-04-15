@@ -24,13 +24,13 @@ board.h
 
 using namespace std;
 
-class Board{
-
+class Board
+{
 	public:
 		Board();
 		void initialize();
 		void display();
-		void update();
+		void update(SDL_Event);
 		void wipe();
 		void clean();
 	

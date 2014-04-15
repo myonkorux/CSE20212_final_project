@@ -27,6 +27,8 @@ Board::Board()
 
 	screen = NULL;
 	background = NULL;
+
+	initialize();
 }
 
 void Board::initialize()
@@ -36,6 +38,8 @@ void Board::initialize()
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
+	startState();
+	display();
 }
 
 SDL_Surface * Board::optimizeImage(string filename)
@@ -230,13 +234,17 @@ void Board::display()
 	SDL_Flip( screen );
 }
 
-void Board::update()
+void Board::update(SDL_Event event)
 {
 	if(start == 1)
 	{
 		resetStates();		
 		select = (buttons.begin())->update(event);
 		over = (buttons.begin() + 1)->update(event);
+		if((select == 0) && (over == 0))
+		{
+			start = 1;
+		}
 		stateInterpret();	
 	}
 	else if(select == 1)
@@ -266,6 +274,10 @@ void Board::update()
 			game = 1;
 			difficulty = 3;
 			diffString = "Hard";
+		}
+		else
+		{
+			select = 1;
 		}
 		stateInterpret();
 	}

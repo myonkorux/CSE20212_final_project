@@ -12,7 +12,7 @@ int main( int argc, char* args[] )
 		{
 			if(event.type == SDL_QUIT)
 			{
-				quit = 1;
+				quit == 1;
 			}
 			else
 			{	
