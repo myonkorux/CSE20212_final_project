@@ -293,10 +293,6 @@ void Board::update()
 		}
 		stateInterpret();
 	}
-	else if(over == 1)
-	{
-		
-	}
 }
 
 void Board::wipe()

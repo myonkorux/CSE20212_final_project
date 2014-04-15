@@ -7,7 +7,7 @@ class Text : public Box
 {
 	public:
 		Text(int, int, int, int, int, string);
-		virtual int update(SDL_Event );
+		virtual void update(SDL_Event );
 };	
 
 #endif

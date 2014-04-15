@@ -15,11 +15,12 @@ board.h
 #include "SDL/SDL_ttf.h"
 #include <deque>
 
+#include"box.h"
 #include"text.h"
 #include"button.h"
 #include"counter.h"
-#include "item.h"
-#include "unit.h"
+//#include "item.h"
+//#include "unit.h"
 
 using namespace std;
 
