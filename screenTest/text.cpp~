@@ -14,9 +14,12 @@ Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, str
 	renderBox();
 }
 
-void Text::update(SDL_Event event)
+int Text::update(SDL_Event event){}
+
+void Text::cleanBox()
 {
-	//noot noot
+	SDL_FreeSurface(messageSurface);
+	TTF_CloseFont(font);
 }
 
 

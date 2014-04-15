@@ -49,7 +49,7 @@ class Board{
 
 		//Player player;
 		//deque<Zombie> zombies;
-		deque<Text> textboxes;
+		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
 		//deque<Item> Items;

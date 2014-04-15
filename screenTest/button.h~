@@ -7,7 +7,8 @@ class Button : public Box
 {
 	public:
 		Button(int, int, int, int, int, string);
-		virtual void update(SDL_Event);
+		virtual int update(SDL_Event);
+		virtual void cleanBox();
 };
 
 #endif

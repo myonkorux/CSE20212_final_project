@@ -10,7 +10,8 @@ class Counter : public Box
 		Counter(int, int, int, int, int, string, int = 0);
 		int getCountValue();
 		void setCountValue(int);
-		virtual void update(SDL_Event);
+		virtual int update(SDL_Event);
+		virtual void cleanBox();
 	private:
 		int countValue;	
 };

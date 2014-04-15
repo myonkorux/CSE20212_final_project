@@ -14,7 +14,7 @@ Button::Button(int newWidth, int newHeight, int newX, int newY, int newFontSize,
 	renderBox();
 }
 
-void Button::update(SDL_Event event)
+int Button::update(SDL_Event event)
 {
 	int x = 0;
 	int y = 0; 
@@ -27,6 +27,7 @@ void Button::update(SDL_Event event)
 			if( ( x > getX()) && ( x < getX() + getWidth() ) && ( y > getY() ) && ( y < getY() + getHeight() ) ) 
 			{
 				setBoxColor(255, 255, 0);
+				return 1;
 			}
 		}
 	}
@@ -43,4 +44,5 @@ void Button::update(SDL_Event event)
 			}
 		}
 	}
+	return 0;
 }

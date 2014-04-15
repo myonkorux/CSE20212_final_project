@@ -76,24 +76,24 @@ void Board::resetStates()
 
 void Board::clearDeques()
 {
-	deque<Text>::const_iterator i;
+	deque<Text>::iterator i;
 	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
 	{
-		*i.cleanBox();
+		(i)->cleanBox();
 	}	
 	textBoxes.clear();
 
-	deque<Button>::const_iterator j;
+	deque<Button>::iterator j;
 	for(j = buttons.begin(); j != buttons.end(); ++j)
 	{
-		*j.cleanBox();
+		(j)->cleanBox();
 	}	
 	buttons.clear();
 
-	deque<Counter>::const_iterator k;
+	deque<Counter>::iterator k;
 	for(k = counters.begin(); k != counters.end(); ++k)
 	{
-		*k.cleanBox();
+		(k)->cleanBox();
 	}	
 	counters.clear();
 }
@@ -106,10 +106,10 @@ void Board::startState()
 	Text developers(720, 40, 80, 200, 30, "Developed by cray & nvahrenb");
 	Text cseLabel(160, 40, 40, 720, 30, "CSE 20212");
 	Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
-	texBoxes.push_back(titleCard);
-	texBoxes.push_back(developers);
-	texBoxes.push_back(cseLabel);
-	texBoxes.push_back(versionLabel);
+	textBoxes.push_back(titleCard);
+	textBoxes.push_back(developers);
+	textBoxes.push_back(cseLabel);
+	textBoxes.push_back(versionLabel);
 	
 
 	Button startButton(240, 80, 320, 280, 70, "Start");
@@ -133,8 +133,8 @@ void Board::selectState()
 
 	Text cseLabel(160, 40, 40, 720, 30, "CSE 20212");
 	Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
-	texBoxes.push_back(cseLabel);
-	texBoxes.push_back(versionLabel);	
+	textBoxes.push_back(cseLabel);
+	textBoxes.push_back(versionLabel);	
 }
 
 void Board::gameState()
@@ -165,11 +165,10 @@ void Board::pauseState()
 
 void Board::continueGame()
 {
-	int i = 0;
-	for(i = 0; i < 3; i++)
-	{	
-		*(buttons.end() - 1).cleanBox;
-		buttons.pop_back();
+	deque<Button>::iterator i;
+	for(i = buttons.end() - 1; i != buttons.end() - 5; --i)
+	{
+		(i)->cleanBox();
 	}
 }
 
@@ -208,24 +207,24 @@ void Board::display()
 	SDL_Rect offset;
 	offset.x = 0;
 	offset.y = 0;
-	SDL_BliSurface(background, NULL, screen, &offset);
+	SDL_BlitSurface(background, NULL, screen, &offset);
 	
-	deque<Text>::const_iterator i;
+	deque<Text>::iterator i;
 	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
 	{
-		*i.display();
+		(i)->display(screen);
 	}
 
-	deque<Button>::const_iterator j;
+	deque<Button>::iterator j;
 	for(j = buttons.begin(); j != buttons.end(); ++j)
 	{
-		*j.display();
+		(j)->display(screen);
 	}
 
-	deque<Counter>::const_iterator k;
+	deque<Counter>::iterator k;
 	for(k = counters.begin(); k != counters.end(); ++k)
 	{
-		*k.display();
+		(k)->display(screen);
 	}
 
 	SDL_Flip( screen );
@@ -236,33 +235,33 @@ void Board::update()
 	if(start == 1)
 	{
 		resetStates();		
-		select = *(buttons.begin()).update();
-		over = *(buttons.begin() + 1).update();
+		select = (buttons.begin())->update(event);
+		over = (buttons.begin() + 1)->update(event);
 		stateInterpret();	
 	}
 	else if(select == 1)
 	{
 		resetStates();	
-		if(*(buttons.begin()).update() == 1)	
+		if((buttons.begin())->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 4;
 			diffString = "Hardcore";
 		}
-		else if(*(buttons.begin() + 1).update() == 1)	
+		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 1;
 			diffString = "Easy";
 			
 		}
-		else if(*(buttons.begin() + 2).update() == 1)	
+		else if((buttons.begin() + 2)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 2;
 			diffString = "Normal";	
 		}
-		else if(*(buttons.begin() + 3).update() == 1)	
+		else if((buttons.begin() + 3)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 3;
@@ -278,16 +277,16 @@ void Board::update()
 	}
 	else if(pause == 1)
 	{
-		if(*(buttons.begin()).update() == 1)	
+		if((buttons.begin())->update(event) == 1)	
 		{
 			game = 1;
 			continueGame();
 		}
-		else if(*(buttons.begin() + 1).update() == 1)	
+		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
 			start = 1;
 		}
-		else if(*(buttons.begin() + 2).update() == 1)	
+		else if((buttons.begin() + 2)->update(event) == 1)	
 		{
 			over = 1;
 		}

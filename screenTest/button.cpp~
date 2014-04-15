@@ -44,4 +44,11 @@ int Button::update(SDL_Event event)
 			}
 		}
 	}
+	return 0;
+}
+
+void Button::cleanBox()
+{
+	SDL_FreeSurface(messageSurface);
+	TTF_CloseFont(font);
 }

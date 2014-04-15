@@ -49,7 +49,7 @@ class Board{
 
 		//Player player;
 		//deque<Zombie> zombies;
-		deque<Text> textboxes;
+		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
 		//deque<Item> Items;
@@ -57,6 +57,7 @@ class Board{
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
+		SDL_Event event;
 
 		SDL_Surface *  optimizeImage(string);
 		void startState();
