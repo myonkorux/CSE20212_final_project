@@ -26,7 +26,7 @@ void Counter::setCountValue(int newCountValue)
 	countValue = newCountValue;
 }
 
-void Counter::update(SDL_Event event)
+int Counter::update(SDL_Event event)
 {	
 	string newMessage;
 	ostringstream convert;

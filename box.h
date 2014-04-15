@@ -39,7 +39,7 @@ class Box
 		string getMessage();
 		void renderBox();
 		void cleanBox();
-		virtual void update(SDL_Event) = 0;
+		virtual int update(SDL_Event) = 0;
 	
 	private:
 		int height;
