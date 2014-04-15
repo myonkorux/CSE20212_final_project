@@ -171,8 +171,6 @@ Player::Player(){
 
 void Player::display( SDL_Surface* source ){
 
-	x += xVel;
-	x += recoil*speed*(-1)*direction;
 	if (health <= 0){
 		Dead = 1;
 	}
@@ -205,12 +203,22 @@ void Player::display( SDL_Surface* source ){
 		
 	clipSelect++;
 	
-	if( isAttacking && clipSelect == 6 ){
+	if( recoil ){
+		xVel = 0;
+		if( clipSelect <= 3 ){
+			y -= 5*( 3-clipSelect );
+			x += (-1)*direction*speed/2;
+		}else if( clipSelect <= 6 && clipSelect >= 4 ){ 
+			y += 5*( 3-(clipSelect-3) );
+			x += (-1)*direction*speed/2;
+		}else{
+			recoil = 0;
+			clipSelect = 0;
+		}
+	}else if( isAttacking && clipSelect == 6 ){
 		isAttacking = 0;
 		clipSelect = 0;
-	}
-	
-	if( isJumping ){
+	}else if( isJumping ){
 		if( clipSelect <= 3 ){
 			y -= 10*( 3-clipSelect );
 		}else if( clipSelect <= 6 && clipSelect >= 4 ){ 
@@ -221,9 +229,10 @@ void Player::display( SDL_Surface* source ){
 		}
 	}
 	
+	x += xVel;
+	
 	if( clipSelect >= 8 ){
 		clipSelect = 0;
-		recoil = 0;
 	}
 
 }
@@ -281,6 +290,7 @@ void Player::apply_damage( int damage ){
 	if(damage > 0){
 		health -= damage;
 		recoil = 1;
+		clipSelect = 0;
 	}
 
 }
