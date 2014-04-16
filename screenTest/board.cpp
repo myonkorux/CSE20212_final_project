@@ -169,17 +169,19 @@ void Board::pauseState()
 
 void Board::continueGame()
 {
-	deque<Button>::iterator i;
-	for(i = buttons.end() - 1; i != buttons.end() - 5; --i)
+	deque<Button>::iterator j;
+	for(j = buttons.begin(); j != buttons.end(); ++j)
 	{
-		(i)->cleanBox();
-	}
+		(j)->cleanBox();
+	}	
+	buttons.clear();
 }
 
 void Board::overState()
 {
 	clearDeques();
-	Text titleCard(720, 120, 80, 40, 110, "Bye, Please Close Window");
+	Text titleCard(720, 100, 80, 40, 90, "Bye, Please Close Window");
+	textBoxes.push_back(titleCard);
 }
 
 void Board::stateInterpret()
@@ -311,7 +313,7 @@ void Board::update(SDL_Event event)
 void Board::wipe()
 {
 	// Fill with white space
-	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 255, 255, 255 ) );
 }
 
 void Board::clean()
