@@ -243,11 +243,13 @@ void Player::update( SDL_Event event ){
 		if( event.type == SDL_KEYDOWN ){
 			switch( event.key.keysym.sym ){
 				case SDLK_RIGHT:
+				case SDLK_d:
 					isStanding = 0;
 					direction = 1;
 					xVel = speed;
 					break;
 				case SDLK_LEFT:
+				case SDLK_a:
 					isStanding = 0;
 					direction = -1;
 					xVel = -speed;
@@ -259,6 +261,7 @@ void Player::update( SDL_Event event ){
 					clipSelect = 0;
 					break;
 				case SDLK_UP:
+				case SDLK_w:
 					isJumping = 1;
 					clipSelect = 0;
 					break;
