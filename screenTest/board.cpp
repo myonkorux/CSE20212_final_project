@@ -107,13 +107,13 @@ void Board::startState()
 	clearDeques();
 	
 	Text titleCard(720, 120, 80, 40, 110, "Zombie Slayerz");
-	Text developers(720, 40, 80, 200, 30, "Developed by cray & nvahrenb; CSE20212");
-	//Text cseLabel(160, 40, 40, 720, 30, "CSE20212");
-	//Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
+	Text developers(720, 40, 80, 200, 30, "Developed by cray & nvahrenb");
+	Text cseLabel(160, 40, 40, 550, 30, "CSE20212");
+	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
 	textBoxes.push_back(titleCard);
 	textBoxes.push_back(developers);
-	//textBoxes.push_back(cseLabel);
-	//textBoxes.push_back(versionLabel);	
+	textBoxes.push_back(cseLabel);
+	textBoxes.push_back(versionLabel);	
 
 	Button startButton(240, 80, 320, 280, 70, "Start");
 	Button quitButton(240, 80, 320, 400, 70, "Quit");
@@ -134,8 +134,8 @@ void Board::selectState()
 	buttons.push_back(normalButton);
 	buttons.push_back(hardButton);
 
-	Text cseLabel(160, 40, 40, 720, 30, "CSE 20212");
-	Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
+	Text cseLabel(160, 40, 40, 550, 30, "CSE 20212");
+	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
 	textBoxes.push_back(cseLabel);
 	textBoxes.push_back(versionLabel);	
 }
@@ -148,9 +148,9 @@ void Board::gameState()
 	counters.push_back(health);
 	counters.push_back(score);
 
-	Text cseLabel(160, 40, 40, 720, 30, "Zombie Slayerz");
-	Text versionLabel(160, 40, 680, 720, 30, "Pre-Alpha");
-	Text diffLabel(320, 40, 280, 720, 30, diffString);
+	Text cseLabel(160, 40, 40, 550, 30, "Zombie Slayerz");
+	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
+	Text diffLabel(320, 40, 280, 550, 30, diffString);
 	textBoxes.push_back(cseLabel);
 	textBoxes.push_back(versionLabel);
 	textBoxes.push_back(diffLabel);

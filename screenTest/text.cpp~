@@ -16,11 +16,6 @@ Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, str
 
 int Text::update(SDL_Event event){}
 
-void Text::cleanBox()
-{
-	SDL_FreeSurface(messageSurface);
-	TTF_CloseFont(font);
-}
 
 
 
