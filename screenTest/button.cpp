@@ -27,7 +27,7 @@ int Button::update(SDL_Event event)
 			if( ( x > getX()) && ( x < getX() + getWidth() ) && ( y > getY() ) && ( y < getY() + getHeight() ) ) 
 			{
 				setBoxColor(255, 255, 0);
-				return 1;
+				//return 1;
 			}
 		}
 	}
@@ -41,6 +41,7 @@ int Button::update(SDL_Event event)
 			if( ( x > getX()) && ( x < getX() + getWidth() ) && ( y > getY() ) && ( y < getY() + getHeight() )) 
 			{
 				setBoxColor(255, 255, 255);
+				return 1;
 			}
 		}
 	}
