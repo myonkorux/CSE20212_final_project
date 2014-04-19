@@ -19,6 +19,7 @@ board.h
 #include"text.h"
 #include"button.h"
 #include"counter.h"
+#include"player.h"
 //#include "item.h"
 //#include "unit.h"
 
@@ -47,7 +48,10 @@ class Board
 		int screenHeight;
 		int screenBPP;
 
-		//Player player;
+		int numZombies;
+		const int maxZombies;
+
+		Player player;
 		//deque<Zombie> zombies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
@@ -59,7 +63,7 @@ class Board
 		SDL_Surface * background;
 		SDL_Event event;
 
-		SDL_Surface *  optimizeImage(string);
+		SDL_Surface * optimizeImage(string);
 		void startState();
 		void selectState();
 		void pauseState();

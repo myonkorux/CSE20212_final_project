@@ -5,10 +5,6 @@ Nathan Vahrenberg
 
 *******************/
 
-#include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-
 #include "player.h"
 
 void apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){

@@ -5,11 +5,13 @@ Nathan Vahrenberg
 
 *******************/
 
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <iostream>
+#include"iomanip"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-
-using namespace std;
 
 using namespace std;
 
@@ -55,3 +57,5 @@ class Player{
 		SDL_Surface * optimizeImage(string);
 
 };
+
+#endif

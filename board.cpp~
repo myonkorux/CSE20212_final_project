@@ -340,7 +340,6 @@ void Board::wipe()
 void Board::clean()
 {
 	clearDeques();
-	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();
 }

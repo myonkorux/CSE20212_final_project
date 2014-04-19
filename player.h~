@@ -6,10 +6,9 @@ Nathan Vahrenberg
 *******************/
 
 #include <iostream>
+#include"iomanip"
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-
-using namespace std;
 
 using namespace std;
 
@@ -51,5 +50,7 @@ class Player{
 		int isJumping;
 		int Dead;
 		int recoil;
+
+		SDL_Surface * optimizeImage(string);
 
 };

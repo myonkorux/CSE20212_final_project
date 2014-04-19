@@ -19,6 +19,7 @@ board.h
 #include"text.h"
 #include"button.h"
 #include"counter.h"
+#include"player.h"
 //#include "item.h"
 //#include "unit.h"
 
@@ -47,7 +48,10 @@ class Board
 		int screenHeight;
 		int screenBPP;
 
-		//Player player;
+		int numZombies;
+		int maxZombies;
+
+		Player player;
 		//deque<Zombie> zombies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
