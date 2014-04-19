@@ -14,7 +14,10 @@ Text::Text(int newWidth, int newHeight, int newX, int newY, int newFontSize, str
 	renderBox();
 }
 
-int Text::update(SDL_Event event){}
+int Text::update(SDL_Event event)
+{
+	
+}
 
 
 
