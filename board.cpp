@@ -344,3 +344,10 @@ void Board::clean()
 	TTF_Quit();
 	SDL_Quit();
 }
+
+void Board::spawnZombie()
+{
+	Zombie basicZombie();
+	zombies.push_back(basicZombie);
+}
+

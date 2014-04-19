@@ -34,6 +34,7 @@ class Board
 		void update(SDL_Event);
 		void wipe();
 		void clean();
+		void spawnZombie();
 	
 	private:
 		int start;
@@ -52,7 +53,7 @@ class Board
 		int maxZombies;
 
 		Player player;
-		//deque<Zombie> zombies;
+		deque<Zombie> zombies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
