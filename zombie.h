@@ -5,13 +5,17 @@ Nathan Vahrenberg
 
 *******************/
 
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
+
 #include <iostream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
 using namespace std;
 
-class Zombie{
+class Zombie
+{
 
 	public:
 		Zombie();
@@ -41,3 +45,5 @@ class Zombie{
 		SDL_Surface * optimizeImage(string);
 	
 };
+
+#endif

@@ -11,7 +11,8 @@ Nathan Vahrenberg
 
 using namespace std;
 
-class Zombie{
+class Zombie
+{
 
 	public:
 		Zombie();
@@ -38,6 +39,6 @@ class Zombie{
 		SDL_Rect attackingL[3];
 		int clipSelect;
 
-		SDL_Surface * optimizeImage(string);+
+		SDL_Surface * optimizeImage(string);
 	
 };

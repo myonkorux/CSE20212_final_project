@@ -34,6 +34,7 @@ class Board
 		void update(SDL_Event);
 		void wipe();
 		void clean();
+		void spawnZombie();
 	
 	private:
 		int start;

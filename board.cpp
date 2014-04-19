@@ -235,6 +235,12 @@ void Board::display()
 		(k)->display(screen);
 	}
 
+	deque<Zombie>::iterator m;
+	for(m = zombies.begin(); m != zombies.end(); ++m)
+	{
+		(m)->display(screen);
+	}
+
 	player.display(screen);
 
 	SDL_Flip( screen );
@@ -304,7 +310,13 @@ void Board::update(SDL_Event event)
 		else
 		{
 			game = 1;
-			player.update(event);
+			deque<Zombie>::iterator m;
+			for(m = zombies.begin(); m != zombies.end(); ++m)
+			{
+				(m)->update(player.getX());
+				player.apply_damage((m)->attack(player.getX()));
+				player.update(event);
+			}
 		}
 		stateInterpret();
 	}
@@ -347,7 +359,7 @@ void Board::clean()
 
 void Board::spawnZombie()
 {
-	Zombie basicZombie();
+	Zombie basicZombie;
 	zombies.push_back(basicZombie);
 }
 
