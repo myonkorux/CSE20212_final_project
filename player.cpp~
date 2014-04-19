@@ -31,12 +31,12 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 0, 255 );
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 51, 153 );
 		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey );
 		}
 	}

@@ -52,6 +52,4 @@ class Player{
 		int Dead;
 		int recoil;
 
-		SDL_Surface * optimizeImage(string);
-
 };
