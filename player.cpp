@@ -59,7 +59,9 @@ Player::Player(){
 	
 	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
 	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
-	
+	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
+	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
+
 	int swidth = 43;
 	int i;
 	
