@@ -181,6 +181,7 @@ void Board::continueGame()
 void Board::overState()
 {
 	clearDeques();
+	player.Free_Memory();
 	Text titleCard(720, 100, 80, 40, 90, "Bye, Please Close Window");
 	textBoxes.push_back(titleCard);
 }
@@ -313,8 +314,8 @@ void Board::update(SDL_Event event)
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
-				(m)->update(player.getX());
-				player.apply_damage((m)->attack(player.getX()));
+				(m)->update(player.getX(), player.getY());
+				player.apply_damage((m)->attack(player.getX(), player.getY()));
 				player.update(event);
 			}
 		}
@@ -352,7 +353,6 @@ void Board::wipe()
 void Board::clean()
 {
 	clearDeques();
-	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();
 }

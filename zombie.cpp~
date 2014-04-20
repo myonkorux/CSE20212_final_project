@@ -49,6 +49,7 @@ Zombie::Zombie(){
 	x = 400;
 	y = 318;
 	xVel = 0;
+	yVel = 0;
 	direction = 1;
 	health = 100;
 	speed = 2;
@@ -90,25 +91,45 @@ Zombie::Zombie(){
 
 }
 
-void Zombie::display( SDL_Surface* source ){
+void Zombie::display( SDL_Surface* source )
+{	
+	int tempX = 0;
+	int tempY = 0;
 
-	x += xVel;
+	tempX = (x + xVel);
+	tempY = (y + yVel);
+	if((tempX > 0) && (tempX < 840))
+	{
+		x = tempX;
+	}
+	if((tempY > 0) && (tempY < 540))
+	{
+		y = tempY;
+	}
+	
+	if( clipSelect >= 8 )
+	{
+		clipSelect = 0;
+	}
 
-	if( clipSelect >= 3 ){
+	if( clipSelect >= 3 )
+	{
 		clipSelect = 0;
 	}
 	
-	if (direction == 1){
+	if (direction == 1)
+	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &moving[ clipSelect ]);
-	}else{
+	}
+	else
+	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &movingL[ clipSelect ]);
 	}
 
 	clipSelect++;
-
 }
 
-void Zombie::update( int playerX )
+void Zombie::update( int playerX, int playerY )
 {		
 	
 	if( playerX < x )
@@ -135,14 +156,30 @@ void Zombie::update( int playerX )
 			xVel = direction * speed;
 		}
 	}
-	
+
+	if( playerY < y )
+	{
+		yVel = speed;
+	}
+	else if( playerY > y)
+	{
+		yVel = -speed;
+	}
+	else
+	{
+		yVel = 0;
+	}
 }
 
-int Zombie::attack( int playerX ){
+int Zombie::attack( int playerX, int playerY )
+{
 
-	if ( x <= playerX + 50 && x + 35 >= playerX ){
+	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) )
+	{
 		return power;
-	}else{
+	}
+	else
+	{
 		return 0;
 	}
 
@@ -156,4 +193,15 @@ void Zombie::Free_Memory(){
 
 void Zombie::applyDamage(int damage)
 {
+
+}
+
+int Zombie::getX()
+{
+	return x;
+}
+
+int Zombie::getY()
+{
+	return y;
 }

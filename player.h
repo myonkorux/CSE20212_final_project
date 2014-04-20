@@ -21,8 +21,8 @@ class Player{
 		Player();
 		void display( SDL_Surface* );
 		void update( SDL_Event );
-		void move();
-		void attack();
+		//void move();
+		int attack(int, int);
 		void apply_damage( int );
 		int isDead();
 		void Free_Memory();

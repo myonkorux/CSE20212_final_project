@@ -33,12 +33,12 @@ int main(){
 	
 	SDL_Init( SDL_INIT_EVERYTHING );
 	
-	screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
+	screen = SDL_SetVideoMode( 880, 600, 32, SDL_SWSURFACE );
 	
 	int quit = 0;
 	
 	Player P1;
-	//Zombie Z1;
+	Zombie Z1;
 	
 	while (quit == 0){
 		
@@ -54,10 +54,10 @@ int main(){
 		
 		SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
 	
-		//Z1.display( screen );
+		Z1.display( screen );
 		P1.display( screen );
 		
-		//Z1.update( P1.getX() );
+		Z1.update( P1.getX(), P1.getY() );
 		damage += Z1.attack( P1.getX() );
 		
 		P1.apply_damage( damage );
@@ -69,7 +69,7 @@ int main(){
 	}	
 
 	P1.Free_Memory();
-//	Z1.Free_Memory();
+	Z1.Free_Memory();
 	
 	SDL_Quit();
 

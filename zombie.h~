@@ -19,12 +19,14 @@ class Zombie
 
 	public:
 		Zombie();
-		void update( int );
+		void update( int, int );
 		void display( SDL_Surface* );
-		int attack( int );
+		int attack( int);
 		void isDead();
-		void Damage(int);
+		void applyDamage(int);
 		void Free_Memory();
+		int getX();
+		int getY();
 	
 	
 	private:
@@ -34,6 +36,7 @@ class Zombie
 		int speed;
 		int power;
 		int xVel;
+		int yVel;
 		int direction;
 		int isStanding;
 		int isAttacking;

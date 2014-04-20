@@ -49,7 +49,7 @@ Player::Player(){
 	direction = 1;
 	health = 100;
 	speed = 10;
-	power = 0;
+	power = 10;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
@@ -183,9 +183,18 @@ Player::Player(){
 		jumpingL[6].w = 315-280;
 		jumpingL[7].x = 413-370;
 		jumpingL[7].w = 370-324;
-		
-		
+}
 
+int Player::attack(int zombieX, int zombieY)
+{
+	if ( ((x <= zombieX + 50) && (x + 35 >= zombieX)) && (y == zombieY) )
+	{
+		return power;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 void Player::display( SDL_Surface* source )
@@ -292,11 +301,11 @@ void Player::display( SDL_Surface* source )
 	
 	tempX = (x + xVel);
 	tempY = (y + yVel);
-	if((tempX > 0) && (tempX < 590))
+	if((tempX > 0) && (tempX < 840))
 	{
 		x = tempX;
 	}
-	if((tempY > 0) && (tempY < 430))
+	if((tempY > 0) && (tempY < 540))
 	{
 		y = tempY;
 	}
@@ -398,10 +407,9 @@ void Player::apply_damage( int damage ){
 
 }
 
-int Player::isDead(){
-
+int Player::isDead()
+{
 	return Dead;
-
 }
 
 void Player::Free_Memory(){

@@ -22,11 +22,12 @@ class Player{
 		void display( SDL_Surface* );
 		void update( SDL_Event );
 		void move();
-		void attack();
+		int attack(int, int);
 		void apply_damage( int );
 		int isDead();
 		void Free_Memory();
 		int getX();
+		int getY();
 		
 	private:
 		int x;
