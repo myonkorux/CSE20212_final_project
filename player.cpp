@@ -188,69 +188,110 @@ Player::Player(){
 
 }
 
-void Player::display( SDL_Surface* source ){
+void Player::display( SDL_Surface* source )
+{
+	int tempX = 0;
+	int tempY = 0;
 
-	if (health <= 0){
+	if (health <= 0)
+	{
 		Dead = 1;
 	}
 	
-	if (direction == 1){
-		if (isAttacking){
+	if (direction == 1)
+	{
+		if (isAttacking)
+		{
 			apply_PC_sprite( x, y, spritePC, source, &attacking[ clipSelect ] );
-		}else if (isJumping){
+		}
+		/*else if (isJumping)
+		{
 			apply_PC_sprite( x, y, spritePC, source, &jumping[ clipSelect ] );
-		}else if (isStanding){
+		}*/
+		else if (isStanding)
+		{
 			apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
-		}else{
+		}
+		else
+		{
 			apply_PC_sprite( x, y, spritePC, source, &moving[ clipSelect ] );
 		}
-	}else if (direction == -1){
-		if (isAttacking){
-			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5){
+	}
+	else if (direction == -1)
+	{
+		if (isAttacking)
+		{
+			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5)
+			{
 				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] ); // This block adds an offset to fix a glitch with the left-hand attack animation
-			}else{
+			}
+			else
+			{
 				apply_PC_sprite( x, y, spritePCL, source, &attackingL[ clipSelect ] );
 			}
-		}else if (isJumping){
-				apply_PC_sprite( x, y, spritePCL, source, &jumpingL[ clipSelect ] );
-		}else if (isStanding){
+		}
+		/*else if (isJumping)
+		{
+			apply_PC_sprite( x, y, spritePCL, source, &jumpingL[ clipSelect ] );
+		}*/
+		else if (isStanding)
+		{
 			apply_PC_sprite( x, y, spritePCL, source, &standingL[ clipSelect ] );
-		}else{
+		}
+		else
+		{
 			apply_PC_sprite( x, y, spritePCL, source, &movingL[ clipSelect ] );
 		}
 	}
 		
 	clipSelect++;
 	
-	if( recoil ){
+	if( recoil )
+		{
 		xVel = 0;
-		if( clipSelect <= 3 ){
+		if( clipSelect <= 3 )
+		{
 			y -= 5*( 3-clipSelect );
 			x += (-1)*direction*speed/2;
-		}else if( clipSelect <= 6 && clipSelect >= 4 ){ 
+		}
+		else if( clipSelect <= 6 && clipSelect >= 4 )
+		{ 
 			y += 5*( 3-(clipSelect-3) );
 			x += (-1)*direction*speed/2;
-		}else{
+		}
+		else
+		{
 			recoil = 0;
 			clipSelect = 0;
 		}
-	}else if( isAttacking && clipSelect == 6 ){
+	}
+	else if( isAttacking && clipSelect == 6 )
+	{
 		isAttacking = 0;
 		clipSelect = 0;
-	}else if( isJumping ){
-		if( clipSelect <= 3 ){
+	}
+	/*else if( isJumping )
+	{
+		if( clipSelect <= 3 )
+		{
 			y -= 10*( 3-clipSelect );
-		}else if( clipSelect <= 6 && clipSelect >= 4 ){ 
+		}
+		else if( clipSelect <= 6 && clipSelect >= 4 )
+		{ 
 			y += 10*( 3-(clipSelect-3) );
-		}else{
+		}
+		else
+		{
 			isJumping = 0;
 			clipSelect = 0;
 		}
-	}
+	}*/
 	
 	x += xVel;
+	y += yVel;
 	
-	if( clipSelect >= 8 ){
+	if( clipSelect >= 8 )
+	{
 		clipSelect = 0;
 	}
 
@@ -287,14 +328,14 @@ void Player::update( SDL_Event event )
 					//isJumping = 1;
 					isStanding = 0;
 					yVel = -speed;
-					clipSelect = 0;
+					//clipSelect = 0;
 					break;
 				case SDLK_DOWN:
 				case SDLK_s:
 					//isJumping = 1;
 					isStanding = 0;
 					yVel = speed;
-					clipSelect = 0;
+					//clipSelect = 0;
 					break;
 			}
 		}
@@ -304,10 +345,21 @@ void Player::update( SDL_Event event )
 			{
 				case SDLK_RIGHT:
 				case SDLK_LEFT:
+				case SDLK_UP:
+				case SDLK_DOWN:
+				case SDLK_w:
+				case SDLK_a:
+				case SDLK_s:
+				case SDLK_d:
 					isStanding = 1;
 					xVel = 0;
+					yVel = 0;
 					break;
 				case SDLK_SPACE:
+					isStanding = 1;
+					isAttacking = 0;
+					//xVel = 0;
+					//clipSelect = 0;
 					break;
 			}
 		}
