@@ -205,6 +205,7 @@ void Player::display( SDL_Surface* source )
 	if (health <= 0)
 	{
 		Dead = 1;
+		return;
 	}
 	
 	if (direction == 1)

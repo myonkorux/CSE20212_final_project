@@ -397,14 +397,14 @@ int Player::getY()
 	return y;
 }
 
-void Player::apply_damage( int damage ){
-
-	if(damage > 0){
+void Player::apply_damage( int damage )
+{
+	if(damage > 0)
+	{
 		health -= damage;
 		recoil = 1;
 		clipSelect = 0;
 	}
-
 }
 
 int Player::isDead()

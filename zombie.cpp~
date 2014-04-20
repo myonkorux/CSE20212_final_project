@@ -131,7 +131,6 @@ void Zombie::display( SDL_Surface* source )
 
 void Zombie::update( int playerX, int playerY )
 {		
-	
 	if( playerX < x )
 	{
 		direction = -1;
@@ -159,11 +158,11 @@ void Zombie::update( int playerX, int playerY )
 
 	if( playerY < y )
 	{
-		yVel = speed;
+		yVel = -speed;
 	}
 	else if( playerY > y)
 	{
-		yVel = -speed;
+		yVel = speed;
 	}
 	else
 	{
@@ -193,7 +192,10 @@ void Zombie::Free_Memory(){
 
 void Zombie::applyDamage(int damage)
 {
-
+	if(damage > 0)
+	{
+		health -= damage;
+	}
 }
 
 int Zombie::getX()
