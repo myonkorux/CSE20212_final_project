@@ -68,7 +68,7 @@ SDL_Surface * Board::optimizeImage(string filename)
 
 void Board::loadBackground()
 {
-	background = optimizeImage("forest.jpg");
+	background = optimizeImage("sprites/newForest.jpg");
 }
 
 void Board::resetStates()
@@ -305,6 +305,7 @@ void Board::update(SDL_Event event)
 		{
 			if(event.key.keysym.sym == SDLK_ESCAPE)
 			{
+				game = 0;				
 				pause = 1;
 			}
 		}
@@ -321,6 +322,7 @@ void Board::update(SDL_Event event)
 
 				if(player.isDead())
 				{
+					game = 0;					
 					over = 1;
 					break;
 				}
@@ -365,6 +367,7 @@ void Board::wipe()
 void Board::clean()
 {
 	clearDeques();
+	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();
 }

@@ -20,6 +20,7 @@ board.h
 #include"button.h"
 #include"counter.h"
 #include"player.h"
+#include"zombie.h"
 //#include "item.h"
 //#include "unit.h"
 

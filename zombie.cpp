@@ -51,9 +51,9 @@ Zombie::Zombie(){
 	xVel = 0;
 	yVel = 0;
 	direction = 1;
-	health = 100;
+	health = 30;
 	speed = 2;
-	power = 15;
+	power = 10;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
