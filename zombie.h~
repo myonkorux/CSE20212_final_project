@@ -5,6 +5,9 @@ Nathan Vahrenberg
 
 *******************/
 
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
+
 #include <iostream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
@@ -19,6 +22,8 @@ class Zombie
 		void update( int );
 		void display( SDL_Surface* );
 		int attack( int );
+		void isDead();
+		void Damage(int);
 		void Free_Memory();
 	
 	
@@ -32,6 +37,7 @@ class Zombie
 		int direction;
 		int isStanding;
 		int isAttacking;
+		int Dead;
 		SDL_Surface* SpriteZombie;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];
@@ -42,3 +48,5 @@ class Zombie
 		SDL_Surface * optimizeImage(string);
 	
 };
+
+#endif

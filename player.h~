@@ -5,6 +5,9 @@ Nathan Vahrenberg
 
 *******************/
 
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <iostream>
 #include"iomanip"
 #include "SDL/SDL.h"
@@ -29,6 +32,7 @@ class Player{
 		int x;
 		int y;
 		int xVel;
+		int yVel;
 		int direction;
 		int health;
 		int speed;
@@ -54,3 +58,5 @@ class Player{
 		SDL_Surface * optimizeImage(string);
 
 };
+
+#endif

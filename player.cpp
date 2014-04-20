@@ -45,6 +45,7 @@ Player::Player(){
 	x = 200;
 	y = 300;
 	xVel = 0;
+	yVel = 0;
 	direction = 1;
 	health = 100;
 	speed = 10;
@@ -255,11 +256,14 @@ void Player::display( SDL_Surface* source ){
 
 }
 
-void Player::update( SDL_Event event ){
-
-	if(!isAttacking){
-		if( event.type == SDL_KEYDOWN ){
-			switch( event.key.keysym.sym ){
+void Player::update( SDL_Event event )
+{
+	if(!isAttacking)
+	{
+		if( event.type == SDL_KEYDOWN )
+		{
+			switch( event.key.keysym.sym )
+			{
 				case SDLK_RIGHT:
 				case SDLK_d:
 					isStanding = 0;
@@ -280,12 +284,24 @@ void Player::update( SDL_Event event ){
 					break;
 				case SDLK_UP:
 				case SDLK_w:
-					isJumping = 1;
+					//isJumping = 1;
+					isStanding = 0;
+					yVel = -speed;
+					clipSelect = 0;
+					break;
+				case SDLK_DOWN:
+				case SDLK_s:
+					//isJumping = 1;
+					isStanding = 0;
+					yVel = speed;
 					clipSelect = 0;
 					break;
 			}
-		}else if( event.type == SDL_KEYUP ){
-			switch( event.key.keysym.sym ){
+		}
+		else if( event.type == SDL_KEYUP )
+		{
+			switch( event.key.keysym.sym )
+			{
 				case SDLK_RIGHT:
 				case SDLK_LEFT:
 					isStanding = 1;
@@ -293,17 +309,20 @@ void Player::update( SDL_Event event ){
 					break;
 				case SDLK_SPACE:
 					break;
-		
 			}
 		}
 	}
-
 }
 
 int Player::getX(){
 
 	return x;
 
+}
+
+int Player::getY()
+{
+	return y;
 }
 
 void Player::apply_damage( int damage ){

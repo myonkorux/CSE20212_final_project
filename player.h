@@ -27,11 +27,13 @@ class Player{
 		int isDead();
 		void Free_Memory();
 		int getX();
+		int getY();
 		
 	private:
 		int x;
 		int y;
 		int xVel;
+		int yVel;
 		int direction;
 		int health;
 		int speed;

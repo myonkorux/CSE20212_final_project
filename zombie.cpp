@@ -55,6 +55,7 @@ Zombie::Zombie(){
 	power = 15;
 	isStanding = 1;
 	isAttacking = 0;
+	Dead = 0;
 	
 	clipSelect = 0;
 	
@@ -107,20 +108,30 @@ void Zombie::display( SDL_Surface* source ){
 
 }
 
-void Zombie::update( int playerX ){
-
-	if( playerX < x ){
+void Zombie::update( int playerX )
+{		
+	
+	if( playerX < x )
+	{
 		direction = -1;
-		if( x <= playerX + 45  ){
+		if( x <= playerX + 45  )
+		{
 			xVel = 0;
-		}else{
+		}
+		else
+		{
 			xVel = direction * speed;
 		}
-	}else{
+	}
+	else
+	{
 		direction = 1;
-		if( x + 30 >= playerX  ){
+		if( x + 30 >= playerX  )
+		{
 			xVel = 0;
-		}else{
+		}
+		else
+		{
 			xVel = direction * speed;
 		}
 	}
@@ -140,5 +151,10 @@ int Zombie::attack( int playerX ){
 void Zombie::Free_Memory(){
 
 	SDL_FreeSurface( SpriteZombie );
+
+}
+
+void Zombie::applyDamage(int damage)
+{
 
 }
