@@ -15,9 +15,9 @@ using namespace std;
 Board::Board()
 {
 	// Init values
-	start = 0 /* unknown */;
+	start = 1 /* unknown */;
 	select = 0;
-	game = 1 /* unknown */;
+	game = 0 /* unknown */;
 	pause = 0;
 	over = 0;
 
@@ -40,7 +40,7 @@ void Board::initialize()
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
-	gameState();
+	startState();
 	display();
 }
 
@@ -315,6 +315,8 @@ void Board::update(SDL_Event event)
 		else
 		{
 			game = 1;
+			player.update(event);
+			player.display(screen);
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
