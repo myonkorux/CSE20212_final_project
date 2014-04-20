@@ -21,7 +21,7 @@ class Zombie
 		Zombie();
 		void update( int, int );
 		void display( SDL_Surface* );
-		int attack( int);
+		int attack( int, int );
 		void isDead();
 		void applyDamage(int);
 		void Free_Memory();

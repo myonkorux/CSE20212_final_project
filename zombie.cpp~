@@ -96,6 +96,12 @@ void Zombie::display( SDL_Surface* source )
 	int tempX = 0;
 	int tempY = 0;
 
+	if(health <= 0)
+	{
+		Dead = 1;
+		return;
+	}
+
 	tempX = (x + xVel);
 	tempY = (y + yVel);
 	if((tempX > 0) && (tempX < 840))
@@ -206,4 +212,9 @@ int Zombie::getX()
 int Zombie::getY()
 {
 	return y;
+}
+
+int Zombie::isDead()
+{
+	return Dead;
 }

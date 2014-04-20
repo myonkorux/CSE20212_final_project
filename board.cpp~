@@ -315,8 +315,20 @@ void Board::update(SDL_Event event)
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
 				(m)->update(player.getX(), player.getY());
-				player.apply_damage((m)->attack(player.getX()));
 				player.update(event);
+				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
+				player.apply_damage((m)->attack(player.getX(), player.getY()));
+
+				if(player.isDead())
+				{
+					over = 1;
+					break;
+				}
+				else if((m)->isDead())
+				{
+					(m)->Free_Memory();
+					zombies.erase(m);
+				}
 			}
 		}
 		stateInterpret();

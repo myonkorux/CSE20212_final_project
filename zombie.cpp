@@ -213,3 +213,8 @@ int Zombie::getY()
 {
 	return y;
 }
+
+int Zombie::isDead()
+{
+	return Dead;
+}
