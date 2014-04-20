@@ -242,7 +242,10 @@ void Board::display()
 		(m)->display(screen);
 	}
 
-	player.display(screen);
+	if(game == 1)
+	{
+		player.display(screen);
+	}
 
 	SDL_Flip( screen );
 }

@@ -1,10 +1,10 @@
 EXEC = main
 
-$(EXEC): testMain.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o
-	g++ testMain.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o -o $(EXEC) -lSDL -lSDL_image -lSDL_ttf
+$(EXEC): main.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o
+	g++ main.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
 	
-testMain.o: testMain.cpp board.h
-	g++ -c -g testMain.cpp
+main.o: main.cpp board.h
+	g++ -c -g main.cpp
 
 board.o: board.cpp board.h
 	g++ -c -g board.cpp
