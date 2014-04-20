@@ -286,9 +286,20 @@ void Player::display( SDL_Surface* source )
 			clipSelect = 0;
 		}
 	}*/
+
+	//x += xVel;
+	//y += yVel;
 	
-	x += xVel;
-	y += yVel;
+	tempX = (x + xVel);
+	tempY = (y + yVel);
+	if((tempX > 0) && (tempX < 590))
+	{
+		x = tempX;
+	}
+	if((tempY > 0) && (tempY < 420))
+	{
+		y = tempY;
+	}
 	
 	if( clipSelect >= 8 )
 	{
