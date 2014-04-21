@@ -10,8 +10,6 @@ int main (int argc, char* args[])
 	
 	while(quit == 0)
 	{
-		while(SDL_PollEvent(&event))
-		{
 			if(event.type == SDL_QUIT)
 			{
 				quit = 1;
@@ -20,9 +18,9 @@ int main (int argc, char* args[])
 			{	
 				testBoard.update(event);
 			}
-		}
 	}	
 
 	testBoard.clean();
+
 	return 0;
 } 

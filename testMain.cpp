@@ -10,7 +10,7 @@ int main (int argc, char* args[])
 	
 	while(quit == 0)
 	{
-		while(SDL_PollEvent(&event))
+		if(SDL_PollEvent(&event))
 		{
 			if(event.type == SDL_QUIT)
 			{
