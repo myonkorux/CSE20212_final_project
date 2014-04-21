@@ -64,7 +64,6 @@ class Board
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
-		SDL_Event event;
 
 		SDL_Surface * optimizeImage(string);
 		void startState();

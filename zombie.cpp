@@ -5,10 +5,6 @@ Nathan Vahrenberg
 
 *******************/
 
-#include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-
 #include "zombie.h"
 
 void apply_zombie_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){

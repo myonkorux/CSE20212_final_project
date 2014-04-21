@@ -7,7 +7,7 @@ Nathan Vahrenberg
 
 #include "player.h"
 
-void apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
+void apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL){
 
 	SDL_Rect offset;
 	
@@ -321,11 +321,11 @@ void Player::display( SDL_Surface* source )
 
 void Player::update( SDL_Event event )
 {
+	cout << "update function called" 
 	if(!isAttacking)
 	{
 		if( event.type == SDL_KEYDOWN )
 		{
-			cout << "key press registered." << endl;			
 			switch( event.key.keysym.sym )
 			{
 				case SDLK_RIGHT:

@@ -53,7 +53,7 @@ SDL_Surface * Board::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormatAlpha(tempImage);
+		optimized = SDL_DisplayFormat(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -312,6 +312,7 @@ void Board::update(SDL_Event event)
 		else
 		{
 			game = 1;
+			player.update(event);
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
@@ -320,7 +321,7 @@ void Board::update(SDL_Event event)
 				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
 				player.apply_damage((m)->attack(player.getX(), player.getY()));
 
-				if(player.isDead())
+				if(player.isDead() == 1)
 				{
 					game = 0;					
 					over = 1;
@@ -361,7 +362,7 @@ void Board::update(SDL_Event event)
 void Board::wipe()
 {
 	// Fill with white space
-	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
+	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 255, 255, 255 ) );
 }
 
 void Board::clean()

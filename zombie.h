@@ -9,6 +9,7 @@ Nathan Vahrenberg
 #define ZOMBIE_H
 
 #include <iostream>
+#include <iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
