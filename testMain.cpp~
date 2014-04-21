@@ -10,14 +10,18 @@ int main (int argc, char* args[])
 	
 	while(quit == 0)
 	{
+		if(SDL_PollEvent(&event))
+		{
 			if(event.type == SDL_QUIT)
 			{
 				quit = 1;
 			}
 			else
 			{	
-				testBoard.update(event);
+				testBoard.setEvent(event);
 			}
+		}
+		testBoard.update(event);
 	}	
 
 	testBoard.clean();

@@ -36,6 +36,7 @@ class Board
 		void wipe();
 		void clean();
 		void spawnZombie();
+		void setEvent(SDL_Event);
 	
 	private:
 		int start;
@@ -64,7 +65,7 @@ class Board
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
-		//SDL_Event event;
+		SDL_Event event;
 
 		SDL_Surface * optimizeImage(string);
 		void startState();

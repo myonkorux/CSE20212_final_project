@@ -18,9 +18,10 @@ int main (int argc, char* args[])
 			}
 			else
 			{	
-				testBoard.update(event);
+				testBoard.setEvent(event);
 			}
 		}
+		testBoard.update();
 	}	
 
 	testBoard.clean();

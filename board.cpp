@@ -248,7 +248,12 @@ void Board::display()
 	SDL_Flip( screen );
 }
 
-void Board::update(SDL_Event event)
+void Board::setEvent(SDL_Event newEvent)
+{
+	event = newEvent;
+}
+
+void Board::update()
 {
 	if(start == 1)
 	{
