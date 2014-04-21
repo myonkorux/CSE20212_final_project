@@ -41,6 +41,7 @@ void Board::initialize()
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
 	startState();
+	spawnZombie();
 	display();
 }
 
@@ -53,7 +54,7 @@ SDL_Surface * Board::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormatAlpha(tempImage);
+		optimized = SDL_DisplayFormat(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -313,25 +314,33 @@ void Board::update(SDL_Event event)
 		}
 
 		game = 1;
-		player.update(event);
-		deque<Zombie>::iterator m;
-		for(m = zombies.begin(); m != zombies.end(); ++m)
+		if(zombies.empty())
 		{
-			(m)->update(player.getX(), player.getY());
 			player.update(event);
-			(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
-			player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
+		}
+		else
+		{
+			game = 1;
+			player.update(event);
+			deque<Zombie>::iterator m;
+			for(m = zombies.begin(); m != zombies.end(); ++m)
+			{
+				(m)->update(player.getX(), player.getY());
+				player.update(event);
+				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
+				player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
 
-			if(player.isDead())
-			{
-				game = 0;					
-				over = 1;
-				break;
-			}
-			else if((m)->isDead() == 1)
-			{
-				(m)->Free_Memory();
-				zombies.erase(m);
+				if(player.isDead() == 1)
+				{
+					game = 0;					
+					over = 1;
+					break;
+				}
+				else if((m)->isDead() == 1)
+				{
+					(m)->Free_Memory();
+					zombies.erase(m);
+				}
 			}
 		}
 
@@ -364,13 +373,21 @@ void Board::update(SDL_Event event)
 void Board::wipe()
 {
 	// Fill with white space
-	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
+	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 255, 255, 255 ) );
 }
 
 void Board::clean()
 {
 	clearDeques();
 	SDL_FreeSurface(background);
+
+	deque<Zombie>::iterator i;
+	for(i = zombies.begin(); i != zombies.end(); ++i)
+	{
+		(i)->Free_Memory();
+	}
+	zombies.clear();
+
 	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();

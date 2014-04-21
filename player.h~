@@ -9,7 +9,7 @@ Nathan Vahrenberg
 #define PLAYER_H
 
 #include <iostream>
-#include"iomanip"
+#include<iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -38,8 +38,8 @@ class Player{
 		int health;
 		int speed;
 		int power;
-		SDL_Surface* spritePC;
-		SDL_Surface* spritePCL;
+		SDL_Surface * spritePC;
+		SDL_Surface * spritePCL;
 		SDL_Rect standing[8];
 		SDL_Rect moving[8];
 		SDL_Rect attacking[6];
@@ -48,7 +48,7 @@ class Player{
 		SDL_Rect attackingL[6];
 		SDL_Rect jumping[8];
 		SDL_Rect jumpingL[8];
-		SDL_Event event;
+		//SDL_Event event;
 		int clipSelect;
 		int isStanding;
 		int isAttacking;
