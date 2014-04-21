@@ -7,11 +7,7 @@ Nathan Vahrenberg
 
 #include "player.h"
 
-<<<<<<< HEAD
-void apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL){
-=======
 void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
->>>>>>> 4c31af3a01677e17189c9e7b9d4478fde4794d84
 
 	SDL_Rect offset;
 	

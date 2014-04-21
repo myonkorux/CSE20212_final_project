@@ -319,11 +319,8 @@ void Board::update(SDL_Event event)
 		}
 		else
 		{
-<<<<<<< HEAD
 			game = 1;
 			player.update(event);
-=======
->>>>>>> 4c31af3a01677e17189c9e7b9d4478fde4794d84
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{

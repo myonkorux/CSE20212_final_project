@@ -379,6 +379,14 @@ void Board::clean()
 {
 	clearDeques();
 	SDL_FreeSurface(background);
+
+	deque<Zombie>::iterator i;
+	for(i = zombies.begin(); i != zombies.end(); ++i)
+	{
+		(i)->Free_Memory();
+	}
+	zombies.clear();
+
 	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();
