@@ -42,7 +42,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 Player::Player(){
 
-	x = 200;
+	x = 440;
 	y = 300;
 	xVel = 0;
 	yVel = 0;

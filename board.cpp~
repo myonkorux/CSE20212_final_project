@@ -313,6 +313,7 @@ void Board::update(SDL_Event event)
 		}
 
 		game = 1;
+		player.update(event);
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -356,6 +357,7 @@ void Board::update(SDL_Event event)
 			stateInterpret();
 		}
 	}
+
 	display();
 }
 

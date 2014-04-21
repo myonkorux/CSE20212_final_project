@@ -313,25 +313,31 @@ void Board::update(SDL_Event event)
 		}
 
 		game = 1;
-		player.update(event);
-		deque<Zombie>::iterator m;
-		for(m = zombies.begin(); m != zombies.end(); ++m)
+		if(zombies.empty())
 		{
-			(m)->update(player.getX(), player.getY());
 			player.update(event);
-			(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
-			player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
+		}
+		else
+		{
+			deque<Zombie>::iterator m;
+			for(m = zombies.begin(); m != zombies.end(); ++m)
+			{
+				(m)->update(player.getX(), player.getY());
+				player.update(event);
+				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
+				player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
 
-			if(player.isDead())
-			{
-				game = 0;					
-				over = 1;
-				break;
-			}
-			else if((m)->isDead() == 1)
-			{
-				(m)->Free_Memory();
-				zombies.erase(m);
+				if(player.isDead())
+				{
+					game = 0;					
+					over = 1;
+					break;
+				}
+				else if((m)->isDead() == 1)
+				{
+					(m)->Free_Memory();
+					zombies.erase(m);
+				}
 			}
 		}
 
@@ -357,6 +363,7 @@ void Board::update(SDL_Event event)
 			stateInterpret();
 		}
 	}
+
 	display();
 }
 
