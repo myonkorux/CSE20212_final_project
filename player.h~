@@ -23,7 +23,7 @@ class Player{
 		void update( SDL_Event );
 		//void move();
 		int attack(int, int);
-		void apply_damage( int );
+		void apply_damage( int, int );
 		int isDead();
 		void Free_Memory();
 		int getX();
@@ -57,6 +57,8 @@ class Player{
 		int recoil;
 
 		SDL_Surface * optimizeImage(string);
+
+		void apply_PC_sprite(int, int, SDL_Surface *, SD_Surface *, SDL_Rect *);
 
 };
 

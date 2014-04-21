@@ -42,7 +42,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 Player::Player(){
 
-	x = 440;
+	x = 200;
 	y = 300;
 	xVel = 0;
 	yVel = 0;
@@ -57,10 +57,10 @@ Player::Player(){
 	
 	clipSelect = 0;
 	
-	//spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
-	//spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
-	spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
-	spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
+	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
+	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
+	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
+	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
 
 	int swidth = 43;
 	int i;
