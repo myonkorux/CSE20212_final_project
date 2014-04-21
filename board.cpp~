@@ -212,11 +212,8 @@ void Board::stateInterpret()
 
 void Board::display()
 {
-	wipe();
-	SDL_Rect offset;
-	offset.x = 0;
-	offset.y = 0;
-	SDL_BlitSurface(background, NULL, screen, &offset);
+	//wipe();
+	SDL_BlitSurface(background, NULL, screen, NULL);
 	
 	deque<Text>::iterator i;
 	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
@@ -315,8 +312,6 @@ void Board::update(SDL_Event event)
 		else
 		{
 			game = 1;
-			player.update(event);
-			player.display(screen);
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
@@ -372,6 +367,7 @@ void Board::wipe()
 void Board::clean()
 {
 	clearDeques();
+	SDL_FreeSurface(background);
 	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();

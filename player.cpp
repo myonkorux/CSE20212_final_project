@@ -27,7 +27,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )

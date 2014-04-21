@@ -27,7 +27,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -57,10 +57,12 @@ Player::Player(){
 	
 	clipSelect = 0;
 	
-	//spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
-	//spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
-	spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
-	spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
+	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
+	//SDL_UnlockSurface(spritePC);
+	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
+	//SDL_UnlockSurface(spritePCL);
+	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
+	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
 
 	int swidth = 43;
 	int i;

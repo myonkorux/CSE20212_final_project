@@ -213,10 +213,7 @@ void Board::stateInterpret()
 void Board::display()
 {
 	wipe();
-	SDL_Rect offset;
-	offset.x = 0;
-	offset.y = 0;
-	SDL_BlitSurface(background, NULL, screen, &offset);
+	SDL_BlitSurface(background, NULL, screen, NULL);
 	
 	deque<Text>::iterator i;
 	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
@@ -370,6 +367,7 @@ void Board::wipe()
 void Board::clean()
 {
 	clearDeques();
+	SDL_FreeSurface(background);
 	player.Free_Memory();
 	TTF_Quit();
 	SDL_Quit();
