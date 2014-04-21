@@ -307,21 +307,32 @@ void Board::update(SDL_Event event)
 			{
 				game = 0;				
 				pause = 1;
+				stateInterpret();
+				return;
 			}
+		}
+
+		game = 1;
+		if(zombies.empty())
+		{
+			player.update(event);
 		}
 		else
 		{
+<<<<<<< HEAD
 			game = 1;
 			player.update(event);
+=======
+>>>>>>> 4c31af3a01677e17189c9e7b9d4478fde4794d84
 			deque<Zombie>::iterator m;
 			for(m = zombies.begin(); m != zombies.end(); ++m)
 			{
 				(m)->update(player.getX(), player.getY());
 				player.update(event);
 				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
-				player.apply_damage((m)->attack(player.getX(), player.getY()),(m).getDirection());
+				player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
 
-				if(player.isDead())
+				if(player.isDead() == 1)
 				{
 					game = 0;					
 					over = 1;
@@ -334,6 +345,7 @@ void Board::update(SDL_Event event)
 				}
 			}
 		}
+
 		stateInterpret();
 	}
 	else if(pause == 1)
@@ -356,6 +368,7 @@ void Board::update(SDL_Event event)
 			stateInterpret();
 		}
 	}
+
 	display();
 }
 

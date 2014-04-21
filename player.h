@@ -57,6 +57,8 @@ class Player{
 
 		SDL_Surface * optimizeImage(string);
 
+		void apply_PC_sprite(int, int, SDL_Surface *, SDL_Surface *, SDL_Rect *);
+
 };
 
 #endif

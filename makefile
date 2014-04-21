@@ -1,7 +1,7 @@
 EXEC = main
 
-$(EXEC): testMain.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o
-	g++ testMain.o board.o box.o item.o unit.o player.o zombie.o text.o button.o counter.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
+$(EXEC): testMain.o board.o box.o item.o unit.o player.o zombie.o axebaby.o text.o button.o counter.o
+	g++ testMain.o board.o box.o item.o unit.o player.o zombie.o axebaby.o text.o button.o counter.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
 	
 testMain.o: testMain.cpp board.h
 	g++ -c -g testMain.cpp
@@ -23,6 +23,12 @@ player.o: player.cpp player.h
 	
 zombie.o: zombie.cpp zombie.h
 	g++ -c -g zombie.cpp -lSDL -lSDL_image
+
+axebaby.o: axebaby.cpp axebaby.h
+	g++ -c -g axebaby.cpp -lSDL -lSDL_image
+	
+frankenstein.o: frankenstein.cpp frankenstein.h
+	g++ -c -g frankenstein.cpp -lSDL -lSDL_image
 
 text.o:  text.cpp text.h
 	g++ -c -g text.cpp

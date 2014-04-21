@@ -307,7 +307,15 @@ void Board::update(SDL_Event event)
 			{
 				game = 0;				
 				pause = 1;
+				stateInterpret();
+				return;
 			}
+		}
+
+		game = 1;
+		if(zombies.empty())
+		{
+			player.update(event);
 		}
 		else
 		{
@@ -334,6 +342,7 @@ void Board::update(SDL_Event event)
 				}
 			}
 		}
+
 		stateInterpret();
 	}
 	else if(pause == 1)
@@ -356,6 +365,7 @@ void Board::update(SDL_Event event)
 			stateInterpret();
 		}
 	}
+
 	display();
 }
 
