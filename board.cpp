@@ -348,6 +348,7 @@ void Board::update()
 			{
 				(m)->Free_Memory();
 				zombies.erase(m);
+				//spawnZombie();
 			}
 			}
 

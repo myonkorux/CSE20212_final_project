@@ -348,6 +348,7 @@ void Board::update()
 			{
 				(m)->Free_Memory();
 				zombies.erase(m);
+				spawnZombie();
 			}
 			}
 
@@ -362,7 +363,8 @@ void Board::update()
 		}
 		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
-			resetStates();			
+			resetStates();	
+			resetPC();		
 			start = 1;
 			stateInterpret();
 		}
