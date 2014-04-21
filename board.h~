@@ -32,7 +32,7 @@ class Board
 		Board();
 		void initialize();
 		void display();
-		void update(SDL_Event);
+		void update();
 		void wipe();
 		void clean();
 		void spawnZombie();
@@ -54,7 +54,7 @@ class Board
 		int numZombies;
 		int maxZombies;
 
-		Player player;
+		deque<Player> PC;
 
 		deque<Zombie> zombies;
 		deque<Text> textBoxes;
@@ -78,4 +78,6 @@ class Board
 		void stateInterpret();
 		void loadBackground();
 		void resetStates();
+		void newPC();
+		void resetPC();
 };

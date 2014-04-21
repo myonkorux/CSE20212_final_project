@@ -122,6 +122,9 @@ void Board::startState()
 	Button quitButton(240, 80, 320, 400, 70, "Quit");
 	buttons.push_back(startButton);
 	buttons.push_back(quitButton);
+
+	Player player;
+	PC.push_back(player);
 }
 
 void Board::selectState()
@@ -182,7 +185,7 @@ void Board::continueGame()
 void Board::overState()
 {
 	clearDeques();
-	player.Free_Memory();
+
 	Text titleCard(720, 100, 80, 40, 90, "Bye, Please Close Window");
 	textBoxes.push_back(titleCard);
 }
@@ -236,7 +239,9 @@ void Board::display()
 
 	if(game == 1)
 	{
-		player.display(screen);
+		deque<Player>::iterator i;
+		i = PC.begin();		
+		(i)->display(screen);
 
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
@@ -246,6 +251,11 @@ void Board::display()
 	}
 
 	SDL_Flip( screen );
+}
+
+void Board::setEvent(SDL_Event newEvent)
+{
+	event = newEvent;
 }
 
 void Board::update()
@@ -314,16 +324,21 @@ void Board::update()
 		}
 
 		game = 1;
-		player.update(event);
+
+		deque<Player>::iterator i;
+		i = PC.begin();
+		(i)->update(event);
+		
+		(i)->update(event);
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
-			(m)->update(player.getX(), player.getY());
-			player.update(event);
-			(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
-			player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
+			(m)->update((i)->getX(), (i)->getY());
+			(i)->update(event);
+			(m)->applyDamage((i)->attack((m)->getX(), (m)->getY()));
+			(i)->apply_damage((m)->attack((i)->getX(), (i)->getY()),(m)->getDirection());
 
-			if(player.isDead() == 1)
+			if((i)->isDead() == 1)
 			{
 				game = 0;					
 				over = 1;
@@ -380,7 +395,8 @@ void Board::clean()
 	}
 	zombies.clear();
 
-	player.Free_Memory();
+	resetPC();
+
 	TTF_Quit();
 	SDL_Quit();
 }
@@ -389,5 +405,13 @@ void Board::spawnZombie()
 {
 	Zombie basicZombie;
 	zombies.push_back(basicZombie);
+}
+
+void Board::resetPC()
+{
+	deque<Player>::iterator i;
+	i = PC.begin();
+	(i)->Free_Memory();
+	PC.clear();
 }
 

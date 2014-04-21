@@ -54,7 +54,7 @@ class Board
 		int numZombies;
 		int maxZombies;
 
-		Player player;
+		deque<Player> PC;
 
 		deque<Zombie> zombies;
 		deque<Text> textBoxes;
@@ -78,4 +78,5 @@ class Board
 		void stateInterpret();
 		void loadBackground();
 		void resetStates();
+		void resetPC();
 };
