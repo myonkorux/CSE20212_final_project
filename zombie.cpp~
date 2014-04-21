@@ -5,10 +5,6 @@ Nathan Vahrenberg
 
 *******************/
 
-#include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-
 #include "zombie.h"
 
 void apply_zombie_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
@@ -52,7 +48,7 @@ Zombie::Zombie(){
 	yVel = 0;
 	direction = 1;
 	health = 30;
-	speed = 2;
+	speed = 1;
 	power = 10;
 	isStanding = 1;
 	isAttacking = 0;
@@ -212,6 +208,11 @@ int Zombie::getX()
 int Zombie::getY()
 {
 	return y;
+}
+
+int Zombie::getDirection()
+{
+	return direction;
 }
 
 int Zombie::isDead()

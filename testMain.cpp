@@ -21,6 +21,7 @@ int main (int argc, char* args[])
 				testBoard.setEvent(event);
 			}
 		}
+
 		testBoard.update();
 	}	
 

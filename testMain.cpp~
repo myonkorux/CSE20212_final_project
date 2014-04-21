@@ -21,7 +21,10 @@ int main (int argc, char* args[])
 				testBoard.setEvent(event);
 			}
 		}
-		testBoard.update(event);
+
+		testBoard.update();
+
+		SDL_Delay(100);
 	}	
 
 	testBoard.clean();

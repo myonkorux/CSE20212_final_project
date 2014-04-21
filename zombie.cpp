@@ -48,7 +48,7 @@ Zombie::Zombie(){
 	yVel = 0;
 	direction = 1;
 	health = 30;
-	speed = 2;
+	speed = 1;
 	power = 10;
 	isStanding = 1;
 	isAttacking = 0;
@@ -129,6 +129,7 @@ void Zombie::display( SDL_Surface* source )
 	}
 
 	clipSelect++;
+	SDL_Delay(100);
 }
 
 void Zombie::update( int playerX, int playerY )
