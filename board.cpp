@@ -319,7 +319,7 @@ void Board::update(SDL_Event event)
 				(m)->update(player.getX(), player.getY());
 				player.update(event);
 				(m)->applyDamage(player.attack((m)->getX(), (m)->getY()));
-				player.apply_damage((m)->attack(player.getX(), player.getY()));
+				player.apply_damage((m)->attack(player.getX(), player.getY()),(m)->getDirection());
 
 				if(player.isDead() == 1)
 				{

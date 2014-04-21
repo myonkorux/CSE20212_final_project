@@ -28,6 +28,7 @@ class Zombie
 		void Free_Memory();
 		int getX();
 		int getY();
+		int getDirection();
 	
 	
 	private:
