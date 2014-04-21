@@ -3,6 +3,7 @@
 int main (int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+
 	int quit = 0;
 	Board testBoard;
 	SDL_Event event;
@@ -23,5 +24,6 @@ int main (int argc, char* args[])
 	}	
 
 	testBoard.clean();
+
 	return 0;
 } 

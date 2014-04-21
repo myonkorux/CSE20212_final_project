@@ -15,7 +15,6 @@ void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* de
 	offset.y = y;
 	
 	SDL_BlitSurface( source, clip, destination, &offset );
-
 }
 
 SDL_Surface * Player::optimizeImage(string filename)

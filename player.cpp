@@ -56,8 +56,8 @@ Player::Player(){
 	
 	clipSelect = 0;
 	
-	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
-	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
+	spritePC = optimizeImage("ScottPilgrim.bmp");
+	spritePCL = optimizeImage("ScottPilgrimL.bmp");
 	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
 	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
 
