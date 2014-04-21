@@ -53,7 +53,8 @@ class Board
 		int numZombies;
 		int maxZombies;
 
-		Player player;
+		Player player();
+
 		deque<Zombie> zombies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;

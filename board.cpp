@@ -53,7 +53,7 @@ SDL_Surface * Board::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -233,15 +233,15 @@ void Board::display()
 		(k)->display(screen);
 	}
 
-	deque<Zombie>::iterator m;
-	for(m = zombies.begin(); m != zombies.end(); ++m)
-	{
-		(m)->display(screen);
-	}
-
 	if(game == 1)
 	{
 		player.display(screen);
+
+		deque<Zombie>::iterator m;
+		for(m = zombies.begin(); m != zombies.end(); ++m)
+		{
+			(m)->display(screen);
+		}
 	}
 
 	SDL_Flip( screen );

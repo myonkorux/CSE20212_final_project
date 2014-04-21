@@ -27,7 +27,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormatAlpha(tempImage);
+		optimized = SDL_DisplayFormat(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -58,9 +58,7 @@ Player::Player(){
 	clipSelect = 0;
 	
 	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
-	//SDL_UnlockSurface(spritePC);
 	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
-	//SDL_UnlockSurface(spritePCL);
 	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
 	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
 
@@ -319,7 +317,6 @@ void Player::display( SDL_Surface* source )
 	{
 		clipSelect = 0;
 	}
-
 }
 
 void Player::update( SDL_Event event )
@@ -328,6 +325,7 @@ void Player::update( SDL_Event event )
 	{
 		if( event.type == SDL_KEYDOWN )
 		{
+			cout << "key press registered." << endl;			
 			switch( event.key.keysym.sym )
 			{
 				case SDLK_RIGHT:

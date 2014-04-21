@@ -27,7 +27,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormatAlpha(tempImage);
+		optimized = SDL_DisplayFormat(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -317,7 +317,6 @@ void Player::display( SDL_Surface* source )
 	{
 		clipSelect = 0;
 	}
-
 }
 
 void Player::update( SDL_Event event )
