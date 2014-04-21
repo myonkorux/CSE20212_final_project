@@ -214,6 +214,11 @@ int Zombie::getY()
 	return y;
 }
 
+int Zombie::getDirection()
+{
+	return direction;
+}
+
 int Zombie::isDead()
 {
 	return Dead;

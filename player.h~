@@ -21,7 +21,7 @@ class Player{
 		Player();
 		void display( SDL_Surface* );
 		void update( SDL_Event );
-		void move();
+		//void move();
 		int attack(int, int);
 		void apply_damage( int );
 		int isDead();

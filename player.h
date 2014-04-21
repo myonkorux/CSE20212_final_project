@@ -23,7 +23,7 @@ class Player{
 		void update( SDL_Event );
 		//void move();
 		int attack(int, int);
-		void apply_damage( int );
+		void apply_damage( int, int );
 		int isDead();
 		void Free_Memory();
 		int getX();

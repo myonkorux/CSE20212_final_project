@@ -258,13 +258,13 @@ void Player::display( SDL_Surface* source )
 		
 	clipSelect++;
 	
-	if( recoil )
+	if( recoil == 1 || recoil == -1 )
 		{
 		xVel = 0;
 		if( clipSelect <= 3 )
 		{
 			y -= 5*( 3-clipSelect );
-			x += (-1)*direction*speed/2;
+			x += (-1)*recoil*speed/2;
 		}
 		else if( clipSelect <= 6 && clipSelect >= 4 )
 		{ 
@@ -399,12 +399,12 @@ int Player::getY()
 	return y;
 }
 
-void Player::apply_damage( int damage )
+void Player::apply_damage( int damage, int direction )
 {
 	if(damage > 0)
 	{
 		health -= damage;
-		recoil = 1;
+		recoil = direction;
 		clipSelect = 0;
 	}
 }
