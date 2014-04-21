@@ -26,6 +26,9 @@ zombie.o: zombie.cpp zombie.h
 
 axebaby.o: axebaby.cpp axebaby.h
 	g++ -c -g axebaby.cpp -lSDL -lSDL_image
+	
+frankenstein.o: frankenstein.cpp frankenstein.h
+	g++ -c -g frankenstein.cpp -lSDL -lSDL_image
 
 text.o:  text.cpp text.h
 	g++ -c -g text.cpp
