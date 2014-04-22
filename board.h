@@ -42,9 +42,11 @@ class Board
 		int start;
 		int select;
 		int game;
+		int gInitial;
 		int pause;
 		int over;
 		int difficulty;
+		int PCScore;
 		string diffString;
 
 		int screenWidth;

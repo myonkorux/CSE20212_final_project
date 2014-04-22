@@ -42,9 +42,11 @@ class Board
 		int start;
 		int select;
 		int game;
+		int ginitial;
 		int pause;
 		int over;
 		int difficulty;
+		int PCScore;
 		string diffString;
 
 		int screenWidth;
@@ -78,6 +80,5 @@ class Board
 		void stateInterpret();
 		void loadBackground();
 		void resetStates();
-		void newPC();
 		void resetPC();
 };

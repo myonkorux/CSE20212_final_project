@@ -18,8 +18,10 @@ Board::Board()
 	start = 1 /* unknown */;
 	select = 0;
 	game = 0 /* unknown */;
+	gInitial = 1;
 	pause = 0;
 	over = 0;
+	PCScore = 0;
 
 	screenWidth = 880;
 	screenHeight = 600;
@@ -148,18 +150,31 @@ void Board::selectState()
 
 void Board::gameState()
 {
-	clearDeques();
-	Counter health(160, 40, 40, 40, 30, "100", 100);
-	Counter score(240, 40, 600, 40, 30, "0", 0);
-	counters.push_back(health);
-	counters.push_back(score);
+	if(gInitial == 1)
+	{
+		clearDeques();
+		Counter health(160, 40, 40, 40, 30, "100", 100);
+		Counter score(240, 40, 600, 40, 30, "0", PCScore);
+		counters.push_back(health);
+		counters.push_back(score);
 
-	Text cseLabel(160, 40, 40, 550, 30, "Zombie Slayerz");
-	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
-	Text diffLabel(320, 40, 280, 550, 30, diffString);
-	textBoxes.push_back(cseLabel);
-	textBoxes.push_back(versionLabel);
-	textBoxes.push_back(diffLabel);
+		Text cseLabel(160, 40, 40, 550, 30, "Zombie Slayerz");
+		Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
+		Text diffLabel(320, 40, 280, 550, 30, diffString);
+		textBoxes.push_back(cseLabel);
+		textBoxes.push_back(versionLabel);
+		textBoxes.push_back(diffLabel);
+		
+		gInitial = 0;
+	}
+	else
+	{
+		deque<Counter>::iterator k;
+		for(k = counters.begin(); k != counters.end(); ++k)
+		{
+			(k)->update(event);
+		}
+	}
 }
 
 void Board::pauseState()
@@ -346,7 +361,8 @@ void Board::update()
 			}
 			else if((m)->isDead() == 1)
 			{
-				cout << "killed one." << endl;				
+				PCScore += ((m)->getPoints());
+				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
 				zombies.erase(m);
 				spawnZombie();
@@ -364,7 +380,8 @@ void Board::update()
 		}
 		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
-			resetStates();	
+			resetStates();
+			gInitial = 1;	
 			resetPC();		
 			start = 1;
 			stateInterpret();
@@ -416,5 +433,7 @@ void Board::resetPC()
 	i = PC.begin();
 	(i)->Free_Memory();
 	PC.clear();
+
+	PCScore = 0;
 }
 

@@ -9,6 +9,7 @@ Nathan Vahrenberg
 #define ZOMBIE_H
 
 #include <iostream>
+#include <iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -27,6 +28,8 @@ class Zombie
 		void Free_Memory();
 		int getX();
 		int getY();
+		int getDirection();
+		void getPoints();
 	
 	
 	private:
@@ -41,6 +44,7 @@ class Zombie
 		int isStanding;
 		int isAttacking;
 		int Dead;
+		int points;
 		SDL_Surface* SpriteZombie;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];

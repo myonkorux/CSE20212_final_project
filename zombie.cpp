@@ -53,6 +53,7 @@ Zombie::Zombie(){
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
+	points = 10;
 	
 	clipSelect = 0;
 	
@@ -219,4 +220,9 @@ int Zombie::getDirection()
 int Zombie::isDead()
 {
 	return Dead;
+}
+
+int Zombie::getPoints()
+{
+	return points;
 }
