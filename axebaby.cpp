@@ -51,12 +51,13 @@ Axebaby::Axebaby(){
 	xVel = 0;
 	yVel = 0;
 	direction = 1;
-	health = 30;
+	health = 10;
 	speed = 4;
-	power = 5;
+	power = 20;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
+	points = 20;
 	
 	clipSelect = 0;
 	
@@ -246,4 +247,9 @@ int Axebaby::getDirection()
 int Axebaby::isDead()
 {
 	return Dead;
+}
+
+int Axebaby::getPoints()
+{
+	return points;
 }
