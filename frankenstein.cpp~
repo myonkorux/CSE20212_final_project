@@ -31,7 +31,7 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -57,6 +57,7 @@ Frankenstein::Frankenstein(){
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
+	enable = 0;
 	
 	clipSelect = 0;
 	

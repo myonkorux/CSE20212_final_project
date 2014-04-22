@@ -45,7 +45,7 @@ Board::Board()
 void Board::initialize()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	screen = SDL_SetVideoMode(screenWidth, screenHeight, screenBPP, SDL_SWSURFACE);
+	screen = SDL_SetVideoMode(screenWidth, screenHeight, screenBPP, SDL_WSURFACE);
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
@@ -402,11 +402,8 @@ void Board::update()
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
 				zombies.erase(m);
-				if(zombies.size() != 0)
-				{
-					m--;
-				}
 				numZombies--;
+				break;
 			}
 		}
 

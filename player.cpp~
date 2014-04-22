@@ -26,7 +26,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormat(tempImage);
+		optimized = SDL_DisplayFormatAlpha(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )
@@ -188,7 +188,7 @@ Player::Player(){
 
 int Player::attack(int zombieX, int zombieY)
 {
-	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1))
+	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1) && enable)
 	{
 		return power;
 	}
