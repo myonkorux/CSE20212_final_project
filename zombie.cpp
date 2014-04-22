@@ -131,7 +131,7 @@ void Zombie::display( SDL_Surface* source )
 	}
 
 	clipSelect++;
-	SDL_Delay(100);
+	//SDL_Delay(100);
 }
 
 void Zombie::update( int playerX, int playerY )

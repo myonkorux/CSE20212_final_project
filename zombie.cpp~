@@ -27,7 +27,7 @@ SDL_Surface * Zombie::optimizeImage(string filename)
 
 	if(tempImage != NULL)
 	{
-		optimized = SDL_DisplayFormatAlpha(tempImage);
+		optimized = SDL_DisplayFormat(tempImage);
 		SDL_FreeSurface(tempImage);
 
 		if( optimized != NULL )

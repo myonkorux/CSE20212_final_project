@@ -316,6 +316,7 @@ void Player::display( SDL_Surface* source )
 	{
 		clipSelect = 0;
 	}
+
 }
 
 void Player::update( SDL_Event event )
