@@ -62,6 +62,7 @@ class Board
 
 		deque<Zombie> zombies;
 		deque<Axebaby> babies;
+		deque<Frankenstein> tanks;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
