@@ -28,6 +28,7 @@ class Player{
 		void Free_Memory();
 		int getX();
 		int getY();
+		int getHealth();
 		
 	private:
 		int x;

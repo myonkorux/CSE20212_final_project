@@ -43,7 +43,7 @@ void Board::initialize()
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
 	startState();
-	//spawnZombie();
+	spawnZombie();
 	display();
 }
 
@@ -127,7 +127,6 @@ void Board::startState()
 
 	Player player;
 	PC.push_back(player);
-	spawnZombie();
 }
 
 void Board::selectState()
@@ -345,7 +344,6 @@ void Board::update()
 		i = PC.begin();
 		(i)->update(event);
 		
-		(i)->update(event);
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -384,15 +382,7 @@ void Board::update()
 		{
 			resetStates();
 			gInitial = 1;	
-			resetPC();
-
-			deque<Zombie>::iterator i;
-			for(i = zombies.begin(); i != zombies.end(); ++i)
-			{
-				(i)->Free_Memory();
-			}
-			zombies.clear();
-					
+			resetPC();		
 			start = 1;
 			stateInterpret();
 		}

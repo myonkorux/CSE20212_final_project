@@ -419,3 +419,8 @@ void Player::Free_Memory(){
 	SDL_FreeSurface( spritePCL );
 
 }
+
+int Player::getHealth()
+{
+	return health;
+}

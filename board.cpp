@@ -344,7 +344,6 @@ void Board::update()
 		i = PC.begin();
 		(i)->update(event);
 		
-		(i)->update(event);
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -352,6 +351,7 @@ void Board::update()
 			(i)->update(event);
 			(m)->applyDamage((i)->attack((m)->getX(), (m)->getY()));
 			(i)->apply_damage((m)->attack((i)->getX(), (i)->getY()),(m)->getDirection());
+			(counters.begin())->setCountValue((i)->getHealth());
 
 			if((i)->isDead() == 1)
 			{
