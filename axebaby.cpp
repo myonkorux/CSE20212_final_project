@@ -46,7 +46,7 @@ SDL_Surface * Axebaby::optimizeImage(string filename)
 
 Axebaby::Axebaby(){
 
-	x = 400;
+	x = rand()%800+40;
 	y = 318;
 	xVel = 0;
 	yVel = 0;

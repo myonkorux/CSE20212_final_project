@@ -1,4 +1,5 @@
 #include"board.h"
+#include <ctime>
 
 int main (int argc, char* args[])
 {
@@ -7,6 +8,8 @@ int main (int argc, char* args[])
 	int quit = 0;
 	Board testBoard;
 	SDL_Event event;
+	
+	srand(time(0));
 	
 	while(quit == 0)
 	{

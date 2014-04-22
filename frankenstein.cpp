@@ -46,7 +46,7 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 
 Frankenstein::Frankenstein(){
 
-	x = 400;
+	x = rand()%800+40;
 	y = 318;
 	xVel = 0;
 	yVel = 0;
