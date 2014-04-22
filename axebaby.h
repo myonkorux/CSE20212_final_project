@@ -30,6 +30,7 @@ class Axebaby
 		int getY();
 		int getDirection();
 		int getPoints();
+		void setEnable(int);
 	
 	
 	private:
@@ -45,6 +46,7 @@ class Axebaby
 		int isAttacking;
 		int Dead;
 		int points;
+		int enable;
 		SDL_Surface* SpriteAxebaby;
 		SDL_Rect moving[4];
 		SDL_Rect attacking[1];

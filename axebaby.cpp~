@@ -57,6 +57,7 @@ Axebaby::Axebaby(){
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
+	points = 20;
 	
 	clipSelect = 0;
 	

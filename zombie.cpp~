@@ -221,3 +221,8 @@ int Zombie::isDead()
 {
 	return Dead;
 }
+
+int Zombie::getPoints()
+{
+	return points;
+}

@@ -30,6 +30,7 @@ class Zombie
 		int getY();
 		int getDirection();
 		int getPoints();
+		void setEnable(int);
 	
 	
 	private:
@@ -45,6 +46,7 @@ class Zombie
 		int isAttacking;
 		int Dead;
 		int points;
+		int enable;
 		SDL_Surface* SpriteZombie;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];

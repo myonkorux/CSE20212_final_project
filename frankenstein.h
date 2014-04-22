@@ -30,6 +30,7 @@ class Frankenstein
 		int getY();
 		int getDirection();
 		int getPoints();
+		void setEnable(int);
 	
 	private:
 		int x;
@@ -44,6 +45,7 @@ class Frankenstein
 		int isAttacking;
 		int Dead;
 		int points;
+		int enable;
 		SDL_Surface* SpriteFrankenstein;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];

@@ -28,9 +28,16 @@ Board::Board()
 	screenBPP = 32;
 
 	numZombies = 0;
+	maxZombies = 0;
+	numBabies = 0;
+	maxBabies = 0;
+	numTanks = 0;
+	maxTanks = 0;
 
 	screen = NULL;
 	background = NULL;
+
+	srand(time(NULL));
 
 	initialize();
 }
@@ -146,6 +153,8 @@ void Board::selectState()
 
 void Board::gameState()
 {
+	int a = (rand() % 100 + 1);
+
 	if(gInitial == 1)
 	{
 		clearDeques();
@@ -167,7 +176,23 @@ void Board::gameState()
 		gInitial = 0;
 	}
 	else
-	{
+	{		
+		if((a % 25) == 0)
+		{
+			if(numZombies < maxZombies)
+			{
+				spawnZombie();
+			}
+			else if(numBabies < maxBabies)
+			{
+				spawnBaby();
+			}
+			else if(numTanks < maxTanks)
+			{
+				spawnTank();
+			}
+		}		
+
 		deque<Counter>::iterator k;
 		for(k = counters.begin(); k != counters.end(); ++k)
 		{
@@ -292,14 +317,19 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 4;
-			maxZombies = 10;
+			maxZombies = 5;
+			maxBabies = 3;
+			maxTanks = 2;
 			diffString = "Hardcore";
 		}
 		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 1;
-			maxZombies = 5;
+			maxZombies = 7;
+			maxBabies = 0;
+			maxZombies = 0;
+			maxTanks = 0;
 			diffString = "Easy";
 			
 		}
@@ -307,14 +337,18 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 2;
-			maxZombies = 7;
+			maxZombies = 10;
+			maxBabies = 0;
+			maxTanks = 0;
 			diffString = "Normal";	
 		}
 		else if((buttons.begin() + 3)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 3;
-			maxZombies = 10;
+			maxZombies = 7;
+			maxBabies = 3;
+			maxTanks = 0;
 			diffString = "Hard";
 		}
 		else
@@ -363,8 +397,8 @@ void Board::update()
 				PCScore += ((m)->getPoints());
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
-
 				zombies.erase(m);
+				numZombies--;
 			}
 		}
 
@@ -381,6 +415,31 @@ void Board::update()
 		{
 			resetStates();
 			gInitial = 1;	
+
+			deque<Zombie>::iterator i;
+			for(i = zombies.begin(); i != zombies.end(); ++i)
+			{
+				(i)->Free_Memory();
+			}
+			zombies.clear();
+			numZombies = 0;
+		
+			deque<Axebaby>::iterator j;
+			for(j = babies.begin(); j != babies.end(); ++j)
+			{
+				(j)->Free_Memory();
+			}
+			babies.clear();
+			numBabies = 0;
+
+			deque<Frankenstein>::iterator k;
+			for(k = tanks.begin(); k != tanks.end(); ++k)
+			{
+				(k)->Free_Memory();
+			}
+			tanks.clear();
+			numTanks = 0;			
+
 			resetPC();		
 			start = 1;
 			stateInterpret();
@@ -413,6 +472,23 @@ void Board::clean()
 		(i)->Free_Memory();
 	}
 	zombies.clear();
+	numZombies = 0;
+		
+	deque<Axebaby>::iterator j;
+	for(j = babies.begin(); j != babies.end(); ++j)
+	{
+		(j)->Free_Memory();
+	}
+	babies.clear();
+	numBabies = 0;
+
+	deque<Frankenstein>::iterator k;
+	for(k = tanks.begin(); k != tanks.end(); ++k)
+	{
+		(k)->Free_Memory();
+	}
+	tanks.clear();
+	numTanks = 0;
 
 	resetPC();
 
@@ -424,6 +500,19 @@ void Board::spawnZombie()
 {
 	Zombie basicZombie;
 	zombies.push_back(basicZombie);
+	numZombies++;
+}
+
+void Board::spawnBaby()
+{
+	Axebaby baby;
+	babies.push_back(baby);
+}
+
+void Board::spawnTank()
+{
+	Frankenstein tank;
+	tanks.push_back(tank);
 }
 
 void Board::resetPC()

@@ -228,3 +228,8 @@ int Frankenstein::getPoints()
 {
 	return points;
 }
+
+void Frankenstein::setEnable(int e)
+{
+	enable = e;
+}

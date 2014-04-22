@@ -10,6 +10,8 @@ board.h
 #include <iostream>
 #include<iomanip>
 #include<string>
+#include<cstdlib>
+#include<ctime>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
@@ -32,12 +34,8 @@ class Board
 {
 	public:
 		Board();
-		void initialize();
-		void display();
 		void update();
-		void wipe();
 		void clean();
-		void spawnZombie();
 		void setEvent(SDL_Event);
 	
 	private:
@@ -57,6 +55,10 @@ class Board
 
 		int numZombies;
 		int maxZombies;
+		int numBabies;
+		int maxBabies;
+		int numTanks;
+		int maxTanks;
 
 		deque<Player> PC;
 
@@ -85,4 +87,10 @@ class Board
 		void loadBackground();
 		void resetStates();
 		void resetPC();
+		void spawnZombie();
+		void spawnBaby();
+		void spawnTank();
+		void initialize();
+		void display();
+		void wipe();
 };

@@ -253,3 +253,8 @@ int Axebaby::getPoints()
 {
 	return points;
 }
+
+void Axebaby::setEnable(int e)
+{
+	enable = e;
+}

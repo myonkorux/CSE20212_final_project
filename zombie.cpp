@@ -226,3 +226,8 @@ int Zombie::getPoints()
 {
 	return points;
 }
+
+void Zombie::setEnable(int e)
+{
+	enable = e;
+}
