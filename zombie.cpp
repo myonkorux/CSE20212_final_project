@@ -170,7 +170,7 @@ void Zombie::display( SDL_Surface* source )
 	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &dying[ clipSelect ]);
 	}
-	else	if (direction == 1)
+	else if (direction == 1)
 	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &moving[ clipSelect ]);
 	}
@@ -180,7 +180,7 @@ void Zombie::display( SDL_Surface* source )
 	}
 
 	clipSelect++;
-	//SDL_Delay(100);
+
 }
 
 void Zombie::update( int playerX, int playerY )

@@ -43,6 +43,7 @@ class Frankenstein
 		int direction;
 		int isStanding;
 		int isAttacking;
+		int dying;
 		int Dead;
 		int points;
 		int enable;
@@ -51,6 +52,7 @@ class Frankenstein
 		SDL_Rect attacking[3];
 		SDL_Rect movingL[3];
 		SDL_Rect attackingL[3];
+		SDL_Rect dying[10];
 		int clipSelect;
 
 		SDL_Surface * optimizeImage(string);

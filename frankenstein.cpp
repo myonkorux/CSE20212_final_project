@@ -89,7 +89,50 @@ Frankenstein::Frankenstein(){
 	moving[2].w = 320-280;
 	moving[3].x = 320;
 	moving[3].w = 360-320;
-
+	
+	dying[0].x = 85;
+	dying[0].w = 140-85;
+	dying[1].x = 140;
+	dying[1].w = 195-140;
+	dying[2].x = 195;
+	dying[2].w = 250-195;
+	dying[3].x = 250;
+	dying[3].w = 305-250;
+	dying[4].x = 140;
+	dying[4].w = 160-140;
+	dying[5].x = 160;
+	dying[5].w = 180-160;
+	dying[6].x = 180;
+	dying[6].w = 200-180;
+	dying[7].x = 200;
+	dying[7].w = 220-200;
+	dying[8].x = 220;
+	dying[8].w = 240-220;
+	dying[9].x = 240;
+	dying[9].w = 260-240;
+	
+	dying[0].y = 130;
+	dying[0].h = 195-130;
+	dying[1].y = 130;
+	dying[1].h = 195-130;
+	dying[2].y = 130;
+	dying[2].h = 195-130;
+	dying[3].y = 130;
+	dying[3].h = 195-130;
+	dying[4].y = 410;
+	dying[4].h = 450-410;
+	dying[5].y = 410;
+	dying[5].h = 450-410;
+	dying[6].y = 410;
+	dying[6].h = 450-410;
+	dying[7].y = 410;
+	dying[7].h = 450-410;
+	dying[8].y = 410;
+	dying[8].h = 450-410;
+	dying[9].y = 410;
+	dying[9].h = 450-410;
+	
+	
 }
 
 void Frankenstein::display( SDL_Surface* source )
@@ -99,32 +142,38 @@ void Frankenstein::display( SDL_Surface* source )
 
 	if(health <= 0)
 	{
-		Dead = 1;
-		return;
+		dying = 1;
+		clipSelect = 0;
 	}
 
 	tempX = (x + xVel);
 	tempY = (y + yVel);
-	if((tempX > 0) && (tempX < 840))
+	if((tempX > 0) && (tempX < 840) && !dying)
 	{
 		x = tempX;
 	}
-	if((tempY > 0) && (tempY < 540))
+	if((tempY > 0) && (tempY < 540) && !dying)
 	{
 		y = tempY;
 	}
-	
-	if( clipSelect >= 4 )
-	{
-		clipSelect = 0;
-	}
 
-	if( clipSelect >= 3 )
+	if( clipSelect >= 4 && !dying)
 	{
 		clipSelect = 0;
 	}
 	
-	if (direction == 1)
+	if( clipSelect >= 10 && dying )
+	{
+		dead = 1;
+		dying = 0;
+		return;
+	}
+	
+	if(dying)
+	{
+		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &dying[ clipSelect ]);
+	}
+	else if (direction == 1)
 	{
 		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &moving[ clipSelect ]);
 	}

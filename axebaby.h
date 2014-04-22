@@ -44,6 +44,7 @@ class Axebaby
 		int direction;
 		int isStanding;
 		int isAttacking;
+		int dying;
 		int Dead;
 		int points;
 		int enable;
@@ -52,6 +53,7 @@ class Axebaby
 		SDL_Rect attacking[1];
 		SDL_Rect movingL[4];
 		SDL_Rect attackingL[1];
+		SDL_Rect dying[9];
 		int clipSelect;
 
 		SDL_Surface * optimizeImage(string);

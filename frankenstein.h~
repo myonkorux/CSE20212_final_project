@@ -43,8 +43,10 @@ class Frankenstein
 		int direction;
 		int isStanding;
 		int isAttacking;
+		int dying;
 		int Dead;
 		int points;
+		int enable;
 		SDL_Surface* SpriteFrankenstein;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];

@@ -52,6 +52,7 @@ Zombie::Zombie(){
 	power = 10;
 	isStanding = 1;
 	isAttacking = 0;
+	dying = 0;
 	Dead = 0;
 	points = 10;
 	enable = 0;
@@ -136,34 +137,40 @@ void Zombie::display( SDL_Surface* source )
 	int tempX = 0;
 	int tempY = 0;
 
-	if(health <= 0)
+	if(health <= 0 && dying == 0)
 	{
 		dying = 1;
-		return;
+		clipSelect = 0;
 	}
 
 	tempX = (x + xVel);
 	tempY = (y + yVel);
-	if((tempX > 0) && (tempX < 840))
+	if((tempX > 0) && (tempX < 840) && !(dying))
 	{
 		x = tempX;
 	}
-	if((tempY > 0) && (tempY < 540))
+	if((tempY > 0) && (tempY < 540) && !(dying))
 	{
 		y = tempY;
 	}
-	
-	if( clipSelect >= 8 )
-	{
-		clipSelect = 0;
-	}
 
-	if( clipSelect >= 3 )
+	if( clipSelect >= 3 && !dying)
 	{
 		clipSelect = 0;
 	}
 	
-	if (direction == 1)
+	if( dying && clipSelect >= 10 )
+	{
+		dead = 1;
+		dying = 0;
+		return;
+	}
+	
+	if (dying)
+	{
+		apply_zombie_sprite( x, y, SpriteZombie, source, &dying[ clipSelect ]);
+	}
+	else if (direction == 1)
 	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &moving[ clipSelect ]);
 	}
