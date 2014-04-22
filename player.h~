@@ -28,6 +28,7 @@ class Player{
 		void Free_Memory();
 		int getX();
 		int getY();
+		int getHealth();
 		
 	private:
 		int x;
@@ -38,6 +39,7 @@ class Player{
 		int health;
 		int speed;
 		int power;
+		int enable;
 		SDL_Surface * spritePC;
 		SDL_Surface * spritePCL;
 		SDL_Rect standing[8];

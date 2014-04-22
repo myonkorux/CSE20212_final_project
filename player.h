@@ -29,6 +29,7 @@ class Player{
 		int getX();
 		int getY();
 		int getHealth();
+		void setEnable(int);
 		
 	private:
 		int x;
@@ -39,6 +40,7 @@ class Player{
 		int health;
 		int speed;
 		int power;
+		int enable;
 		SDL_Surface * spritePC;
 		SDL_Surface * spritePCL;
 		SDL_Rect standing[8];

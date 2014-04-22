@@ -57,6 +57,7 @@ Frankenstein::Frankenstein(){
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
+	enable = 0;
 	
 	clipSelect = 0;
 	
@@ -136,50 +137,53 @@ void Frankenstein::display( SDL_Surface* source )
 }
 
 void Frankenstein::update( int playerX, int playerY )
-{		
-	if( playerX < x )
-	{
-		direction = -1;
-		if( x <= playerX + 45  )
+{
+	if(enable)
+	{		
+		if( playerX < x )
 		{
-			xVel = 0;
+			direction = -1;
+			if( x <= playerX + 45  )
+			{
+				xVel = 0;
+			}
+			else
+			{
+				xVel = direction * speed;
+			}
 		}
 		else
 		{
-			xVel = direction * speed;
+			direction = 1;
+			if( x + 30 >= playerX  )
+			{
+				xVel = 0;
+			}
+			else
+			{
+				xVel = direction * speed;
+			}
 		}
-	}
-	else
-	{
-		direction = 1;
-		if( x + 30 >= playerX  )
-		{
-			xVel = 0;
-		}
-		else
-		{
-			xVel = direction * speed;
-		}
-	}
 
-	if( playerY < y )
-	{
-		yVel = -speed;
-	}
-	else if( playerY > y)
-	{
-		yVel = speed;
-	}
-	else
-	{
-		yVel = 0;
+		if( playerY < y )
+		{
+			yVel = -speed;
+		}
+		else if( playerY > y)
+		{
+			yVel = speed;
+		}
+		else
+		{
+			yVel = 0;
+		}
 	}
 }
 
 int Frankenstein::attack( int playerX, int playerY )
 {
 
-	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) )
+	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) && enable)
 	{
 		return power;
 	}

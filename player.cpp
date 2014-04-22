@@ -188,7 +188,7 @@ Player::Player(){
 
 int Player::attack(int zombieX, int zombieY)
 {
-	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1))
+	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1) && enable)
 	{
 		return power;
 	}
@@ -320,68 +320,71 @@ void Player::display( SDL_Surface* source )
 
 void Player::update( SDL_Event event )
 {
-	if(!isAttacking)
+	if(enable)
 	{
-		if( event.type == SDL_KEYDOWN )
+		if(!isAttacking)
 		{
-			switch( event.key.keysym.sym )
+			if( event.type == SDL_KEYDOWN )
 			{
-				case SDLK_RIGHT:
-				case SDLK_d:
-					isStanding = 0;
-					direction = 1;
-					xVel = speed;
-					break;
-				case SDLK_LEFT:
-				case SDLK_a:
-					isStanding = 0;
-					direction = -1;
-					xVel = -speed;
-					break;
-				case SDLK_SPACE:
-					isStanding = 1;
-					isAttacking = 1;
-					xVel = 0;
-					clipSelect = 0;
-					break;
-				case SDLK_UP:
-				case SDLK_w:
-					//isJumping = 1;
-					isStanding = 0;
-					yVel = -speed;
-					//clipSelect = 0;
-					break;
-				case SDLK_DOWN:
-				case SDLK_s:
-					//isJumping = 1;
-					isStanding = 0;
-					yVel = speed;
-					//clipSelect = 0;
-					break;
+				switch( event.key.keysym.sym )
+				{
+					case SDLK_RIGHT:
+					case SDLK_d:
+						isStanding = 0;
+						direction = 1;
+						xVel = speed;
+						break;
+					case SDLK_LEFT:
+					case SDLK_a:
+						isStanding = 0;
+						direction = -1;
+						xVel = -speed;
+						break;
+					case SDLK_SPACE:
+						isStanding = 1;
+						isAttacking = 1;
+						xVel = 0;
+						clipSelect = 0;
+						break;
+					case SDLK_UP:
+					case SDLK_w:
+						//isJumping = 1;
+						isStanding = 0;
+						yVel = -speed;
+						//clipSelect = 0;
+						break;
+					case SDLK_DOWN:
+					case SDLK_s:
+						//isJumping = 1;
+						isStanding = 0;
+						yVel = speed;
+						//clipSelect = 0;
+						break;
+				}
 			}
-		}
-		else if( event.type == SDL_KEYUP )
-		{
-			switch( event.key.keysym.sym )
+			else if( event.type == SDL_KEYUP )
 			{
-				case SDLK_RIGHT:
-				case SDLK_LEFT:
-				case SDLK_UP:
-				case SDLK_DOWN:
-				case SDLK_w:
-				case SDLK_a:
-				case SDLK_s:
-				case SDLK_d:
-					isStanding = 1;
-					xVel = 0;
-					yVel = 0;
-					break;
-				case SDLK_SPACE:
-					isStanding = 1;
-					isAttacking = 0;
-					//xVel = 0;
-					//clipSelect = 0;
-					break;
+				switch( event.key.keysym.sym )
+				{
+					case SDLK_RIGHT:
+					case SDLK_LEFT:
+					case SDLK_UP:
+					case SDLK_DOWN:
+					case SDLK_w:
+					case SDLK_a:
+					case SDLK_s:
+					case SDLK_d:
+						isStanding = 1;
+						xVel = 0;
+						yVel = 0;
+						break;
+					case SDLK_SPACE:
+						isStanding = 1;
+						isAttacking = 0;
+						//xVel = 0;
+						//clipSelect = 0;
+						break;
+				}
 			}
 		}
 	}
@@ -423,4 +426,9 @@ void Player::Free_Memory(){
 int Player::getHealth()
 {
 	return health;
+}
+
+void Player::setEnable(int e)
+{
+	enable = e;
 }

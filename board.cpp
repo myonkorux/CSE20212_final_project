@@ -172,13 +172,14 @@ void Board::gameState()
 
 		Player player;
 		PC.push_back(player);
+		setPause(1);
 		
 		gInitial = 0;
 	}
 	else
 	{		
 		if((a % 25) == 0)
-		{
+		{			
 			if(numZombies < maxZombies)
 			{
 				spawnZombie();
@@ -191,6 +192,7 @@ void Board::gameState()
 			{
 				spawnTank();
 			}
+			setPause(1);
 		}		
 
 		deque<Counter>::iterator k;
@@ -213,6 +215,8 @@ void Board::pauseState()
 
 void Board::continueGame()
 {
+	setPause(1);
+
 	deque<Button>::iterator j;
 	for(j = buttons.begin(); j != buttons.end(); ++j)
 	{
@@ -398,6 +402,7 @@ void Board::update()
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
 				zombies.erase(m);
+				--m;
 				numZombies--;
 			}
 		}
@@ -406,6 +411,7 @@ void Board::update()
 	}
 	else if(pause == 1)
 	{
+		setPause(0);		
 		if((buttons.begin())->update(event) == 1)	
 		{
 			game = 1;
@@ -525,5 +531,30 @@ void Board::resetPC()
 	PC.clear();
 
 	PCScore = 0;
+}
+
+void Board::setPause(int p)
+{
+	deque<Player>::iterator i;
+	i = PC.begin();
+	(i)->setEnable(p);
+	
+	deque<Zombie>::iterator j;
+	for(j = zombies.begin(); j != zombies.end(); ++j)
+	{
+		(j)->setEnable(p);
+	}
+		
+	deque<Axebaby>::iterator k;
+	for(k = babies.begin(); k != babies.end(); ++k)
+	{
+		(k)->setEnable(p);
+	}
+
+	deque<Frankenstein>::iterator m;
+	for(m = tanks.begin(); m != tanks.end(); ++m)
+	{
+		(m)->setEnable(p);
+	}
 }
 

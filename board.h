@@ -93,4 +93,5 @@ class Board
 		void initialize();
 		void display();
 		void wipe();
+		void setPause(int);
 };
