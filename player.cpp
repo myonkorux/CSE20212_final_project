@@ -263,7 +263,7 @@ void Player::display( SDL_Surface* source )
 		if( clipSelect <= 3 )
 		{
 			y -= 5*( 3-clipSelect );
-			x += (-1)*recoil*speed/2;
+			x += recoil*speed/2;
 		}
 		else if( clipSelect <= 6 && clipSelect >= 4 )
 		{ 

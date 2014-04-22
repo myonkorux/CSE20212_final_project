@@ -23,8 +23,9 @@ int main (int argc, char* args[])
 		}
 
 		testBoard.update();
-
-		SDL_Delay(100);
+		
+		SDL_Delay( 100 );
+		
 	}	
 
 	testBoard.clean();

@@ -60,7 +60,7 @@ int main(){
 		Z1.update( P1.getX(), P1.getY() );
 		damage += Z1.attack( P1.getX(), P1.getY());
 		
-		P1.apply_damage( Z1.getX(), Z1.getY() );
+		P1.apply_damage( damage );
 	
 		SDL_Flip( screen );
 	
