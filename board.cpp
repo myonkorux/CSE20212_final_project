@@ -364,10 +364,11 @@ void Board::update()
 				PCScore += ((m)->getPoints());
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
+
 				zombies.erase(m);
 				spawnZombie();
 			}
-			}
+		}
 
 		stateInterpret();
 	}

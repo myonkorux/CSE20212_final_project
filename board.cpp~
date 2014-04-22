@@ -43,7 +43,7 @@ void Board::initialize()
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
 	startState();
-	spawnZombie();
+	//spawnZombie();
 	display();
 }
 
@@ -127,6 +127,7 @@ void Board::startState()
 
 	Player player;
 	PC.push_back(player);
+	spawnZombie();
 }
 
 void Board::selectState()
@@ -364,10 +365,11 @@ void Board::update()
 				PCScore += ((m)->getPoints());
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
+
 				zombies.erase(m);
 				spawnZombie();
 			}
-			}
+		}
 
 		stateInterpret();
 	}
@@ -382,7 +384,15 @@ void Board::update()
 		{
 			resetStates();
 			gInitial = 1;	
-			resetPC();		
+			resetPC();
+
+			deque<Zombie>::iterator i;
+			for(i = zombies.begin(); i != zombies.end(); ++i)
+			{
+				(i)->Free_Memory();
+			}
+			zombies.clear();
+					
 			start = 1;
 			stateInterpret();
 		}
@@ -433,5 +443,7 @@ void Board::resetPC()
 	i = PC.begin();
 	(i)->Free_Memory();
 	PC.clear();
+
+	PCScore = 0;
 }
 

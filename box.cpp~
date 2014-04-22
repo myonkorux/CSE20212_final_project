@@ -118,11 +118,7 @@ void Box::display(SDL_Surface* destination )
 
 void Box::renderBox()
 {
-	if((font != NULL) && (messageSurface != NULL))
-	{
-		cleanBox();
-	}	
-
+	cleanBox();	
 	font = TTF_OpenFont("LIVINGBY.TTF", fontSize);
 	setTextColor(0, 0, 0);
 	messageSurface = TTF_RenderText_Solid(font, message.c_str(), textColor);
