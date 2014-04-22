@@ -188,7 +188,7 @@ Player::Player(){
 
 int Player::attack(int zombieX, int zombieY)
 {
-	if ( ((x <= zombieX + 60) && (x + 45 >= zombieX)) && (y == zombieY) && (isAttacking == 1))
+	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1))
 	{
 		return power;
 	}

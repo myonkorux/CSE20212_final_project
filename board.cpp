@@ -346,9 +346,10 @@ void Board::update()
 			}
 			else if((m)->isDead() == 1)
 			{
+				cout << "killed one." << endl;				
 				(m)->Free_Memory();
 				zombies.erase(m);
-				//spawnZombie();
+				spawnZombie();
 			}
 			}
 
