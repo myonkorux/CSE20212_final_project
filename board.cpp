@@ -402,8 +402,8 @@ void Board::update()
 				(counters.begin() + 1)->setCountValue(PCScore);
 				(m)->Free_Memory();
 				zombies.erase(m);
-				--m;
 				numZombies--;
+				break;
 			}
 		}
 
