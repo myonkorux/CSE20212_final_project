@@ -113,7 +113,7 @@ void Frankenstein::display( SDL_Surface* source )
 		y = tempY;
 	}
 	
-	if( clipSelect >= 8 )
+	if( clipSelect >= 4 )
 	{
 		clipSelect = 0;
 	}

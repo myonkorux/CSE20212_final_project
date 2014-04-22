@@ -5,10 +5,11 @@ Nathan Vahrenberg
 
 *******************/
 
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#ifndef FRANKENSTEIN_H
+#define FRANKENSTEIN_H
 
 #include <iostream>
+#include<iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
@@ -28,7 +29,7 @@ class Frankenstein
 		int getX();
 		int getY();
 		int getDirection();
-	
+		int getPoints();
 	
 	private:
 		int x;
@@ -42,7 +43,8 @@ class Frankenstein
 		int isStanding;
 		int isAttacking;
 		int Dead;
-		SDL_Surface* SpriteZombie;
+		int points;
+		SDL_Surface* SpriteFrankenstein;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];
 		SDL_Rect movingL[3];

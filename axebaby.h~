@@ -43,6 +43,7 @@ class Axebaby
 		int isStanding;
 		int isAttacking;
 		int Dead;
+		int points;
 		SDL_Surface* SpriteAxebaby;
 		SDL_Rect moving[4];
 		SDL_Rect attacking[1];

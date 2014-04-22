@@ -42,7 +42,7 @@ class Board
 		int start;
 		int select;
 		int game;
-		int ginitial;
+		int gInitial;
 		int pause;
 		int over;
 		int difficulty;
@@ -59,6 +59,7 @@ class Board
 		deque<Player> PC;
 
 		deque<Zombie> zombies;
+		deque<Axebaby> babies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;

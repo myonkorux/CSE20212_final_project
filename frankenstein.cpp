@@ -223,3 +223,8 @@ int Frankenstein::isDead()
 {
 	return Dead;
 }
+
+int Frankenstein::getPoints()
+{
+	return points;
+}

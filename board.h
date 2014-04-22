@@ -21,6 +21,8 @@ board.h
 #include"counter.h"
 #include"player.h"
 #include"zombie.h"
+#include"axebaby.h"
+#include"frankenstein.h"
 //#include "item.h"
 //#include "unit.h"
 
@@ -59,6 +61,7 @@ class Board
 		deque<Player> PC;
 
 		deque<Zombie> zombies;
+		deque<Axebaby> babies;
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
