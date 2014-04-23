@@ -1,5 +1,4 @@
 #include"board.h"
-#include <ctime>
 
 int main (int argc, char* args[])
 {

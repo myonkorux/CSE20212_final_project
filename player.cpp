@@ -433,3 +433,13 @@ void Player::setEnable(int e)
 {
 	enable = e;
 }
+
+void Player::setPower(int newPower)
+{
+	power = newPower;
+}
+
+int Player::getPower()
+{
+	return power;
+}

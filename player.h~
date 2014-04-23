@@ -29,6 +29,9 @@ class Player{
 		int getX();
 		int getY();
 		int getHealth();
+		void setEnable(int);
+		int getPower();
+		int setPower();
 		
 	private:
 		int x;

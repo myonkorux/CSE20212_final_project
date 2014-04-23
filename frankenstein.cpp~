@@ -170,7 +170,7 @@ void Frankenstein::display( SDL_Surface* source )
 		return;
 	}
 	
-	if(dying)
+	if(isDying)
 	{
 		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &dying[ clipSelect ]);
 	}

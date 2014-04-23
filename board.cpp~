@@ -180,17 +180,17 @@ void Board::gameState()
 	{		
 		if((a % 25) == 0)
 		{			
-			if(numZombies < maxZombies)
-			{
-				spawnZombie();
-			}
-			else if(numBabies < maxBabies)
+			if(numBabies < maxBabies)
 			{
 				spawnBaby();
 			}
 			else if(numTanks < maxTanks)
 			{
 				spawnTank();
+			}
+			else if(numZombies < maxZombies)
+			{
+				spawnZombie();
 			}
 			setPause(1);
 		}		
@@ -333,17 +333,17 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 4;
-			maxZombies = 5;
-			maxBabies = 3;
-			maxTanks = 2;
+			maxZombies = 6;
+			maxBabies = 6;
+			maxTanks = 6;
 			diffString = "Hardcore";
 		}
 		else if((buttons.begin() + 1)->update(event) == 1)	
 		{
 			game = 1;
 			difficulty = 1;
-			maxZombies = 7;
-			maxBabies = 0;
+			maxZombies = 8;
+			maxBabies = 2;
 			maxZombies = 0;
 			maxTanks = 0;
 			diffString = "Easy";
@@ -353,8 +353,8 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 2;
-			maxZombies = 10;
-			maxBabies = 0;
+			maxZombies = 7;
+			maxBabies = 3;
 			maxTanks = 0;
 			diffString = "Normal";	
 		}
@@ -362,9 +362,9 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 3;
-			maxZombies = 7;
+			maxZombies = 6;
 			maxBabies = 3;
-			maxTanks = 0;
+			maxTanks = 1;
 			diffString = "Hard";
 		}
 		else
@@ -420,7 +420,7 @@ void Board::update()
 		}
 
 		(i)->update(event);		
-		deque<Axebabies>::iterator k;
+		deque<Axebaby>::iterator k;
 		for(k = babies.begin(); k != babies.end(); ++k)
 		{
 			(k)->update((i)->getX(), (i)->getY());

@@ -36,7 +36,7 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 
 		if( optimized != NULL )
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 8, 112, 80 );
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 0, 0, 0 );
 		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey );
 		}
 	}

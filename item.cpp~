@@ -19,30 +19,16 @@ Item::Item()
 	x = 0;
 	y = 0;
 	type = 0;
-	
-
 }
 
-void Item::display( SDL_Surface* source, SDL_Surface* destination )
-{
-
-	SDL_Rect offset;
-
-	offset.x = x;
-	offset.y = y;
-
-	SDL_BlitSurface( source, NULL, destination, &offset );
-
-}
-
-int Item::getx()
+int Item::getX()
 {
 
 	return x;
 
 }
 
-int Item::gety()
+int Item::getY()
 {
 
 	return y;
@@ -54,16 +40,48 @@ int Item::getType()
 	return type;
 }
 
-void Item::setx( int newx )
+void Item::setX( int newx )
 {
 
 	x = newx;
 
 }
 
-void Item::sety( int newy )
+void Item::setY( int newy )
 {
 
 	y = newy;
 
+}
+
+void Item::setType(int newType)
+{
+
+	type = newType;
+
+}
+
+SDL_Surface * Item::loadImage(string filename)
+{
+	SDL_Surface* loadedImage = NULL;
+
+	SDL_Surface* optimizedImage = NULL;
+
+	loadedImage = IMG_Load( filename.c_str() );
+
+	if( loadedImage != NULL )
+	{
+		optimizedImage = SDL_DisplayFormatAlpha( loadedImage );
+
+		SDL_FreeSurface( loadedImage );
+
+		if( optimizedImage != NULL )
+		{
+			Uint32 colorkey = SDL_MapRGB( optimizedImage->format, 0, 0xFF, 0xFF );
+
+			SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, colorkey );
+		}
+	}
+
+	return optimizedImage;
 }
