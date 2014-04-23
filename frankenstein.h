@@ -43,7 +43,7 @@ class Frankenstein
 		int direction;
 		int isStanding;
 		int isAttacking;
-		int dying;
+		int isDying;
 		int Dead;
 		int points;
 		int enable;

@@ -291,6 +291,18 @@ void Board::display()
 		{
 			(m)->display(screen);
 		}
+
+		deque<Axebaby>::iterator k;
+		for(k = babies.begin(); k != babies.end(); ++k)
+		{
+			(k)->display(screen);
+		}
+
+		deque<Frankenstein>::iterator n;
+		for(n = tanks.begin(); n != tanks.end(); ++n)
+		{
+			(n)->display(screen);
+		}
 	}
 
 	SDL_Flip( screen );
@@ -379,8 +391,8 @@ void Board::update()
 
 		deque<Player>::iterator i;
 		i = PC.begin();
-		(i)->update(event);
 		
+		(i)->update(event);		
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -403,6 +415,60 @@ void Board::update()
 				(m)->Free_Memory();
 				zombies.erase(m);
 				numZombies--;
+				break;
+			}
+		}
+
+		(i)->update(event);		
+		deque<Axebaby>::iterator k;
+		for(k = babies.begin(); k != babies.end(); ++k)
+		{
+			(k)->update((i)->getX(), (i)->getY());
+			(i)->update(event);
+			(k)->applyDamage((i)->attack((k)->getX(), (k)->getY()));
+			(i)->apply_damage((k)->attack((i)->getX(), (i)->getY()),(k)->getDirection());
+			(counters.begin())->setCountValue((i)->getHealth());
+
+			if((i)->isDead() == 1)
+			{
+				game = 0;					
+				over = 1;
+				break;
+			}
+			else if((k)->isDead() == 1)
+			{
+				PCScore += ((k)->getPoints());
+				(counters.begin() + 1)->setCountValue(PCScore);
+				(k)->Free_Memory();
+				babies.erase(k);
+				numBabies--;
+				break;
+			}
+		}
+
+		(i)->update(event);		
+		deque<Frankenstein>::iterator n;
+		for(n = tanks.begin(); n != tanks.end(); ++n)
+		{
+			(n)->update((i)->getX(), (i)->getY());
+			(i)->update(event);
+			(n)->applyDamage((i)->attack((n)->getX(), (n)->getY()));
+			(i)->apply_damage((n)->attack((i)->getX(), (i)->getY()),(n)->getDirection());
+			(counters.begin())->setCountValue((i)->getHealth());
+
+			if((i)->isDead() == 1)
+			{
+				game = 0;					
+				over = 1;
+				break;
+			}
+			else if((n)->isDead() == 1)
+			{
+				PCScore += ((n)->getPoints());
+				(counters.begin() + 1)->setCountValue(PCScore);
+				(n)->Free_Memory();
+				tanks.erase(n);
+				numTanks--;
 				break;
 			}
 		}

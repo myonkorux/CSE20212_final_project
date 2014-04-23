@@ -58,6 +58,7 @@ Frankenstein::Frankenstein(){
 	isAttacking = 0;
 	Dead = 0;
 	enable = 0;
+	isDying = 0;
 	
 	clipSelect = 0;
 	
@@ -140,36 +141,36 @@ void Frankenstein::display( SDL_Surface* source )
 	int tempX = 0;
 	int tempY = 0;
 
-	if(health <= 0)
+	if((health <= 0) && (isDying == 0))
 	{
-		dying = 1;
+		isDying = 1;
 		clipSelect = 0;
 	}
 
 	tempX = (x + xVel);
 	tempY = (y + yVel);
-	if((tempX > 0) && (tempX < 840) && !dying)
+	if((tempX > 0) && (tempX < 840) && !isDying)
 	{
 		x = tempX;
 	}
-	if((tempY > 0) && (tempY < 540) && !dying)
+	if((tempY > 0) && (tempY < 540) && !isDying)
 	{
 		y = tempY;
 	}
 
-	if( clipSelect >= 4 && !dying)
+	if( clipSelect >= 4 && !isDying)
 	{
 		clipSelect = 0;
 	}
 	
-	if( clipSelect >= 10 && dying )
+	if( clipSelect >= 10 && isDying )
 	{
-		dead = 1;
-		dying = 0;
+		Dead = 1;
+		isDying = 0;
 		return;
 	}
 	
-	if(dying)
+	if(isDying)
 	{
 		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &dying[ clipSelect ]);
 	}

@@ -68,7 +68,7 @@ class Board
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
-		//deque<Item> Items;
+		deque<Item> Items;
 		//deque<Terrain> boardTerrain;
 
 		SDL_Surface * screen;
