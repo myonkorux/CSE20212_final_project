@@ -22,6 +22,7 @@ Board::Board()
 	pause = 0;
 	over = 0;
 	PCScore = 0;
+	powerActive = 0;
 
 	screenWidth = 880;
 	screenHeight = 600;
@@ -37,8 +38,6 @@ Board::Board()
 	screen = NULL;
 	background = NULL;
 
-	srand(time(NULL));
-
 	initialize();
 }
 
@@ -49,7 +48,10 @@ void Board::initialize()
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
+	Power randomPower(440, 300, 1);
+	PCpower.push_back(randomPower);
 	startState();
+	srand(time(NULL));
 	display();
 }
 
@@ -286,6 +288,11 @@ void Board::display()
 		i = PC.begin();		
 		(i)->display(screen);
 
+		if(powerActive)
+		{
+			PCpower.begin()->display(screen);
+		}
+
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -343,8 +350,8 @@ void Board::update()
 			game = 1;
 			difficulty = 1;
 			maxZombies = 0;
-			maxBabies = 7;
-			maxZombies = 3;
+			maxBabies = 10;
+			maxZombies = 0;
 			maxTanks = 0;
 			diffString = "Easy";
 			
@@ -391,8 +398,14 @@ void Board::update()
 
 		deque<Player>::iterator i;
 		i = PC.begin();
+		(i)->update(event);
 		
-		(i)->update(event);		
+		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		{
+			setHandicaps();
+			powerActive = 0;
+		}
+
 		deque<Zombie>::iterator m;
 		for(m = zombies.begin(); m != zombies.end(); ++m)
 		{
@@ -419,7 +432,14 @@ void Board::update()
 			}
 		}
 
-		(i)->update(event);		
+		(i)->update(event);
+
+		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		{
+			setHandicaps();
+			powerActive = 0;
+		}	
+		
 		deque<Axebaby>::iterator k;
 		for(k = babies.begin(); k != babies.end(); ++k)
 		{
@@ -446,7 +466,14 @@ void Board::update()
 			}
 		}
 
-		(i)->update(event);		
+		(i)->update(event);
+
+		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		{
+			setHandicaps();
+			powerActive = 0;
+		}
+		
 		deque<Frankenstein>::iterator n;
 		for(n = tanks.begin(); n != tanks.end(); ++n)
 		{
@@ -522,6 +549,12 @@ void Board::update()
 			over = 1;
 			stateInterpret();
 		}
+	}
+
+	if((PCscore % 100) == 0)
+	{
+		(PCpower.begin())->setType(rand()%4 + 1);
+		powerActive = 1;
 	}
 
 	display();
@@ -621,6 +654,27 @@ void Board::setPause(int p)
 	for(m = tanks.begin(); m != tanks.end(); ++m)
 	{
 		(m)->setEnable(p);
+	}
+}
+
+void Board::setHandicaps()
+{
+	deque<Text>::iterator i;
+	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
+	{
+		(i)->setHandicap(PCpower.begin()->getType());
+	}
+
+	deque<Button>::iterator j;
+	for(j = buttons.begin(); j != buttons.end(); ++j)
+	{
+		(j)->(screen);
+	}
+
+	deque<Counter>::iterator k;
+	for(k = counters.begin(); k != counters.end(); ++k)
+	{
+		(k)->display(screen);
 	}
 }
 

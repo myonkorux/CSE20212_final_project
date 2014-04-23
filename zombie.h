@@ -31,6 +31,7 @@ class Zombie
 		int getDirection();
 		int getPoints();
 		void setEnable(int);
+		void setHandicap(int);
 	
 	
 	private:
@@ -48,6 +49,7 @@ class Zombie
 		int Dead;
 		int points;
 		int enable;
+		int handicap;
 		SDL_Surface* SpriteZombie;
 		SDL_Rect moving[3];
 		SDL_Rect attacking[3];

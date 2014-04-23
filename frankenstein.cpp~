@@ -36,7 +36,7 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 
 		if( optimized != NULL )
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 8, 112, 80 );
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 0, 0, 0 );
 		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey );
 		}
 	}
@@ -59,6 +59,7 @@ Frankenstein::Frankenstein(){
 	Dead = 0;
 	enable = 0;
 	isDying = 0;
+	handicap = 0;
 	
 	clipSelect = 0;
 	
@@ -286,4 +287,9 @@ int Frankenstein::getPoints()
 void Frankenstein::setEnable(int e)
 {
 	enable = e;
+}
+
+void Frankenstein::setHandicap(int h)
+{
+	handicap = h;
 }

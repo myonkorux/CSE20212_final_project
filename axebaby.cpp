@@ -59,6 +59,7 @@ Axebaby::Axebaby(){
 	Dead = 0;
 	points = 20;
 	enable = 0;
+	handicap = 0;
 	isDying = 0;
 	
 	clipSelect = 0;
@@ -209,6 +210,25 @@ void Axebaby::update( int playerX, int playerY )
 {
 	if(enable)
 	{		
+		switch(handicap)
+		{
+			case 1:
+			health = 0;
+			break;
+
+			case 2:
+			speed = (speed / 2);
+			break;
+
+			case 3:
+			power = (power / 2);
+			break;
+
+			case 4:
+			speed = 0;
+			break;
+		}		
+		
 		if( playerX < x )
 		{
 			direction = -1;
@@ -306,4 +326,9 @@ int Axebaby::getPoints()
 void Axebaby::setEnable(int e)
 {
 	enable = e;
+}
+
+void Axebaby::setHandicap(int h)
+{
+	handicap = h;
 }

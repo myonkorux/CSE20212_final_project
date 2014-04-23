@@ -25,7 +25,7 @@ board.h
 #include"zombie.h"
 #include"axebaby.h"
 #include"frankenstein.h"
-//#include "Power.h"
+#include "Power.h"
 
 using namespace std;
 
@@ -46,6 +46,7 @@ class Board
 		int over;
 		int difficulty;
 		int PCScore;
+		int powerActive;
 		string diffString;
 
 		int screenWidth;
@@ -60,6 +61,7 @@ class Board
 		int maxTanks;
 
 		deque<Player> PC;
+		deque<Power> PCpower;
 
 		deque<Zombie> zombies;
 		deque<Axebaby> babies;
@@ -93,4 +95,5 @@ class Board
 		void display();
 		void wipe();
 		void setPause(int);
+		void setHandicaps();
 };

@@ -36,7 +36,7 @@ SDL_Surface * Axebaby::optimizeImage(string filename)
 
 		if( optimized != NULL )
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 60, 60, 60 );
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 64, 64, 64 );
 		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey );
 		}
 	}
@@ -59,6 +59,7 @@ Axebaby::Axebaby(){
 	Dead = 0;
 	points = 20;
 	enable = 0;
+	handicap = 0;
 	isDying = 0;
 	
 	clipSelect = 0;
@@ -306,4 +307,9 @@ int Axebaby::getPoints()
 void Axebaby::setEnable(int e)
 {
 	enable = e;
+}
+
+void Axebaby::setHandicap(int h)
+{
+	handicap = h;
 }
