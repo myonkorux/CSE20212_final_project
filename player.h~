@@ -30,8 +30,6 @@ class Player{
 		int getY();
 		int getHealth();
 		void setEnable(int);
-		int getPower();
-		int setPower();
 		
 	private:
 		int x;
@@ -41,8 +39,8 @@ class Player{
 		int direction;
 		int health;
 		int speed;
-		int power;
 		int enable;
+		int power
 		SDL_Surface * spritePC;
 		SDL_Surface * spritePCL;
 		SDL_Rect standing[8];
