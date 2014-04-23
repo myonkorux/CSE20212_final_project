@@ -13,6 +13,7 @@ class Power : public Item
 		SDL_Surface * PowerImage;
 		float yOffset;
 		float t;
+		SDL_Rect clip;
 			
 };
 

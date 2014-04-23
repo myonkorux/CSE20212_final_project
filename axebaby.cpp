@@ -96,12 +96,12 @@ Axebaby::Axebaby(){
 	attacking[0].x = 55;
 	attacking[0].w = 82-55;
 	attacking[0].y = 172;
-	attacking[0].h = 198;
+	attacking[0].h = 198-172;
 	
 	attackingL[0].x = 4;
 	attackingL[0].w = 31-4;
 	attackingL[0].y = 172;
-	attackingL[0].h = 198;
+	attackingL[0].h = 198-172;
 	
 	dying[0].x = 10;
 	dying[0].w = 35-10;

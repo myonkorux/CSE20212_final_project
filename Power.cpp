@@ -10,10 +10,35 @@ Power::Power(int newX, int newY, int newType)
 
 	yOffset = 0.0;
 	t = 0.0;
+	PowerImage = loadImage("powerups.bmp");
 
-	if((getType() == 1) || (getType() == 2) || (getType() == 3) || (getType() == 4))
+	if(getType() == 1)
 	{
-		PowerImage = loadImage("dot.bmp");
+		clip.x = 0;
+		clip.w = 50;
+		clip.y = 0;
+		clip.h = 50;
+	}
+	else if(getType() == 2)
+	{
+		clip.x = 50;
+		clip.w = 50;
+		clip.y = 0;
+		clip.h = 50;
+	}
+	else if(getType() == 3)
+	{
+		clip.x = 0;
+		clip.w = 50;
+		clip.y = 50;
+		clip.h = 50;
+	}
+	else
+	{
+		clip.x = 50;
+		clip.w = 50;
+		clip.y = 50;
+		clip.h = 50;
 	}
 }
 
@@ -30,7 +55,7 @@ void Power::display(SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY() + yOffset;
 
-	SDL_BlitSurface( PowerImage, NULL, destination, &offset );
+	SDL_BlitSurface( PowerImage, &clip, destination, &offset );
 }
 
 void Power::cleanImage()

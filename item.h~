@@ -20,16 +20,16 @@ using namespace std;
 
 class Item
 {
-
 	public:
 		Item();
-		void display(SDL_Surface *, SDL_Surface *);
-		int getx();
-		int gety();
+		virtual void display(SDL_Surface *) = 0;
+		int getX();
+		int getY();
 		int getType();
-		void setx( int );
-		void sety( int );
+		void setX( int );
+		void setY( int );
 		void setType(int);
+		SDL_Surface * loadImage(string);
 	
 	private:
 		int x;
