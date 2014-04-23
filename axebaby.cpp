@@ -53,7 +53,7 @@ Axebaby::Axebaby(){
 	direction = 1;
 	health = 10;
 	speed = 4;
-	power = 20;
+	power = 5;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;

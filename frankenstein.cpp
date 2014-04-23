@@ -53,13 +53,14 @@ Frankenstein::Frankenstein(){
 	direction = 1;
 	health = 30;
 	speed = 1;
-	power = 30;
+	power = 20;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
 	enable = 0;
 	isDying = 0;
 	handicap = 0;
+	points = 30;	
 	
 	clipSelect = 0;
 	

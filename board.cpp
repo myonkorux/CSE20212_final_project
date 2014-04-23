@@ -551,7 +551,7 @@ void Board::update()
 		}
 	}
 
-	if((PCScore % 100) == 0)
+	if(((PCScore % 100) == 0) && (PCScore != 0))
 	{
 		(PCpower.begin())->setType(rand()%4 + 1);
 		powerActive = 1;

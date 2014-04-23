@@ -60,6 +60,7 @@ Frankenstein::Frankenstein(){
 	enable = 0;
 	isDying = 0;
 	handicap = 0;
+	points = 30;	
 	
 	clipSelect = 0;
 	
@@ -191,6 +192,24 @@ void Frankenstein::update( int playerX, int playerY )
 {
 	if(enable)
 	{		
+		switch(handicap)
+		{
+			case 1:
+			health = 0;
+			break;
+
+			case 2:
+			speed = (speed / 2);
+			break;
+
+			case 3:
+			power = (power / 2);
+			break;
+
+			case 4:
+			speed = 0;
+			break;
+		}		
 		if( playerX < x )
 		{
 			direction = -1;
