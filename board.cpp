@@ -342,8 +342,8 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 1;
-			maxZombies = 8;
-			maxBabies = 2;
+			maxZombies = 0;
+			maxBabies = 10;
 			maxZombies = 0;
 			maxTanks = 0;
 			diffString = "Easy";

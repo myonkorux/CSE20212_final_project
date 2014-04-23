@@ -178,7 +178,7 @@ void Board::gameState()
 	}
 	else
 	{		
-		if((a % 25) == 0)
+		if((a % 5) == 0)
 		{			
 			if(numBabies < maxBabies)
 			{
@@ -342,9 +342,9 @@ void Board::update()
 		{
 			game = 1;
 			difficulty = 1;
-			maxZombies = 8;
-			maxBabies = 2;
 			maxZombies = 0;
+			maxBabies = 7;
+			maxZombies = 3;
 			maxTanks = 0;
 			diffString = "Easy";
 			
