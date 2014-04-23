@@ -1,7 +1,7 @@
 #ifndef POWER_H
 #define POWER_H
 
-#include"item.h"
+#include"Power.h"
 
 class Power : public Item
 {

@@ -400,7 +400,7 @@ void Board::update()
 		i = PC.begin();
 		(i)->update(event);
 		
-		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		if((i->getX() >= PCpower.begin()->getX()) && (i->getX() <= PCpower.begin()->getX() + 20) && (i->getY() >= PCpower.begin()->getY()) && (i->getY() <=  PCpower.begin()->getY() + 20) && powerActive)
 		{
 			setHandicaps();
 			powerActive = 0;
@@ -434,7 +434,7 @@ void Board::update()
 
 		(i)->update(event);
 
-		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		if((i->getX() >= PCpower.begin()->getX()) && (i->getX() <= PCpower.begin()->getX() + 20) && (i->getY() >= PCpower.begin()->getY()) && (i->getY() <=  PCpower.begin()->getY() + 20) && powerActive)
 		{
 			setHandicaps();
 			powerActive = 0;
@@ -468,7 +468,7 @@ void Board::update()
 
 		(i)->update(event);
 
-		if((i->getX() >= PCpower.begin->getX()) && (i->getX() <= PCpower.begin->getX() + 20) && (i->getY() >= PCpower.begin->getY()) && (i->getY() <=  PCpower.begin->getY() + 20) && powerActive)
+		if((i->getX() >= PCpower.begin()->getX()) && (i->getX() <= PCpower.begin()->getX() + 20) && (i->getY() >= PCpower.begin()->getY()) && (i->getY() <=  PCpower.begin()->getY() + 20) && powerActive)
 		{
 			setHandicaps();
 			powerActive = 0;
@@ -551,7 +551,7 @@ void Board::update()
 		}
 	}
 
-	if((PCscore % 100) == 0)
+	if((PCScore % 100) == 0)
 	{
 		(PCpower.begin())->setType(rand()%4 + 1);
 		powerActive = 1;
@@ -659,20 +659,20 @@ void Board::setPause(int p)
 
 void Board::setHandicaps()
 {
-	deque<Text>::iterator i;
-	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
+	deque<Zombie>::iterator i;
+	for(i = zombies.begin(); i != zombies.end(); ++i)
 	{
 		(i)->setHandicap(PCpower.begin()->getType());
 	}
 
-	deque<Button>::iterator j;
-	for(j = buttons.begin(); j != buttons.end(); ++j)
+	deque<Axebaby>::iterator j;
+	for(j = babies.begin(); j != babies.end(); ++j)
 	{
 		(j)->setHandicap(PCpower.begin()->getType());
 	}
 
-	deque<Counter>::iterator k;
-	for(k = counters.begin(); k != counters.end(); ++k)
+	deque<Frankenstein>::iterator k;
+	for(k = tanks.begin(); k != tanks.end(); ++k)
 	{
 		(k)->setHandicap(PCpower.begin()->getType());
 	}

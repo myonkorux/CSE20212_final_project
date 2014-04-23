@@ -13,7 +13,7 @@ Power::Power(int newX, int newY, int newType)
 
 	if((getType() == 1) || (getType() == 2) || (getType() == 3) || (getType() == 4))
 	{
-		PowerImage = loadImage("sprites");
+		PowerImage = loadImage("dot.bmp");
 	}
 }
 
