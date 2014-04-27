@@ -8,8 +8,6 @@ int main (int argc, char* args[])
 	Board testBoard;
 	SDL_Event event;
 	
-	srand(time(0));
-	
 	while(quit == 0)
 	{
 		if(SDL_PollEvent(&event))
@@ -26,7 +24,7 @@ int main (int argc, char* args[])
 
 		testBoard.update();
 		
-		SDL_Delay( 50 ); // Makes animations work correctly but ruins input and event handling...
+		SDL_Delay( 75 ); // Makes animations work correctly but ruins input and event handling...
 		
 	}	
 

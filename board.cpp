@@ -48,6 +48,9 @@ void Board::initialize()
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
+	Player player;
+	PC.push_back(player);
+	setPause(1);
 	Power randomPower(440, 300, 1);
 	PCpower.push_back(randomPower);
 	startState();
@@ -174,10 +177,6 @@ void Board::gameState()
 		textBoxes.push_back(cseLabel);
 		textBoxes.push_back(versionLabel);
 		textBoxes.push_back(diffLabel);
-
-		Player player;
-		PC.push_back(player);
-		setPause(1);
 		
 		gInitial = 0;
 	}

@@ -10,8 +10,8 @@ class Terrain : public Item
 	public:
 		Terrain(int, int, int);
 		void display(SDL_Surface *);
-		int getX();
-		int getY();
+		//int getX();
+		//int getY();
 		void Free_Memory();
 		
 	private:

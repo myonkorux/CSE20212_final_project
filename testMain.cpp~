@@ -8,8 +8,6 @@ int main (int argc, char* args[])
 	Board testBoard;
 	SDL_Event event;
 	
-	srand(time(0));
-	
 	while(quit == 0)
 	{
 		if(SDL_PollEvent(&event))
