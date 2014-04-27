@@ -58,6 +58,9 @@ void Board::initialize()
 	spawnTerrain();
 	spawnTerrain();
 	spawnTerrain();
+	spawnTerrain();
+	spawnTerrain();
+	spawnTerrain();
 	display();
 }
 

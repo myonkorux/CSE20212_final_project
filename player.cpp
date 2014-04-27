@@ -307,7 +307,7 @@ void Player::display( SDL_Surface* source )
 	{
 		x = tempX;
 	}
-	if((tempY > 0) && (tempY < 540))
+	if((tempY > 160) && (tempY < 540))
 	{
 		y = tempY;
 	}
