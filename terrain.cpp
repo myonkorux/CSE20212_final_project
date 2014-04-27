@@ -51,7 +51,7 @@ void Terrain::display(SDL_Surface* destination )
 
 }
 
-void Terrain::cleanImage()
+void Terrain::Free_Memory()
 {
 	SDL_FreeSurface(TerrainImage);
 }

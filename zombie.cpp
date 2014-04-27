@@ -210,7 +210,7 @@ void Zombie::update( int playerX, int playerY )
 		if( playerX < x )
 		{
 			direction = -1;
-			if( x <= playerX + 45  )
+			if( x <= playerX + 45 )
 			{
 				xVel = 0;
 			}

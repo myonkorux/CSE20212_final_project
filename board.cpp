@@ -603,6 +603,12 @@ void Board::clean()
 	tanks.clear();
 	numTanks = 0;
 
+	deque<Terrain>::iterator m;
+	for(m = boardTerrain.begin(); m != boardTerrain.end(); ++m)
+	{
+		(m)->Free_Memory();
+	}
+
 	resetPC();
 
 	TTF_Quit();

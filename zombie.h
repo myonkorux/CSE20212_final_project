@@ -13,6 +13,8 @@ Nathan Vahrenberg
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
+#include "terrain.h"
+
 using namespace std;
 
 class Zombie
