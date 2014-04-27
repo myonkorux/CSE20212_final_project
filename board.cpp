@@ -637,7 +637,7 @@ void Board::spawnTank()
 
 void Board::spawnTerrain()
 {
-	Terrain t1( rand()%800+40, rand()%400+100, rand()%2+1 );
+	Terrain t1( rand()%800+40, rand()%500+250, rand()%2+1 );
 	boardTerrain.push_back( t1 );
 }
 
