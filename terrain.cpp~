@@ -1,7 +1,7 @@
 #include"terrain.h"
 #include"item.h"
 
-SDL_Surface * Terrain::optimizeImage(string filename)
+SDL_Surface * Zombie::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
 	SDL_Surface * optimized = NULL;

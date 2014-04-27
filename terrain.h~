@@ -14,7 +14,7 @@ class Terrain : public Item
 		
 	private:
 		SDL_Surface * TerrainImage;
-		SDL_Surface * optimizeImage(string);
+		SDLSurface * optimizeImage(string);
 };
 
 

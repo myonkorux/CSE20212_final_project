@@ -14,6 +14,9 @@ box.o: box.cpp box.h
 	
 item.o: item.cpp item.h
 	g++ -c -g item.cpp
+
+Power.o:  Power.cpp Power.h item.h
+	g++ -c -g Power.cpp
 	
 unit.o: unit.cpp unit.h
 	g++ -c -g unit.cpp

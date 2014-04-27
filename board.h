@@ -26,6 +26,7 @@ board.h
 #include"axebaby.h"
 #include"frankenstein.h"
 #include "Power.h"
+#include "terrain.h"
 
 using namespace std;
 
@@ -69,7 +70,7 @@ class Board
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
-		//deque<Terrain> boardTerrain;
+		deque<Terrain> boardTerrain;
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
@@ -90,6 +91,7 @@ class Board
 		void spawnZombie();
 		void spawnBaby();
 		void spawnTank();
+		void spawnTerrain();
 		void initialize();
 		void display();
 		void wipe();

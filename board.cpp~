@@ -15,9 +15,9 @@ using namespace std;
 Board::Board()
 {
 	// Init values
-	start = 1 /* unknown */;
+	start = 1;
 	select = 0;
-	game = 0 /* unknown */;
+	game = 0;
 	gInitial = 1;
 	pause = 0;
 	over = 0;
@@ -34,6 +34,9 @@ Board::Board()
 	maxBabies = 0;
 	numTanks = 0;
 	maxTanks = 0;
+
+	numRocks = 0;
+	maxRocks = 0;
 
 	screen = NULL;
 	background = NULL;
@@ -52,6 +55,9 @@ void Board::initialize()
 	PCpower.push_back(randomPower);
 	startState();
 	srand(time(NULL));
+	spawnTerrain();
+	spawnTerrain();
+	spawnTerrain();
 	display();
 }
 
@@ -310,6 +316,11 @@ void Board::display()
 		{
 			(n)->display(screen);
 		}
+		deque<Terrain>::iterator p;
+		for(p = boardTerrain.begin(); p != boardTerrain.end(); ++p)
+		{
+			(p)->display(screen);
+		}
 	}
 
 	SDL_Flip( screen );
@@ -551,7 +562,7 @@ void Board::update()
 		}
 	}
 
-	if((PCScore % 100) == 0)
+	if(((PCScore % 100) == 0) && (PCScore != 0))
 	{
 		(PCpower.begin())->setType(rand()%4 + 1);
 		powerActive = 1;
@@ -620,6 +631,12 @@ void Board::spawnTank()
 	Frankenstein tank;
 	tanks.push_back(tank);
 	numTanks++;
+}
+
+void Board::spawnTerrain()
+{
+	Terrain t1( rand()%800+40, rand()%400+100, rand()%2+1 );
+	boardTerrain.push_back( t1 );
 }
 
 void Board::resetPC()
