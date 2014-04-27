@@ -53,7 +53,7 @@ Axebaby::Axebaby(){
 	direction = 1;
 	health = 10;
 	speed = 4;
-	power = 20;
+	power = 5;
 	isStanding = 1;
 	isAttacking = 0;
 	Dead = 0;
@@ -272,7 +272,7 @@ void Axebaby::update( int playerX, int playerY )
 int Axebaby::attack( int playerX, int playerY )
 {
 
-	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) && enable)
+	if (  (x <= playerX + 50) && (x + 35 >= playerX) && (playerY <= y + 35) && (playerY + 50 >= y) && enable)
 	{
 		isAttacking = 1;
 		return power;

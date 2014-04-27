@@ -188,7 +188,7 @@ Player::Player(){
 
 int Player::attack(int zombieX, int zombieY)
 {
-	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y == zombieY) && (isAttacking == 1) && enable)
+	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y <= zombieY + 80) (y + 70 >= zombieY) && (isAttacking == 1) && enable)
 	{
 		return power;
 	}
@@ -307,7 +307,7 @@ void Player::display( SDL_Surface* source )
 	{
 		x = tempX;
 	}
-	if((tempY > 150) && (tempY < 540))
+	if((tempY > 160) && (tempY < 540))
 	{
 		y = tempY;
 	}

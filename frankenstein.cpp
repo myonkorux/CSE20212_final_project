@@ -253,7 +253,7 @@ void Frankenstein::update( int playerX, int playerY )
 int Frankenstein::attack( int playerX, int playerY )
 {
 
-	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) && enable)
+	if ( (x <= playerX + 50) && (x + 35 >= playerX) && (playerY <= y + 35) && (playerY + 50 >= y) && enable)
 	{
 		return power;
 	}

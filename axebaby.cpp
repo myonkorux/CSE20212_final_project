@@ -254,11 +254,11 @@ void Axebaby::update( int playerX, int playerY )
 			}
 		}
 
-		if( playerY < y )
+		if( (playerY  + 42) < y )
 		{
 			yVel = -speed;
 		}
-		else if( playerY > y)
+		else if( (playerY  + 42) > y)
 		{
 			yVel = speed;
 		}
@@ -272,7 +272,7 @@ void Axebaby::update( int playerX, int playerY )
 int Axebaby::attack( int playerX, int playerY )
 {
 
-	if ( ((x <= playerX + 50) && (x + 35 >= playerX)) && (playerY == y) && enable)
+	if (  (x <= playerX + 50) && (x + 35 >= playerX) && (playerY <= y + 35) && (playerY + 50 >= y) && enable)
 	{
 		isAttacking = 1;
 		return power;
