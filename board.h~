@@ -15,6 +15,7 @@ board.h
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
+#include "SDL/SDL_mixer.h"
 #include <deque>
 
 #include"box.h"
@@ -24,7 +25,7 @@ board.h
 #include"player.h"
 #include"zombie.h"
 #include"axebaby.h"
-#include"frankenstein.h"
+#include "frankenstein.h"
 #include "Power.h"
 #include "terrain.h"
 
@@ -60,6 +61,7 @@ class Board
 		int maxBabies;
 		int numTanks;
 		int maxTanks;
+		deque<Mix_Music *> trackNumber;
 
 		deque<Player> PC;
 		deque<Power> PCpower;
@@ -71,6 +73,7 @@ class Board
 		deque<Button> buttons;
 		deque<Counter> counters;
 		deque<Terrain> boardTerrain;
+		deque<Mix_Music *> playlist;
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
@@ -97,5 +100,6 @@ class Board
 		void wipe();
 		void setPause(int);
 		void setHandicaps();
-		int voidZone(int, int);
+		void createPlaylist();
+		void musicPlayer();
 };

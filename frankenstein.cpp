@@ -64,7 +64,12 @@ Frankenstein::Frankenstein(){
 	enable = 0;
 	isDying = 0;
 	handicap = 0;
-	points = 30;	
+	points = 30;
+
+	spawn = Mix_LoadWAV("music/waves/tankSpawn.wav");
+	die = Mix_LoadWAV("music/waves/tankDeath.wav");
+	Mix_PlayChannel(-1, spawn, 0);
+		
 	
 	clipSelect = 0;
 	
@@ -268,10 +273,12 @@ int Frankenstein::attack( int playerX, int playerY )
 
 }
 
-void Frankenstein::Free_Memory(){
-
+void Frankenstein::Free_Memory()
+{
+	Mix_PlayChannel(-1, die, 0);
+	Mix_FreeChunk(spawn);
+	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteFrankenstein );
-
 }
 
 void Frankenstein::applyDamage(int damage)

@@ -61,6 +61,10 @@ Zombie::Zombie(){
 	points = 10;
 	enable = 0;
 	handicap = 0;
+
+	spawn = Mix_LoadWAV("music/waves/zombieSpawn.wav");
+	die = Mix_LoadWAV("music/waves/zombieDeath.wav");
+	Mix_PlayChannel(-1, spawn, 0);
 	
 	clipSelect = 0;
 	
@@ -265,10 +269,12 @@ int Zombie::attack( int playerX, int playerY )
 
 }
 
-void Zombie::Free_Memory(){
-
+void Zombie::Free_Memory()
+{
+	Mix_PlayChannel(-1, die, 0);
+	Mix_FreeChunk(spawn);
+	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteZombie );
-
 }
 
 void Zombie::applyDamage(int damage)

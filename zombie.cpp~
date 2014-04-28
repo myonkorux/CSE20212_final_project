@@ -43,7 +43,7 @@ SDL_Surface * Zombie::optimizeImage(string filename)
 Zombie::Zombie(){
 
 	x = rand()%800+40;
-	if((x > 400) && (x < 600))
+	if((x > 300) && (x < 600))
 	{
 		x = 100;
 	}
@@ -61,6 +61,10 @@ Zombie::Zombie(){
 	points = 10;
 	enable = 0;
 	handicap = 0;
+
+	spawn = Mix_LoadWAV("music/waves/zombieSpawn.wav");
+	die = Mix_LoadWAV("music/waves/zombieDeath.wav");
+	Mix_PlayChannel(-1, spawn, 0);
 	
 	clipSelect = 0;
 	

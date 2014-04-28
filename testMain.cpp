@@ -3,6 +3,7 @@
 int main (int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
 
 	int quit = 0;
 	Board testBoard;

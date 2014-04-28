@@ -44,6 +44,7 @@ Board::Board()
 void Board::initialize()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
 	screen = SDL_SetVideoMode(screenWidth, screenHeight, screenBPP, SDL_SWSURFACE);
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
@@ -55,6 +56,8 @@ void Board::initialize()
 	PCpower.push_back(randomPower);
 	startState();
 	srand(time(NULL));
+	createPlaylist();
+	trackNumber = playlist.begin();
 	spawnTerrain(23, 131, 2); //40 x 44
 	spawnTerrain(109, 181, 1); //20 x 17
 	spawnTerrain(136, 143, 2); //40 x 44
@@ -699,4 +702,46 @@ void Board::setHandicaps()
 		(k)->setHandicap(PCpower.begin()->getType());
 	}
 }
+
+void Board::createPlaylist()
+{
+	Mix_Music * song0 = Mix_LoadMUS("music/waves/runToTheHills.wav");
+	playlist.push_back(song0);
+	Mix_Music * song1 = Mix_LoadMUS("music/waves/puppets.wav");
+	playlist.push_back(song1);
+	Mix_Music * song2 = Mix_LoadMUS("music/waves/spades.wav");
+	playlist.push_back(song2);
+	Mix_Music * song3 = Mix_LoadMUS("music/waves/crazyTrain.wav");
+	playlist.push_back(song3);
+	Mix_Music * song4 = Mix_LoadMUS("music/waves/iron.wav");
+	playlist.push_back(song4);
+	Mix_Music * song5 = Mix_LoadMUS("music/waves/beast.wav");
+	playlist.push_back(song5);
+	Mix_Music * song6 = Mix_LoadMUS("music/waves/warPigs.wav");
+	playlist.push_back(song6);
+	Mix_Music * song7 = Mix_LoadMUS("music/waves/paranoid.wav");
+	playlist.push_back(song7);
+	Mix_Music * song8 = Mix_LoadMUS("music/waves/enterSandman.wav");
+	playlist.push_back(song8);
+	Mix_Music * song9 = Mix_LoadMUS("music/waves/metal.wav");
+	playlist.push_back(song9);
+	Mix_Music * song10 = Mix_LoadMUS("music/waves/special.wav");
+	playlist.push_back(song10);
+}
+
+void Board::musicPlayer()
+{
+	if(Mix_PlayingMusic() == 0)
+	{
+		Mix_PlayMusic(*trackNumber, -1);
+		++trackNumber; 
+	}
+	
+	if(trackNumber == playlist.end())
+	{
+		trackNumber = playlist.begin();
+	}
+}
+
+
 

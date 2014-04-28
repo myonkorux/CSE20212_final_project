@@ -1,7 +1,7 @@
 EXEC = main
 
-$(EXEC): testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o
-	g++ testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
+$(EXEC): testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o
+	g++ testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
 	
 testMain.o: testMain.cpp board.h
 	g++ -c -g testMain.cpp
@@ -41,6 +41,9 @@ button.o:  button.cpp button.h
 
 counter.o:  counter.cpp counter.h
 	g++ -c -g counter.cpp
+	
+terrain.o:  terrain.cpp terrain.h
+	g++ -c -g terrain.cpp
 	
 clean:
 	rm -f core* $(EXEC) *.o

@@ -12,6 +12,7 @@ Nathan Vahrenberg
 #include<iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_mixer.h"
 
 using namespace std;
 
@@ -55,6 +56,8 @@ class Frankenstein
 		SDL_Rect movingL[3];
 		SDL_Rect attackingL[3];
 		SDL_Rect dying[10];
+		Mix_Chunk * spawn;
+		Mix_Chunk * die;
 		int clipSelect;
 
 		SDL_Surface * optimizeImage(string);

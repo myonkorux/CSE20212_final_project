@@ -13,6 +13,8 @@ Nathan Vahrenberg
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
+#include "terrain.h"
+
 using namespace std;
 
 class Zombie
@@ -56,6 +58,8 @@ class Zombie
 		SDL_Rect movingL[3];
 		SDL_Rect attackingL[3];
 		SDL_Rect dying[10];
+		Mix_Chunk * spawn;
+		Mix_Chunk * die;
 		int clipSelect;
 
 		SDL_Surface * optimizeImage(string);

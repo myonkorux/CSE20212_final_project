@@ -47,7 +47,7 @@ SDL_Surface * Axebaby::optimizeImage(string filename)
 Axebaby::Axebaby(){
 
 	x = rand()%800+40;
-	if((x > 400) && (x < 600))
+	if((x > 300) && (x < 600))
 	{
 		x = 100;
 	}
@@ -69,6 +69,8 @@ Axebaby::Axebaby(){
 	clipSelect = 0;
 	
 	SpriteAxebaby = optimizeImage("sprites/axebaby.bmp");
+	spawn = Mix_LoadWAV("music/waves/babySpawn.wav");
+	die = Mix_LoadWAV("music/waves/babyDeath.wav");
 	
 	int i;
 	
@@ -288,10 +290,12 @@ int Axebaby::attack( int playerX, int playerY )
 
 }
 
-void Axebaby::Free_Memory(){
-
+void Axebaby::Free_Memory()
+{
+	Mix_PlayChannel(-1, die, 0);
 	SDL_FreeSurface( SpriteAxebaby );
-
+	Mix_FreeChunk(spawn);
+	Mix_FreeChunk(die);
 }
 
 void Axebaby::applyDamage(int damage)

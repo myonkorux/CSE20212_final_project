@@ -12,6 +12,7 @@ Nathan Vahrenberg
 #include<iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_mixer.h"
 
 using namespace std;
 
@@ -56,10 +57,11 @@ class Axebaby
 		SDL_Rect movingL[4];
 		SDL_Rect attackingL[1];
 		SDL_Rect dying[9];
+		Mix_Chunk * spawn;
+		Mix_Chunk * die;
 		int clipSelect;
 
 		SDL_Surface * optimizeImage(string);
-	
 };
 
 #endif

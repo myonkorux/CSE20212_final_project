@@ -1,7 +1,7 @@
 EXEC = main
 
 $(EXEC): testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o
-	g++ testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf
+	g++ testMain.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
 	
 testMain.o: testMain.cpp board.h
 	g++ -c -g testMain.cpp
