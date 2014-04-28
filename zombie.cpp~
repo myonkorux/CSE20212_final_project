@@ -269,10 +269,11 @@ int Zombie::attack( int playerX, int playerY )
 
 }
 
-void Zombie::Free_Memory(){
-
+void Zombie::Free_Memory()
+{
+	Mix_FreeChunk(spawn);
+	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteZombie );
-
 }
 
 void Zombie::applyDamage(int damage)
@@ -299,7 +300,7 @@ int Zombie::getDirection()
 }
 
 int Zombie::isDead()
-{
+{	
 	return Dead;
 }
 

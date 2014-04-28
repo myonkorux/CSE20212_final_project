@@ -157,6 +157,7 @@ void Axebaby::display( SDL_Surface* source )
 
 	if((health <= 0) && (isDying == 0))
 	{
+		Mix_PlayChannel(-1, die, 0);		
 		isDying = 1;
 		clipSelect = 0;
 	}
@@ -293,7 +294,6 @@ int Axebaby::attack( int playerX, int playerY )
 
 void Axebaby::Free_Memory()
 {
-	Mix_PlayChannel(-1, die, 0);
 	SDL_FreeSurface( SpriteAxebaby );
 	Mix_FreeChunk(spawn);
 	Mix_FreeChunk(die);

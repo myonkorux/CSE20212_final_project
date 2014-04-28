@@ -41,7 +41,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 
 Player::Player(){
 
-	x = 200;
+	x = 440;
 	y = 300;
 	xVel = 0;
 	yVel = 0;
@@ -55,6 +55,9 @@ Player::Player(){
 	recoil = 0;
 	
 	clipSelect = 0;
+
+	attackSound = Mix_LoadWAV("music/waves/mwooshsmallcrit.wav");
+	hitSound = Mix_LoadWAV("music/waves/pcHit.wav");
 	
 	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
 	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
@@ -232,6 +235,7 @@ void Player::display( SDL_Surface* source )
 	{
 		if (isAttacking)
 		{
+			Mix_PlayChannel(-1, attackSound, 0);			
 			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5)
 			{
 				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] ); // This block adds an offset to fix a glitch with the left-hand attack animation
@@ -417,11 +421,12 @@ int Player::isDead()
 	return Dead;
 }
 
-void Player::Free_Memory(){
-
+void Player::Free_Memory()
+{
+	Mix_FreeChunk(attackSound);
+	Mix_FreeChunk(hitSound);
 	SDL_FreeSurface( spritePC );
 	SDL_FreeSurface( spritePCL );
-
 }
 
 int Player::getHealth()

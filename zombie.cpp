@@ -148,6 +148,7 @@ void Zombie::display( SDL_Surface* source )
 
 	if(health <= 0 && isDying == 0)
 	{
+		Mix_PlayChannel(-1, die, 0);		
 		isDying = 1;
 		clipSelect = 0;
 	}
@@ -271,7 +272,6 @@ int Zombie::attack( int playerX, int playerY )
 
 void Zombie::Free_Memory()
 {
-	Mix_PlayChannel(-1, die, 0);
 	Mix_FreeChunk(spawn);
 	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteZombie );
@@ -301,7 +301,7 @@ int Zombie::getDirection()
 }
 
 int Zombie::isDead()
-{
+{	
 	return Dead;
 }
 

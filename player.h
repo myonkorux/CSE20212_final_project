@@ -12,6 +12,7 @@ Nathan Vahrenberg
 #include<iomanip>
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_mixer.h"
 
 using namespace std;
 
@@ -51,6 +52,8 @@ class Player{
 		SDL_Rect attackingL[6];
 		SDL_Rect jumping[8];
 		SDL_Rect jumpingL[8];
+		Mix_Chunk * attackSound;
+		Mix_Chunk * hitSound;
 		int clipSelect;
 		int isStanding;
 		int isAttacking;

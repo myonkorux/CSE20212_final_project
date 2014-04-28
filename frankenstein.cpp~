@@ -279,7 +279,6 @@ void Frankenstein::Free_Memory()
 	Mix_FreeChunk(spawn);
 	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteFrankenstein );
-
 }
 
 void Frankenstein::applyDamage(int damage)
