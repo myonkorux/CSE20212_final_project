@@ -11,35 +11,6 @@ Power::Power(int newX, int newY, int newType)
 	yOffset = 0.0;
 	t = 0.0;
 	PowerImage = optimizeImage("sprites/powerups.bmp");
-
-	if(getType() == 1)
-	{
-		clip.x = 0;
-		clip.w = 50;
-		clip.y = 0;
-		clip.h = 50;
-	}
-	else if(getType() == 2)
-	{
-		clip.x = 50;
-		clip.w = 50;
-		clip.y = 0;
-		clip.h = 50;
-	}
-	else if(getType() == 3)
-	{
-		clip.x = 0;
-		clip.w = 50;
-		clip.y = 50;
-		clip.h = 50;
-	}
-	else
-	{
-		clip.x = 50;
-		clip.w = 50;
-		clip.y = 50;
-		clip.h = 50;
-	}
 }
 
 SDL_Surface * Power::optimizeImage(string filename)
@@ -77,10 +48,44 @@ void Power::display(SDL_Surface* destination )
 	offset.x = getX();
 	offset.y = getY() + yOffset;
 
+	chooseImage();
+
 	SDL_BlitSurface( PowerImage, &clip, destination, &offset );
 }
 
 void Power::cleanImage()
 {
 	SDL_FreeSurface(PowerImage);
+}
+
+void Power::chooseImage()
+{
+	if(getType() == 1)
+	{
+		clip.x = 0;
+		clip.w = 50;
+		clip.y = 0;
+		clip.h = 50;
+	}
+	else if(getType() == 4)
+	{
+		clip.x = 50;
+		clip.w = 50;
+		clip.y = 0;
+		clip.h = 50;
+	}
+	else if(getType() == 2)
+	{
+		clip.x = 0;
+		clip.w = 50;
+		clip.y = 50;
+		clip.h = 50;
+	}
+	else
+	{
+		clip.x = 50;
+		clip.w = 50;
+		clip.y = 50;
+		clip.h = 50;
+	}
 }

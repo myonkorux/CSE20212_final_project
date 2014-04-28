@@ -14,6 +14,8 @@ class Power : public Item
 		float yOffset;
 		float t;
 		SDL_Rect clip;
+		
+		SDL_Surface * optimizeImage(string);
 			
 };
 
