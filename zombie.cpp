@@ -43,6 +43,10 @@ SDL_Surface * Zombie::optimizeImage(string filename)
 Zombie::Zombie(){
 
 	x = rand()%800+40;
+	if((x > 300) && (x < 600))
+	{
+		x = 100;
+	}
 	y = 318;
 	xVel = 0;
 	yVel = 0;

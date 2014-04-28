@@ -434,35 +434,5 @@ void Player::setEnable(int e)
 	enable = e;
 }
 
-int Player::voidZone(int X, int Y)
-{
-	if((X >= 238) && (Y <= 278) && (Y >= 255) && (Y <= 299))
-	{
-		return 0;
-	}
-	else if((X >= 514) && (X <= 534) && (Y >= 260) && (Y <= 217))
-	{
-		return 0;
-	}  
-	else if((X >= 640) && (X <= 680) && (Y >= 302) && (Y <= 342))
-	{
-		return 0;
-	}
-	else if((X >= 656) && (X <= 676) && (Y >= 438) && (Y <= 455))
-	{
-		return 0;
-	}
-	else if((X >= 413) && (X <= 453) && (Y >= 453) && (Y <= 497))
-	{
-		return 0;
-	}
-	else if((X >= 229) && (X <= 249) && (Y >= 313) && (Y <= 330))
-	{
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
-}
+
 

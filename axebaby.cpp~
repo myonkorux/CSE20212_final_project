@@ -47,6 +47,10 @@ SDL_Surface * Axebaby::optimizeImage(string filename)
 Axebaby::Axebaby(){
 
 	x = rand()%800+40;
+	if((x > 400) && (x < 600))
+	{
+		x = 100;
+	}
 	y = 318;
 	xVel = 0;
 	yVel = 0;
@@ -254,11 +258,11 @@ void Axebaby::update( int playerX, int playerY )
 			}
 		}
 
-		if( playerY < y )
+		if( (playerY  + 42) < y )
 		{
 			yVel = -speed;
 		}
-		else if( playerY > y)
+		else if( (playerY  + 42) > y)
 		{
 			yVel = speed;
 		}
