@@ -270,6 +270,7 @@ void Board::stateInterpret()
 void Board::display()
 {
 	wipe();
+	musicPlayer();
 	SDL_BlitSurface(background, NULL, screen, NULL);
 	
 	deque<Text>::iterator i;
@@ -614,6 +615,11 @@ void Board::clean()
 		(m)->Free_Memory();
 	}
 
+	for(trackNumber = playlist.begin(); trackNumber != playlist.end(); ++trackNumber)
+	{
+		Mix_FreeMusic(*trackNumber);
+	}	
+
 	resetPC();
 
 	TTF_Quit();
@@ -733,7 +739,7 @@ void Board::musicPlayer()
 {
 	if(Mix_PlayingMusic() == 0)
 	{
-		Mix_PlayMusic(*trackNumber, -1);
+		Mix_PlayMusic(*trackNumber, 1);
 		++trackNumber; 
 	}
 	

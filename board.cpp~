@@ -270,6 +270,7 @@ void Board::stateInterpret()
 void Board::display()
 {
 	wipe();
+	musicPlayer();
 	SDL_BlitSurface(background, NULL, screen, NULL);
 	
 	deque<Text>::iterator i;
@@ -614,6 +615,11 @@ void Board::clean()
 		(m)->Free_Memory();
 	}
 
+	for(trackNumber = playlist.begin(); trackNumber != playlist.end(); ++trackNumber)
+	{
+		Mix_FreeMusic(*trackNumber);
+	}	
+
 	resetPC();
 
 	TTF_Quit();
@@ -722,7 +728,7 @@ void Board::createPlaylist()
 	Mix_Music * song7 = Mix_LoadMUS("music/waves/paranoid.wav");
 	playlist.push_back(song7);
 	Mix_Music * song8 = Mix_LoadMUS("music/waves/enterSandman.wav");
-	playlist.push_song8(back);
+	playlist.push_back(song8);
 	Mix_Music * song9 = Mix_LoadMUS("music/waves/metal.wav");
 	playlist.push_back(song9);
 	Mix_Music * song10 = Mix_LoadMUS("music/waves/special.wav");
@@ -733,7 +739,7 @@ void Board::musicPlayer()
 {
 	if(Mix_PlayingMusic() == 0)
 	{
-		Mix_PlayMusic(*trackNumber, -1);
+		Mix_PlayMusic(*trackNumber, 0);
 		++trackNumber; 
 	}
 	
