@@ -11,6 +11,7 @@ Nathan Vahrenberg
 
 #include "axebaby.h"
 
+// Function to send sprite to screen
 void apply_axebaby_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
 
 	SDL_Rect offset;
@@ -22,6 +23,7 @@ void apply_axebaby_sprite( int x, int y, SDL_Surface* source, SDL_Surface* desti
 
 }
 
+// Optimize function to set a transparent background
 SDL_Surface * Axebaby::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -44,8 +46,10 @@ SDL_Surface * Axebaby::optimizeImage(string filename)
 	return optimized;
 }
 
+// Constructor
 Axebaby::Axebaby(){
 
+	// Initialize variables
 	x = rand()%800+40;
 	if((x > 300) && (x < 600))
 	{
@@ -68,6 +72,7 @@ Axebaby::Axebaby(){
 	
 	clipSelect = 0;
 	
+	// Load external resources
 	SpriteAxebaby = optimizeImage("sprites/axebaby.bmp");
 	spawn = Mix_LoadWAV("music/waves/babySpawn.wav");
 	die = Mix_LoadWAV("music/waves/babyDeath.wav");
@@ -75,6 +80,7 @@ Axebaby::Axebaby(){
 	
 	int i;
 	
+	// Define sprite clippings
 	for( i = 0; i <= 3; i++ ){
 		moving[i].y = 117;
 		moving[i].h = 147-117;
@@ -150,6 +156,7 @@ Axebaby::Axebaby(){
 
 }
 
+// Display function
 void Axebaby::display( SDL_Surface* source )
 {	
 	int tempX = 0;
@@ -162,6 +169,7 @@ void Axebaby::display( SDL_Surface* source )
 		clipSelect = 0;
 	}
 
+	// Check validity of location and update
 	tempX = (x + xVel);
 	tempY = (y + yVel);
 	if((tempX > 0) && (tempX < 840) && !isDying)
@@ -185,6 +193,7 @@ void Axebaby::display( SDL_Surface* source )
 		return;
 	}
 	
+	// Select correct sprite clip to apply
 	if( isDying )
 	{
 		apply_axebaby_sprite( x, y, SpriteAxebaby, source, &dying[ clipSelect ]);
@@ -214,10 +223,12 @@ void Axebaby::display( SDL_Surface* source )
 	clipSelect++;
 }
 
+// Update function handles all changes to class condition
 void Axebaby::update( int playerX, int playerY )
 {
 	if(enable)
 	{		
+		// Apply effects of player powerup
 		switch(handicap)
 		{
 			case 1:
@@ -277,6 +288,7 @@ void Axebaby::update( int playerX, int playerY )
 	}
 }
 
+// Attack function attempts to apply damage to player
 int Axebaby::attack( int playerX, int playerY )
 {
 
@@ -292,6 +304,7 @@ int Axebaby::attack( int playerX, int playerY )
 
 }
 
+// Clear allocated memory
 void Axebaby::Free_Memory()
 {
 	SDL_FreeSurface( SpriteAxebaby );
@@ -299,6 +312,7 @@ void Axebaby::Free_Memory()
 	Mix_FreeChunk(die);
 }
 
+// Reduces health
 void Axebaby::applyDamage(int damage)
 {
 	if(damage > 0)
@@ -307,6 +321,7 @@ void Axebaby::applyDamage(int damage)
 	}
 }
 
+// Get functions
 int Axebaby::getX()
 {
 	return x;
@@ -332,6 +347,7 @@ int Axebaby::getPoints()
 	return points;
 }
 
+// Set functions
 void Axebaby::setEnable(int e)
 {
 	enable = e;

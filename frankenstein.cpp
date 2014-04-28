@@ -11,6 +11,7 @@ Nathan Vahrenberg
 
 #include "frankenstein.h"
 
+// Function to send sprite to screen
 void apply_frankenstein_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
 
 	SDL_Rect offset;
@@ -22,6 +23,7 @@ void apply_frankenstein_sprite( int x, int y, SDL_Surface* source, SDL_Surface* 
 
 }
 
+// Function to set a clear background
 SDL_Surface * Frankenstein::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -44,8 +46,10 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 	return optimized;
 }
 
+// Constructor
 Frankenstein::Frankenstein(){
 
+	// Initialize variables
 	x = rand()%800+40;
 	if((x > 300) && (x < 600))
 	{
@@ -66,6 +70,7 @@ Frankenstein::Frankenstein(){
 	handicap = 0;
 	points = 30;
 
+	// Load external resources
 	spawn = Mix_LoadWAV("music/waves/tankSpawn.wav");
 	die = Mix_LoadWAV("music/waves/tankDeath.wav");
 	Mix_PlayChannel(-1, spawn, 0);
@@ -77,6 +82,7 @@ Frankenstein::Frankenstein(){
 	
 	int i;
 	
+	// Set sprite clipping
 	for( i = 0; i <= 4; i++ ){
 		moving[i].y = 15;
 		moving[i].h = 65-15;
@@ -147,6 +153,7 @@ Frankenstein::Frankenstein(){
 	
 }
 
+// Display function
 void Frankenstein::display( SDL_Surface* source )
 {	
 	int tempX = 0;
@@ -182,6 +189,7 @@ void Frankenstein::display( SDL_Surface* source )
 		return;
 	}
 	
+	// Select sprite clip to apply
 	if(isDying)
 	{
 		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &dying[ clipSelect ]);
@@ -198,6 +206,7 @@ void Frankenstein::display( SDL_Surface* source )
 	clipSelect++;
 }
 
+// Update function to change class properties
 void Frankenstein::update( int playerX, int playerY )
 {
 	if(enable)
@@ -260,6 +269,7 @@ void Frankenstein::update( int playerX, int playerY )
 	}
 }
 
+// Attack function attempts to deal damage to enemies
 int Frankenstein::attack( int playerX, int playerY )
 {
 
@@ -274,6 +284,7 @@ int Frankenstein::attack( int playerX, int playerY )
 
 }
 
+// Function to free allocated memory
 void Frankenstein::Free_Memory()
 {
 	Mix_FreeChunk(spawn);
@@ -281,6 +292,7 @@ void Frankenstein::Free_Memory()
 	SDL_FreeSurface( SpriteFrankenstein );
 }
 
+// Attempts to apply damage to the player
 void Frankenstein::applyDamage(int damage)
 {
 	if(damage > 0)
@@ -289,6 +301,7 @@ void Frankenstein::applyDamage(int damage)
 	}
 }
 
+// Get functions
 int Frankenstein::getX()
 {
 	return x;
@@ -314,6 +327,7 @@ int Frankenstein::getPoints()
 	return points;
 }
 
+// Set functions
 void Frankenstein::setEnable(int e)
 {
 	enable = e;

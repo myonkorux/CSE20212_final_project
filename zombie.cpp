@@ -7,6 +7,7 @@ Nathan Vahrenberg
 
 #include "zombie.h"
 
+// Function to apply sprite to screen
 void apply_zombie_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
 
 	SDL_Rect offset;
@@ -18,6 +19,7 @@ void apply_zombie_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destin
 
 }
 
+// Function to set background to clear
 SDL_Surface * Zombie::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -40,8 +42,10 @@ SDL_Surface * Zombie::optimizeImage(string filename)
 	return optimized;
 }
 
+// Constructor
 Zombie::Zombie(){
 
+	// Initialize variables
 	x = rand()%800+40;
 	if((x > 300) && (x < 600))
 	{
@@ -62,6 +66,7 @@ Zombie::Zombie(){
 	enable = 0;
 	handicap = 0;
 
+	// Load external resources
 	spawn = Mix_LoadWAV("music/waves/zombieSpawn.wav");
 	die = Mix_LoadWAV("music/waves/zombieDeath.wav");
 	Mix_PlayChannel(-1, spawn, 0);
@@ -70,6 +75,7 @@ Zombie::Zombie(){
 	
 	SpriteZombie = optimizeImage("sprites/zombie.bmp");
 	
+	// Define sprite clips
 	moving[0].y = 140;
 	moving[0].h = 50;
 	movingL[0].y = 140;
@@ -141,6 +147,7 @@ Zombie::Zombie(){
 
 }
 
+// Display function
 void Zombie::display( SDL_Surface* source )
 {	
 	int tempX = 0;
@@ -176,6 +183,7 @@ void Zombie::display( SDL_Surface* source )
 		return;
 	}
 	
+	// Select sprite to display
 	if (isDying)
 	{
 		apply_zombie_sprite( x, y, SpriteZombie, source, &dying[ clipSelect ]);
@@ -193,6 +201,7 @@ void Zombie::display( SDL_Surface* source )
 
 }
 
+// Update function to change class properties
 void Zombie::update( int playerX, int playerY )
 {
 	if(enable)
@@ -256,6 +265,7 @@ void Zombie::update( int playerX, int playerY )
 	}
 }
 
+// Attack function attempts to apply damage to the player
 int Zombie::attack( int playerX, int playerY )
 {
 
@@ -270,6 +280,7 @@ int Zombie::attack( int playerX, int playerY )
 
 }
 
+// Function to free allocated memory
 void Zombie::Free_Memory()
 {
 	Mix_FreeChunk(spawn);
@@ -277,6 +288,7 @@ void Zombie::Free_Memory()
 	SDL_FreeSurface( SpriteZombie );
 }
 
+// Function to apply damage to the class
 void Zombie::applyDamage(int damage)
 {
 	if(damage > 0)
@@ -285,6 +297,7 @@ void Zombie::applyDamage(int damage)
 	}
 }
 
+// Get functions
 int Zombie::getX()
 {
 	return x;
@@ -310,6 +323,7 @@ int Zombie::getPoints()
 	return points;
 }
 
+// Set functions
 void Zombie::setEnable(int e)
 {
 	enable = e;

@@ -11,6 +11,7 @@ Nathan Vahrenberg
 
 #include "frankenstein.h"
 
+// Function to send sprite to screen
 void apply_frankenstein_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
 
 	SDL_Rect offset;
@@ -22,6 +23,7 @@ void apply_frankenstein_sprite( int x, int y, SDL_Surface* source, SDL_Surface* 
 
 }
 
+// Function to set a clear background
 SDL_Surface * Frankenstein::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -44,8 +46,10 @@ SDL_Surface * Frankenstein::optimizeImage(string filename)
 	return optimized;
 }
 
+// Constructor
 Frankenstein::Frankenstein(){
 
+	// Initialize variables
 	x = rand()%800+40;
 	if((x > 300) && (x < 600))
 	{
@@ -66,6 +70,7 @@ Frankenstein::Frankenstein(){
 	handicap = 0;
 	points = 30;
 
+	// Load external resources
 	spawn = Mix_LoadWAV("music/waves/tankSpawn.wav");
 	die = Mix_LoadWAV("music/waves/tankDeath.wav");
 	Mix_PlayChannel(-1, spawn, 0);
@@ -77,6 +82,7 @@ Frankenstein::Frankenstein(){
 	
 	int i;
 	
+	// Set sprite clipping
 	for( i = 0; i <= 4; i++ ){
 		moving[i].y = 15;
 		moving[i].h = 65-15;
@@ -147,6 +153,7 @@ Frankenstein::Frankenstein(){
 	
 }
 
+// Display function
 void Frankenstein::display( SDL_Surface* source )
 {	
 	int tempX = 0;
@@ -154,6 +161,7 @@ void Frankenstein::display( SDL_Surface* source )
 
 	if((health <= 0) && (isDying == 0))
 	{
+		Mix_PlayChannel(-1, die, 0);		
 		isDying = 1;
 		clipSelect = 0;
 	}
@@ -181,6 +189,7 @@ void Frankenstein::display( SDL_Surface* source )
 		return;
 	}
 	
+	// Select sprite clip to apply
 	if(isDying)
 	{
 		apply_frankenstein_sprite( x, y, SpriteFrankenstein, source, &dying[ clipSelect ]);
@@ -275,7 +284,6 @@ int Frankenstein::attack( int playerX, int playerY )
 
 void Frankenstein::Free_Memory()
 {
-	Mix_PlayChannel(-1, die, 0);
 	Mix_FreeChunk(spawn);
 	Mix_FreeChunk(die);
 	SDL_FreeSurface( SpriteFrankenstein );

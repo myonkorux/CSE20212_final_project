@@ -157,6 +157,7 @@ void Axebaby::display( SDL_Surface* source )
 
 	if((health <= 0) && (isDying == 0))
 	{
+		Mix_PlayChannel(-1, die, 0);		
 		isDying = 1;
 		clipSelect = 0;
 	}
