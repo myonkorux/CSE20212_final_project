@@ -91,7 +91,7 @@ class Board
 		void spawnZombie();
 		void spawnBaby();
 		void spawnTank();
-		void spawnTerrain();
+		void spawnTerrain(int, int, int);
 		void initialize();
 		void display();
 		void wipe();

@@ -40,7 +40,7 @@ class Player{
 		int health;
 		int speed;
 		int enable;
-		int power
+		int power;
 		SDL_Surface * spritePC;
 		SDL_Surface * spritePCL;
 		SDL_Rect standing[8];
@@ -61,6 +61,7 @@ class Player{
 		SDL_Surface * optimizeImage(string);
 
 		void apply_PC_sprite(int, int, SDL_Surface *, SDL_Surface *, SDL_Rect *);
+		int voidZone(int, int);
 
 };
 

@@ -26,6 +26,7 @@ board.h
 #include"axebaby.h"
 #include"frankenstein.h"
 #include "Power.h"
+#include "terrain.h"
 
 using namespace std;
 
@@ -90,10 +91,11 @@ class Board
 		void spawnZombie();
 		void spawnBaby();
 		void spawnTank();
-		void spawnTerrain();
+		void spawnTerrain(int, int, int);
 		void initialize();
 		void display();
 		void wipe();
 		void setPause(int);
 		void setHandicaps();
+		int voidZone(int, int);
 };

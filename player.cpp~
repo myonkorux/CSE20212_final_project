@@ -46,7 +46,7 @@ Player::Player(){
 	xVel = 0;
 	yVel = 0;
 	direction = 1;
-	health = 100;
+	health = 666;
 	speed = 10;
 	power = 10;
 	isStanding = 1;
@@ -188,7 +188,7 @@ Player::Player(){
 
 int Player::attack(int zombieX, int zombieY)
 {
-	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y <= zombieY + 80) (y + 70 >= zombieY) && (isAttacking == 1) && enable)
+	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y <= zombieY + 80) && (y + 70 >= zombieY) && (isAttacking == 1) && enable)
 	{
 		return power;
 	}
@@ -307,7 +307,7 @@ void Player::display( SDL_Surface* source )
 	{
 		x = tempX;
 	}
-	if((tempY > 160) && (tempY < 540))
+	if((tempY > 170) && (tempY < 480))
 	{
 		y = tempY;
 	}
@@ -432,5 +432,37 @@ int Player::getHealth()
 void Player::setEnable(int e)
 {
 	enable = e;
+}
+
+int Player::voidZone(int X, int Y)
+{
+	if((X >= 238) && (Y <= 278) && (Y >= 255) && (Y <= 299))
+	{
+		return 0;
+	}
+	else if((X >= 514) && (X <= 534) && (Y >= 260) && (Y <= 217))
+	{
+		return 0;
+	}  
+	else if((X >= 640) && (X <= 680) && (Y >= 302) && (Y <= 342))
+	{
+		return 0;
+	}
+	else if((X >= 656) && (X <= 676) && (Y >= 438) && (Y <= 455))
+	{
+		return 0;
+	}
+	else if((X >= 413) && (X <= 453) && (Y >= 453) && (Y <= 497))
+	{
+		return 0;
+	}
+	else if((X >= 229) && (X <= 249) && (Y >= 313) && (Y <= 330))
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }
 

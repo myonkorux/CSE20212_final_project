@@ -46,7 +46,7 @@ Player::Player(){
 	xVel = 0;
 	yVel = 0;
 	direction = 1;
-	health = 100;
+	health = 666;
 	speed = 10;
 	power = 10;
 	isStanding = 1;
@@ -307,7 +307,7 @@ void Player::display( SDL_Surface* source )
 	{
 		x = tempX;
 	}
-	if((tempY > 160) && (tempY < 540))
+	if((tempY > 170) && (tempY < 480))
 	{
 		y = tempY;
 	}
@@ -433,4 +433,6 @@ void Player::setEnable(int e)
 {
 	enable = e;
 }
+
+
 

@@ -24,7 +24,7 @@ int main (int argc, char* args[])
 
 		testBoard.update();
 		
-		SDL_Delay( 80 ); // Makes animations work correctly but ruins input and event handling...
+		SDL_Delay( 60 ); // Makes animations work correctly but ruins input and event handling...
 		
 	}	
 

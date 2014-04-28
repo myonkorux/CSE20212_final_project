@@ -55,12 +55,12 @@ void Board::initialize()
 	PCpower.push_back(randomPower);
 	startState();
 	srand(time(NULL));
-	spawnTerrain();
-	spawnTerrain();
-	spawnTerrain();
-	spawnTerrain();
-	spawnTerrain();
-	spawnTerrain();
+	spawnTerrain(23, 131, 2); //40 x 44
+	spawnTerrain(109, 181, 1); //20 x 17
+	spawnTerrain(136, 143, 2); //40 x 44
+	spawnTerrain(837, 220, 1); //20 x 17
+	spawnTerrain(800, 200, 2); //40 x 44
+	spawnTerrain(834, 225, 1); //20 x 17
 	display();
 }
 
@@ -638,9 +638,9 @@ void Board::spawnTank()
 	numTanks++;
 }
 
-void Board::spawnTerrain()
+void Board::spawnTerrain(int newX, int newY, int newType)
 {
-	Terrain t1( rand()%800+40, rand()%500+250, rand()%2+1 );
+	Terrain t1( newX, newY, newType );
 	boardTerrain.push_back( t1 );
 }
 
