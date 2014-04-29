@@ -7,6 +7,7 @@ Nathan Vahrenberg
 
 #include "player.h"
 
+// Function to send player sprite to screen
 void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
 
 	SDL_Rect offset;
@@ -17,6 +18,7 @@ void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* de
 	SDL_BlitSurface( source, clip, destination, &offset );
 }
 
+// Load image and set transparent background
 SDL_Surface * Player::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -39,6 +41,7 @@ SDL_Surface * Player::optimizeImage(string filename)
 	return optimized;
 }
 
+// Constructor
 Player::Player(){
 
 	x = 440;
@@ -56,6 +59,7 @@ Player::Player(){
 	
 	clipSelect = 0;
 
+	// Load external resources
 	attackSound = Mix_LoadWAV("music/waves/mwooshsmallcrit.wav");
 	hitSound = Mix_LoadWAV("music/waves/pcHit.wav");
 	
@@ -65,6 +69,7 @@ Player::Player(){
 	int swidth = 43;
 	int i;
 	
+	// Define sprite clippings
 	for (i = 0; i <= 7; i++){
 		standing[i].x = swidth*i + 5; 
 		standing[i].y = 0;
@@ -84,7 +89,7 @@ Player::Player(){
 		jumpingL[i].h = 486-415;
 		
 	}
-	
+
 	for (i = 0; i <= 5; i++){
 		attacking[i].y = 145;
 		attacking[i].h = 207-145;
@@ -187,6 +192,7 @@ Player::Player(){
 		jumpingL[7].w = 370-324;
 }
 
+// Attack function attempts to apply damage to enemies by checking if they are within range
 int Player::attack(int zombieX, int zombieY)
 {
 	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y <= zombieY + 80) && (y + 70 >= zombieY) && (isAttacking == 1) && enable)
@@ -199,6 +205,7 @@ int Player::attack(int zombieX, int zombieY)
 	}
 }
 
+// Display function to select sprite clip and send it to apply function
 void Player::display( SDL_Surface* source )
 {
 	int tempX = 0;
@@ -303,6 +310,7 @@ void Player::display( SDL_Surface* source )
 	//x += xVel;
 	//y += yVel;
 	
+	// Move if player is within boundaries
 	tempX = (x + xVel);
 	tempY = (y + yVel);
 	if((tempX > 0) && (tempX < 840))
@@ -321,6 +329,7 @@ void Player::display( SDL_Surface* source )
 
 }
 
+// Update any class elements based on events, key presses, etc.
 void Player::update( SDL_Event event )
 {
 	if(enable)
@@ -393,6 +402,7 @@ void Player::update( SDL_Event event )
 	}
 }
 
+// Get functions
 int Player::getX(){
 
 	return x;
@@ -404,6 +414,7 @@ int Player::getY()
 	return y;
 }
 
+// Function to remove player health if hit
 void Player::apply_damage( int damage, int direction )
 {
 	Mix_PlayChannel(-1, hitSound, 0);
@@ -415,11 +426,13 @@ void Player::apply_damage( int damage, int direction )
 	}
 }
 
+// Returns whether player is alive or not
 int Player::isDead()
 {
 	return Dead;
 }
 
+// Free allocated memory when player is no longer needed
 void Player::Free_Memory()
 {
 	Mix_FreeChunk(attackSound);
@@ -428,11 +441,13 @@ void Player::Free_Memory()
 	SDL_FreeSurface( spritePCL );
 }
 
+// Returns player health
 int Player::getHealth()
 {
 	return health;
 }
 
+// Determines if player should be active or not (i.e., not in a menu)
 void Player::setEnable(int e)
 {
 	enable = e;
