@@ -77,6 +77,11 @@ class Board
 
 		SDL_Surface * screen;
 		SDL_Surface * background;
+		Mix_Chunk * micDeath;
+		Mix_Chunk * guitarSlow;
+		Mix_Chunk * bassWeaken;
+		Mix_Chunk * drumStun;
+		
 		SDL_Event event;
 
 		SDL_Surface * optimizeImage(string);

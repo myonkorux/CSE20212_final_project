@@ -56,6 +56,10 @@ void Board::initialize()
 	PCpower.push_back(randomPower);
 	startState();
 	srand(time(NULL));
+	micDeath = Mix_LoadWAV("music/waves/explosion.wav");
+	guitarSlow = Mix_LoadWAV("music/waves/slowMaim.wav");
+	bassWeaken = Mix_LoadWAV("music/waves/stealth.wav");
+	drumStun = Mix_LoadWAV("music/waves/iceLance.wav");
 	createPlaylist();
 	trackNumber = playlist.begin();
 	spawnTerrain(23, 131, 2); //40 x 44
@@ -618,11 +622,17 @@ void Board::clean()
 	for(trackNumber = playlist.begin(); trackNumber != playlist.end(); ++trackNumber)
 	{
 		Mix_FreeMusic(*trackNumber);
-	}	
+	}
+
+	Mix_FreeChunk(micDeath);
+	Mix_FreeChunk(guitarSlow);
+	Mix_FreeChunk(bassWeaken);
+	Mix_FreeChunk(drumStun);				
 
 	resetPC();
 
 	TTF_Quit();
+	Mix_CloseAudio();
 	SDL_Quit();
 }
 
@@ -690,6 +700,24 @@ void Board::setPause(int p)
 
 void Board::setHandicaps()
 {
+	switch(PCpower.begin()->getType())
+	{
+		case 1:
+		Mix_PlayChannel(-1, micDeath, 0);
+		break;
+
+		case 2:
+		Mix_PlayChannel(-1, guitarSlow, 0);
+		break;
+	
+		case 3:
+		Mix_PlayChannel(-1, bassWeaken, 0);
+		break;
+
+		case 4:
+		Mix_PlayChannel(-1, drumStun, 0);
+		break;
+	}	
 	deque<Zombie>::iterator i;
 	for(i = zombies.begin(); i != zombies.end(); ++i)
 	{
@@ -739,7 +767,7 @@ void Board::musicPlayer()
 {
 	if(Mix_PlayingMusic() == 0)
 	{
-		Mix_PlayMusic(*trackNumber, 0);
+		Mix_PlayMusic(*trackNumber, 1);
 		++trackNumber; 
 	}
 	

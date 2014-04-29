@@ -61,7 +61,7 @@ class Board
 		int maxBabies;
 		int numTanks;
 		int maxTanks;
-		deque<Mix_Music *> trackNumber;
+		deque<Mix_Music *>::iterator trackNumber;
 
 		deque<Player> PC;
 		deque<Power> PCpower;
