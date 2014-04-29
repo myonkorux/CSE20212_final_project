@@ -557,7 +557,9 @@ void Board::update()
 			tanks.clear();
 			numTanks = 0;			
 
-			resetPC();		
+			resetPC();
+			Player player;
+			PC.push_back(player);		
 			start = 1;
 			stateInterpret();
 		}

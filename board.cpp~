@@ -718,6 +718,7 @@ void Board::setHandicaps()
 		Mix_PlayChannel(-1, drumStun, 0);
 		break;
 	}	
+
 	deque<Zombie>::iterator i;
 	for(i = zombies.begin(); i != zombies.end(); ++i)
 	{
