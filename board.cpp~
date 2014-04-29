@@ -135,17 +135,17 @@ void Board::startState()
 {	
 	clearDeques();
 	
-	Text titleCard(720, 120, 80, 40, 110, "Zombie Slayerz");
-	Text developers(720, 40, 80, 200, 30, "Developed by cray & nvahrenb");
-	Text cseLabel(160, 40, 40, 550, 30, "CSE20212");
-	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
+	Text titleCard(720, 120, 80, 40, 110, "   Zombie Slayerz");
+	Text developers(720, 40, 80, 200, 30, "                           Developed by cray & nvahrenb");
+	Text cseLabel(160, 40, 40, 550, 30, "   CSE20212");
+	Text versionLabel(160, 40, 680, 550, 30, "        Beta");
 	textBoxes.push_back(titleCard);
 	textBoxes.push_back(developers);
 	textBoxes.push_back(cseLabel);
 	textBoxes.push_back(versionLabel);	
 
-	Button startButton(240, 80, 320, 280, 70, "Start");
-	Button quitButton(240, 80, 320, 400, 70, "Quit");
+	Button startButton(240, 80, 320, 280, 70, "   Start");
+	Button quitButton(240, 80, 320, 400, 70, "   Quit");
 	buttons.push_back(startButton);
 	buttons.push_back(quitButton);
 }
@@ -154,17 +154,17 @@ void Board::selectState()
 {
 	clearDeques();
 	
-	Button titleCard(720, 120, 80, 40, 110, "Select Difficulty");
-	Button easyButton(240, 80, 320, 200, 70, "Easy");
-	Button normalButton(240, 80, 320, 320, 70, "Normal");
-	Button hardButton(240, 80, 320, 440, 70, "Hard");
+	Button titleCard(720, 120, 80, 40, 110, "   Select Difficulty");
+	Button easyButton(240, 80, 320, 200, 70, "   Easy");
+	Button normalButton(240, 80, 320, 320, 70, "  Normal");
+	Button hardButton(240, 80, 320, 440, 70, "   Hard");
 	buttons.push_back(titleCard);
 	buttons.push_back(easyButton);
 	buttons.push_back(normalButton);
 	buttons.push_back(hardButton);
 
-	Text cseLabel(160, 40, 40, 550, 30, "CSE 20212");
-	Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
+	Text cseLabel(160, 40, 40, 550, 30, "   CSE20212");
+	Text versionLabel(160, 40, 680, 550, 30, "        Beta");
 	textBoxes.push_back(cseLabel);
 	textBoxes.push_back(versionLabel);	
 }
@@ -182,7 +182,7 @@ void Board::gameState()
 		counters.push_back(score);
 
 		Text cseLabel(160, 40, 40, 550, 30, "Zombie Slayerz");
-		Text versionLabel(160, 40, 680, 550, 30, "Pre-Alpha");
+		Text versionLabel(160, 40, 680, 550, 30, "        Beta");
 		Text diffLabel(320, 40, 280, 550, 30, diffString);
 		textBoxes.push_back(cseLabel);
 		textBoxes.push_back(versionLabel);
@@ -219,9 +219,9 @@ void Board::gameState()
 
 void Board::pauseState()
 {
-	Button continueButton(240, 80, 320, 160, 70, "Continue");
-	Button menuButton(240, 80, 320, 280, 70, "Menu");
-	Button quitButton(240, 80, 320, 400, 70, "Quit");
+	Button continueButton(240, 80, 320, 160, 70, "  Continue");
+	Button menuButton(240, 80, 320, 280, 70, "   Menu");
+	Button quitButton(240, 80, 320, 400, 70, "   Quit");
 	buttons.push_back(continueButton);
 	buttons.push_back(menuButton);
 	buttons.push_back(quitButton);
@@ -557,7 +557,9 @@ void Board::update()
 			tanks.clear();
 			numTanks = 0;			
 
-			resetPC();		
+			resetPC();
+			Player player;
+			PC.push_back(player);		
 			start = 1;
 			stateInterpret();
 		}
