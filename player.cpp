@@ -61,8 +61,6 @@ Player::Player(){
 	
 	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
 	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
-	//spritePC = SDL_LoadBMP("sprites/ScottPilgrim.bmp");
-	//spritePCL = SDL_LoadBMP("sprites/ScottPilgrimL.bmp");	
 
 	int swidth = 43;
 	int i;
@@ -266,12 +264,12 @@ void Player::display( SDL_Surface* source )
 		xVel = 0;
 		if( clipSelect <= 3 )
 		{
-			y -= 5*( 3-clipSelect );
+			//y -= 5*( 3-clipSelect );
 			x += recoil*speed/2;
 		}
 		else if( clipSelect <= 6 && clipSelect >= 4 )
 		{ 
-			y += 5*( 3-(clipSelect-3) );
+			//y += 5*( 3-(clipSelect-3) );
 			x += (-1)*direction*speed/2;
 		}
 		else
