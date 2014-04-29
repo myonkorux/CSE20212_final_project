@@ -406,9 +406,9 @@ int Player::getY()
 
 void Player::apply_damage( int damage, int direction )
 {
-	Mix_PlayChannel(-1, hitSound, 0);
 	if(damage > 0)
 	{
+		Mix_PlayChannel(-1, hitSound, 0);		
 		health -= damage;
 		recoil = direction;
 		clipSelect = 0;
