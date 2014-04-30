@@ -779,12 +779,22 @@ void Board::createPlaylist()
 {
 	Mix_Music * song0 = Mix_LoadMUS("music/waves/runToTheHills.wav");
 	playlist.push_back(song0);
+	Mix_Music * song1 = Mix_LoadMUS("music/waves/puppets.wav");
+	playlist.push_back(song1);
 	Mix_Music * song2 = Mix_LoadMUS("music/waves/spades.wav");
 	playlist.push_back(song2);
+	Mix_Music * song3 = Mix_LoadMUS("music/waves/crazyTrain.wav");
+	playlist.push_back(song3);
+	Mix_Music * song4 = Mix_LoadMUS("music/waves/iron.wav");
+	playlist.push_back(song4);
 	Mix_Music * song5 = Mix_LoadMUS("music/waves/beast.wav");
 	playlist.push_back(song5);
+	Mix_Music * song6 = Mix_LoadMUS("music/waves/warPigs.wav");
+	playlist.push_back(song6);
 	Mix_Music * song7 = Mix_LoadMUS("music/waves/paranoid.wav");
 	playlist.push_back(song7);
+	Mix_Music * song8 = Mix_LoadMUS("music/waves/enterSandman.wav");
+	playlist.push_back(song8);
 	Mix_Music * song9 = Mix_LoadMUS("music/waves/metal.wav");
 	playlist.push_back(song9);
 	Mix_Music * song10 = Mix_LoadMUS("music/waves/special.wav");
