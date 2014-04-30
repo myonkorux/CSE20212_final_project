@@ -36,7 +36,7 @@ SDL_Surface * Power::optimizeImage(string filename)
 		if( optimized != NULL ) 			//here just in case there was an issue with optimized
 		{
 		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 255, 255 ); //this prevents while (color of image bacground) from being displayed
-		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey ); 	//this in effect creates a transparent background for the PC
+		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey ); 	//this in effect creates a transparent background for the powerup
 		}
 	}
 
@@ -68,28 +68,28 @@ void Power::cleanImage()
 
 void Power::chooseImage()
 {
-	if(getType() == 1)
+	if(getType() == 1) 		//type 1 corresponds to the mic powerup (kill all enemies on screen)
 	{
 		clip.x = 0;
 		clip.w = 50;
 		clip.y = 0;
 		clip.h = 50;
 	}
-	else if(getType() == 4)
+	else if(getType() == 4) 	//type 4 corresponds to the drum powerup (freeze all enemies on screen)
 	{
 		clip.x = 50;
 		clip.w = 50;
 		clip.y = 0;
 		clip.h = 50;
 	}
-	else if(getType() == 2)
+	else if(getType() == 2) 	//type 2 corresponds to the guitar powerup (slow all enemies on screen)
 	{
 		clip.x = 0;
 		clip.w = 50;
 		clip.y = 50;
 		clip.h = 50;
 	}
-	else
+	else 				//type 3 corresponds to the bass powerup (reduce attack power of all enemies on screen)
 	{
 		clip.x = 50;
 		clip.w = 50;

@@ -35,8 +35,8 @@ SDL_Surface * Power::optimizeImage(string filename)
 
 		if( optimized != NULL ) 			//here just in case there was an issue with optimized
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 255, 255 ); //this prevents while (color of image bacground) from being displayed
-		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey ); 	//this in effect creates a transparent background for the PC
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 255, 255 ); //this prevents white (color of image background) from being displayed
+		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey ); 	//this in effect creates a transparent background for the powerup
 		}
 	}
 
