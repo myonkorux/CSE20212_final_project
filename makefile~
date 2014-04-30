@@ -1,6 +1,6 @@
 EXEC = slayerz
 
-$(EXEC): main.o board.o box.o item.o Power.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o
+$(EXEC): main.o board.o box.o item.o Power.o unit.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o
 	g++ main.o board.o box.o item.o Power.o player.o zombie.o axebaby.o frankenstein.o text.o button.o counter.o terrain.o -o $(EXEC) -g -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
 	
 main.o: main.cpp board.h
