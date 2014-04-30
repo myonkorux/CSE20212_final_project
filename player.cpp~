@@ -1,46 +1,50 @@
 /******************
+Chris Ray, Nathan Vahrenberg
+Professor Scott
+CSE 20212
+29 April 2014
 
-Chris Ray
-Nathan Vahrenberg
-
+player.cpp
+Implementation file for Player class, for use with player.h in slayerz
 *******************/
 
 #include "player.h"
 
-void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
-
+void Player::apply_PC_sprite( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL )
+{
 	SDL_Rect offset;
 	
-	offset.x = x;
+	offset.x = x; 						//setting the coordinates for the source surface on the destination surface (the screen)
 	offset.y = y;
 	
-	SDL_BlitSurface( source, clip, destination, &offset );
+	SDL_BlitSurface( source, clip, destination, &offset ); 	//applying the clip of the source surface to the destination surface (the screen)
 }
 
 SDL_Surface * Player::optimizeImage(string filename)
 {
-	SDL_Surface * tempImage = NULL;
-	SDL_Surface * optimized = NULL;
+	SDL_Surface * tempImage = NULL; 					//temporary surface to hold uploaded image
+	SDL_Surface * optimized = NULL; 					//surface that will be output
 
-	tempImage = IMG_Load(filename.c_str());
+	tempImage = IMG_Load(filename.c_str()); 				//loading the desired image
 
-	if(tempImage != NULL)
+	if(tempImage != NULL) 							//this is here just in case there is an issue loading the image
 	{
-		optimized = SDL_DisplayFormat(tempImage);
-		SDL_FreeSurface(tempImage);
+		optimized = SDL_DisplayFormat(tempImage); 			//optimized is now the uploaded image
+		SDL_FreeSurface(tempImage); 					//freeing tempImage memory
 
-		if( optimized != NULL )
+		if( optimized != NULL ) 					//here just in case there was an issue with optimized
 		{
-		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 0, 255 );
-		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey );
+		    Uint32 colorkey = SDL_MapRGB( optimized->format, 255, 0, 255 ); //this prevents magenta (color of PC sprite bacground) from being displayed
+		    SDL_SetColorKey( optimized, SDL_SRCCOLORKEY, colorkey ); 	//this in effect creates a transparent background for the PC
 		}
 	}
 
 	return optimized;
 }
 
-Player::Player(){
-
+Player::Player()
+{
+	//initializing variables
 	x = 440;
 	y = 300;
 	xVel = 0;
@@ -53,19 +57,22 @@ Player::Player(){
 	isAttacking = 0;
 	Dead = 0;
 	recoil = 0;
-	
 	clipSelect = 0;
 
+	//loading audio files	
 	attackSound = Mix_LoadWAV("music/waves/mwooshsmallcrit.wav");
 	hitSound = Mix_LoadWAV("music/waves/pcHit.wav");
 	
+	//loading images	
 	spritePC = optimizeImage("sprites/ScottPilgrim.bmp");
 	spritePCL = optimizeImage("sprites/ScottPilgrimL.bmp");
 
 	int swidth = 43;
 	int i;
 	
-	for (i = 0; i <= 7; i++){
+	// Define sprite clippings
+	for (i = 0; i <= 7; i++)
+	{
 		standing[i].x = swidth*i + 5; 
 		standing[i].y = 0;
 		standing[i].w = swidth;
@@ -78,14 +85,10 @@ Player::Player(){
 		standingL[i].h = 68;
 		movingL[i].y = moving[i].y;
 		movingL[i].h = moving[i].h;
-		jumping[i].y = 415;
-		jumping[i].h = 486-415;
-		jumpingL[i].y = 415;
-		jumpingL[i].h = 486-415;
-		
 	}
-	
-	for (i = 0; i <= 5; i++){
+
+	for (i = 0; i <= 5; i++)
+	{
 		attacking[i].y = 145;
 		attacking[i].h = 207-145;
 		attackingL[i].y = 145;
@@ -151,47 +154,13 @@ Player::Player(){
 		attackingL[4].w = 317-267;
 		attackingL[5].x = 413-390;
 		attackingL[5].w = 390-323;
-		
-		jumping[0].x = 0;
-		jumping[0].w = 50-0;
-		jumping[1].x = 50;
-		jumping[1].w = 103-50;
-		jumping[2].x = 105;
-		jumping[2].w = 152-105;
-		jumping[3].x = 162;
-		jumping[3].w = 195-162;
-		jumping[4].x = 203;
-		jumping[4].w = 240-203;
-		jumping[5].x = 244;
-		jumping[5].w = 276-244;
-		jumping[6].x = 280;
-		jumping[6].w = 315-280;
-		jumping[7].x = 324;
-		jumping[7].w = 370-324;
-		
-		jumpingL[0].x = 413-50;
-		jumpingL[0].w = 50-0;
-		jumpingL[1].x = 413-103;
-		jumpingL[1].w = 103-50;
-		jumpingL[2].x = 413-152;
-		jumpingL[2].w = 152-105;
-		jumpingL[3].x = 413-195;
-		jumpingL[3].w = 195-162;
-		jumpingL[4].x = 413-240;
-		jumpingL[4].w = 240-203;
-		jumpingL[5].x = 413-276;
-		jumpingL[5].w =	276-244;
-		jumpingL[6].x = 413-315;
-		jumpingL[6].w = 315-280;
-		jumpingL[7].x = 413-370;
-		jumpingL[7].w = 370-324;
 }
 
 int Player::attack(int zombieX, int zombieY)
 {
 	if ( ((x <= zombieX + 80) && (x + 70 >= zombieX)) && (y <= zombieY + 80) && (y + 70 >= zombieY) && (isAttacking == 1) && enable)
 	{
-		return power;
+		return power; 	//attempt to apply damage to enemies if they are within range
 	}
 	else
 	{
@@ -201,52 +170,45 @@ int Player::attack(int zombieX, int zombieY)
 
 void Player::display( SDL_Surface* source )
 {
-	int tempX = 0;
+	int tempX = 0; 			//temporary values for x and y coordinates
 	int tempY = 0;
 
 	if (health <= 0)
 	{
-		Dead = 1;
+		Dead = 1; 
 		return;
 	}
 	
-	if (direction == 1)
+	if (direction == 1) 		//checks if player is facing right
 	{
-		if (isAttacking)
+		if (isAttacking) 	//applying attacking clip if player is attacking
 		{
+			Mix_PlayChannel(-1, attackSound, 0);						
 			apply_PC_sprite( x, y, spritePC, source, &attacking[ clipSelect ] );
 		}
-		/*else if (isJumping)
-		{
-			apply_PC_sprite( x, y, spritePC, source, &jumping[ clipSelect ] );
-		}*/
-		else if (isStanding)
+		else if (isStanding) 	//applying attacking clip if player is standing
 		{
 			apply_PC_sprite( x, y, spritePC, source, &standing[ clipSelect ] );
 		}
-		else
+		else 			//applying moving clip
 		{
 			apply_PC_sprite( x, y, spritePC, source, &moving[ clipSelect ] );
 		}
 	}
-	else if (direction == -1)
+	else if (direction == -1) 	//checks if player is facing left, same logic above
 	{
 		if (isAttacking)
 		{
 			Mix_PlayChannel(-1, attackSound, 0);			
 			if (clipSelect == 0 || clipSelect == 2 || clipSelect == 3 || clipSelect == 5)
 			{
-				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] ); // This block adds an offset to fix a glitch with the left-hand attack animation
+				apply_PC_sprite( x-20, y, spritePCL, source, &attackingL[ clipSelect ] ); //offset to fix a glitch with left attack animation
 			}
 			else
 			{
 				apply_PC_sprite( x, y, spritePCL, source, &attackingL[ clipSelect ] );
 			}
 		}
-		/*else if (isJumping)
-		{
-			apply_PC_sprite( x, y, spritePCL, source, &jumpingL[ clipSelect ] );
-		}*/
 		else if (isStanding)
 		{
 			apply_PC_sprite( x, y, spritePCL, source, &standingL[ clipSelect ] );
@@ -257,19 +219,17 @@ void Player::display( SDL_Surface* source )
 		}
 	}
 		
-	clipSelect++;
+	clipSelect++; 				//increment clip number
 	
-	if( recoil == 1 || recoil == -1 )
-		{
+	if( recoil == 1 || recoil == -1 ) 	//takes care of recoil animation (player knocked back slightly when hit)
+	{
 		xVel = 0;
 		if( clipSelect <= 3 )
 		{
-			//y -= 5*( 3-clipSelect );
 			x += recoil*speed/2;
 		}
 		else if( clipSelect <= 6 && clipSelect >= 4 )
 		{ 
-			//y += 5*( 3-(clipSelect-3) );
 			x += (-1)*direction*speed/2;
 		}
 		else
@@ -278,32 +238,13 @@ void Player::display( SDL_Surface* source )
 			clipSelect = 0;
 		}
 	}
-	else if( isAttacking && clipSelect == 6 )
+	else if( isAttacking && clipSelect == 6 ) 	//resent clip number if player is still atccking and one attack animation is finished
 	{
 		isAttacking = 0;
 		clipSelect = 0;
 	}
-	/*else if( isJumping )
-	{
-		if( clipSelect <= 3 )
-		{
-			y -= 10*( 3-clipSelect );
-		}
-		else if( clipSelect <= 6 && clipSelect >= 4 )
-		{ 
-			y += 10*( 3-(clipSelect-3) );
-		}
-		else
-		{
-			isJumping = 0;
-			clipSelect = 0;
-		}
-	}*/
-
-	//x += xVel;
-	//y += yVel;
 	
-	tempX = (x + xVel);
+	tempX = (x + xVel); 				//this chunk of code keeps the player from leaving the screen and the grassy area in the game
 	tempY = (y + yVel);
 	if((tempX > 0) && (tempX < 840))
 	{
@@ -314,7 +255,7 @@ void Player::display( SDL_Surface* source )
 		y = tempY;
 	}
 	
-	if( clipSelect >= 8 )
+	if( clipSelect >= 8 ) 				//reset clips once animations have completed a loop
 	{
 		clipSelect = 0;
 	}
@@ -323,13 +264,13 @@ void Player::display( SDL_Surface* source )
 
 void Player::update( SDL_Event event )
 {
-	if(enable)
+	if(enable) 						//the player will only update if he is not currently paused
 	{
-		if(!isAttacking)
+		if(!isAttacking) 				//player must finish attacking before any other actions can be done
 		{
-			if( event.type == SDL_KEYDOWN )
+			if( event.type == SDL_KEYDOWN ) 	//checking for key presses
 			{
-				switch( event.key.keysym.sym )
+				switch( event.key.keysym.sym ) 	//allows for WASD or arrow key movement
 				{
 					case SDLK_RIGHT:
 					case SDLK_d:
@@ -343,31 +284,27 @@ void Player::update( SDL_Event event )
 						direction = -1;
 						xVel = -speed;
 						break;
-					case SDLK_SPACE:
+					case SDLK_UP:
+					case SDLK_w:
+						isStanding = 0;
+						yVel = -speed;
+						break;
+					case SDLK_DOWN:
+					case SDLK_s:
+						isStanding = 0;
+						yVel = speed;
+						break;
+					case SDLK_SPACE: 	//pressing the space bar causes the player to attack
 						isStanding = 1;
 						isAttacking = 1;
 						xVel = 0;
 						clipSelect = 0;
 						break;
-					case SDLK_UP:
-					case SDLK_w:
-						//isJumping = 1;
-						isStanding = 0;
-						yVel = -speed;
-						//clipSelect = 0;
-						break;
-					case SDLK_DOWN:
-					case SDLK_s:
-						//isJumping = 1;
-						isStanding = 0;
-						yVel = speed;
-						//clipSelect = 0;
-						break;
 				}
 			}
-			else if( event.type == SDL_KEYUP )
+			else if( event.type == SDL_KEYUP ) 	//checking for key release
 			{
-				switch( event.key.keysym.sym )
+				switch( event.key.keysym.sym ) 	//player should default to standing position/animations
 				{
 					case SDLK_RIGHT:
 					case SDLK_LEFT:
@@ -384,8 +321,6 @@ void Player::update( SDL_Event event )
 					case SDLK_SPACE:
 						isStanding = 1;
 						isAttacking = 0;
-						//xVel = 0;
-						//clipSelect = 0;
 						break;
 				}
 			}
@@ -406,9 +341,9 @@ int Player::getY()
 
 void Player::apply_damage( int damage, int direction )
 {
-	Mix_PlayChannel(-1, hitSound, 0);
-	if(damage > 0)
+	if(damage > 0) 					//remove player health if damage > 0
 	{
+		Mix_PlayChannel(-1, hitSound, 0); 	//play sound clip 		
 		health -= damage;
 		recoil = direction;
 		clipSelect = 0;
@@ -428,11 +363,13 @@ void Player::Free_Memory()
 	SDL_FreeSurface( spritePCL );
 }
 
+// Returns player health
 int Player::getHealth()
 {
 	return health;
 }
 
+// Determines if player should be active or not (i.e., not in a menu)
 void Player::setEnable(int e)
 {
 	enable = e;
