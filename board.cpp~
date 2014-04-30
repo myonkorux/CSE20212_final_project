@@ -41,14 +41,19 @@ Board::Board()
 	initialize();
 }
 
+// Initialize resources
 void Board::initialize()
 {
+	
+	// Initialize window
 	SDL_Init(SDL_INIT_EVERYTHING);
 	Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
 	screen = SDL_SetVideoMode(screenWidth, screenHeight, screenBPP, SDL_SWSURFACE);
 	TTF_Init();
 	SDL_WM_SetCaption( "Zombie Slayerz", NULL );
 	loadBackground();
+	
+	// Initialize player character
 	Player player;
 	PC.push_back(player);
 	setPause(1);
@@ -56,21 +61,28 @@ void Board::initialize()
 	PCpower.push_back(randomPower);
 	startState();
 	srand(time(NULL));
+	
+	// Load sounds
 	micDeath = Mix_LoadWAV("music/waves/explosion.wav");
 	guitarSlow = Mix_LoadWAV("music/waves/slowMaim.wav");
 	bassWeaken = Mix_LoadWAV("music/waves/stealth.wav");
 	drumStun = Mix_LoadWAV("music/waves/iceLance.wav");
 	createPlaylist();
 	trackNumber = playlist.begin();
+	
+	// Create terrain elements
 	spawnTerrain(23, 131, 2); //40 x 44
 	spawnTerrain(109, 181, 1); //20 x 17
 	spawnTerrain(136, 143, 2); //40 x 44
 	spawnTerrain(837, 220, 1); //20 x 17
 	spawnTerrain(800, 200, 2); //40 x 44
 	spawnTerrain(834, 225, 1); //20 x 17
+	
+	// Update screen
 	display();
 }
 
+// Optimized load function
 SDL_Surface * Board::optimizeImage(string filename)
 {
 	SDL_Surface * tempImage = NULL;
@@ -93,11 +105,13 @@ SDL_Surface * Board::optimizeImage(string filename)
 	return optimized;
 }
 
+// Load background image
 void Board::loadBackground()
 {
 	background = optimizeImage("sprites/newForest.jpg");
 }
 
+// Used for state transitions
 void Board::resetStates()
 {
 	start = 0;
@@ -107,6 +121,7 @@ void Board::resetStates()
 	over = 0;
 }
 
+// Remove deques from memory when no longer necessary
 void Board::clearDeques()
 {
 	deque<Text>::iterator i;
@@ -131,6 +146,7 @@ void Board::clearDeques()
 	counters.clear();
 }
 
+// Title screen
 void Board::startState()
 {	
 	clearDeques();
@@ -150,6 +166,7 @@ void Board::startState()
 	buttons.push_back(quitButton);
 }
 
+// Difficulty selection screen
 void Board::selectState()
 {
 	clearDeques();
@@ -169,11 +186,12 @@ void Board::selectState()
 	textBoxes.push_back(versionLabel);	
 }
 
+// Game screen
 void Board::gameState()
 {
 	int a = (rand() % 100 + 1);
 
-	if(gInitial == 1)
+	if(gInitial == 1) // Initialize first frame
 	{
 		clearDeques();
 		Counter health(160, 40, 40, 40, 30, "100", 100);
@@ -190,7 +208,7 @@ void Board::gameState()
 		
 		gInitial = 0;
 	}
-	else
+	else // Update properties every frame
 	{		
 		if((a % 5) == 0)
 		{			
@@ -217,6 +235,7 @@ void Board::gameState()
 	}
 }
 
+// Pause screen
 void Board::pauseState()
 {
 	Button continueButton(240, 80, 320, 160, 70, "  Continue");
@@ -227,6 +246,7 @@ void Board::pauseState()
 	buttons.push_back(quitButton);
 }
 
+// Unpause
 void Board::continueGame()
 {
 	setPause(1);
@@ -239,6 +259,7 @@ void Board::continueGame()
 	buttons.clear();
 }
 
+// Game over screen
 void Board::overState()
 {
 	clearDeques();
@@ -247,6 +268,7 @@ void Board::overState()
 	textBoxes.push_back(titleCard);
 }
 
+// Determine which state the program is in
 void Board::stateInterpret()
 {
 	if(start == 1)
@@ -271,12 +293,14 @@ void Board::stateInterpret()
 	}
 }
 
+// Send all display elements to screen
 void Board::display()
 {
 	wipe();
 	musicPlayer();
 	SDL_BlitSurface(background, NULL, screen, NULL);
 	
+	// Display inanimate elements
 	deque<Text>::iterator i;
 	for(i = textBoxes.begin(); i != textBoxes.end(); ++i)
 	{
@@ -295,6 +319,7 @@ void Board::display()
 		(k)->display(screen);
 	}
 
+	// Display player and mobs
 	if(game == 1)
 	{
 		deque<Player>::iterator i;
@@ -333,14 +358,16 @@ void Board::display()
 	SDL_Flip( screen );
 }
 
+// Set event
 void Board::setEvent(SDL_Event newEvent)
 {
 	event = newEvent;
 }
 
+// Update properties based on events
 void Board::update()
 {
-	if(start == 1)
+	if(start == 1) // Start screen
 	{
 		resetStates();		
 		select = (buttons.begin())->update(event);
@@ -351,7 +378,7 @@ void Board::update()
 		}
 		stateInterpret();	
 	}
-	else if(select == 1)
+	else if(select == 1) // Difficulty select screen
 	{
 		resetStates();	
 		if((buttons.begin())->update(event) == 1)	
@@ -398,7 +425,7 @@ void Board::update()
 		}
 		stateInterpret();
 	}
-	else if(game == 1)
+	else if(game == 1) // Main game screen
 	{
 		resetStates();
 		if(event.type == SDL_KEYDOWN)
@@ -520,7 +547,7 @@ void Board::update()
 
 		stateInterpret();
 	}
-	else if(pause == 1)
+	else if(pause == 1) // Pause screen
 	{
 		setPause(0);		
 		if((buttons.begin())->update(event) == 1)	
@@ -580,12 +607,14 @@ void Board::update()
 	display();
 }
 
+// Clear screen
 void Board::wipe()
 {
 	// Fill with white space
 	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 255, 255, 255 ) );
 }
 
+// Free allocated memory
 void Board::clean()
 {
 	clearDeques();
@@ -638,6 +667,7 @@ void Board::clean()
 	SDL_Quit();
 }
 
+// Spawn functions
 void Board::spawnZombie()
 {
 	Zombie basicZombie;
@@ -659,12 +689,14 @@ void Board::spawnTank()
 	numTanks++;
 }
 
+// Create terrain element (tree, rock...)
 void Board::spawnTerrain(int newX, int newY, int newType)
 {
 	Terrain t1( newX, newY, newType );
 	boardTerrain.push_back( t1 );
 }
 
+// Free player class allocated memory
 void Board::resetPC()
 {
 	deque<Player>::iterator i;
@@ -675,6 +707,7 @@ void Board::resetPC()
 	PCScore = 0;
 }
 
+// Disable screen elements to show pause screen (no movement)
 void Board::setPause(int p)
 {
 	deque<Player>::iterator i;
@@ -700,6 +733,7 @@ void Board::setPause(int p)
 	}
 }
 
+// Apply powerup effects to mobs
 void Board::setHandicaps()
 {
 	switch(PCpower.begin()->getType())
@@ -740,6 +774,7 @@ void Board::setHandicaps()
 	}
 }
 
+// Merge sounds
 void Board::createPlaylist()
 {
 	Mix_Music * song0 = Mix_LoadMUS("music/waves/runToTheHills.wav");
@@ -766,6 +801,7 @@ void Board::createPlaylist()
 	playlist.push_back(song10);
 }
 
+// Play appropriate sound files
 void Board::musicPlayer()
 {
 	if(Mix_PlayingMusic() == 0)

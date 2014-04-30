@@ -1,0 +1,25 @@
+Special libraries
+Our project relies on the SDL (Simple DirectMedia Library) library for
+audio. This library is installed on University machines, and
+all other libraries are fairly standard, so no additional libraries
+should be necessary.
+
+How to build
+Use the included makefile to build the program with:
+
+	$ make
+	
+The makefile can be edited to create an executable file with any
+name by modifying the first line. Alternatively, the executable
+can be manually renamed. To remove extraneous files and the
+executable:
+
+	$ make clean
+	
+The default name for the executable file is 'main', so to run
+the script:
+
+	$ ./main
+	
+This will launch a window that contains the game. The script will
+exit when the window is closed.
