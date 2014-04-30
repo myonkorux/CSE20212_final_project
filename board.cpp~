@@ -243,7 +243,7 @@ void Board::overState()
 {
 	clearDeques();
 
-	Text titleCard(720, 100, 80, 40, 90, "Bye, Please Close Window");
+	Text titleCard(720, 100, 80, 40, 90, "   Thanks for Playing!");
 	textBoxes.push_back(titleCard);
 }
 

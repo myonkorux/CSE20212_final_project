@@ -21,6 +21,7 @@ Item::Item()
 	type = 0;
 }
 
+// Get functions
 int Item::getX()
 {
 
@@ -40,6 +41,7 @@ int Item::getType()
 	return type;
 }
 
+// Set functions
 void Item::setX( int newx )
 {
 
@@ -61,6 +63,7 @@ void Item::setType(int newType)
 
 }
 
+// Load and optimize powerup sprite
 SDL_Surface * Item::loadImage(string filename)
 {
 	SDL_Surface* loadedImage = NULL;

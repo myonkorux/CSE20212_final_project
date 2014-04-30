@@ -40,43 +40,54 @@ class Board
 		void setEvent(SDL_Event);
 	
 	private:
+		// States
 		int start;
 		int select;
 		int game;
 		int gInitial;
 		int pause;
 		int over;
+		// Game properties
 		int difficulty;
 		int PCScore;
 		int powerActive;
 		string diffString;
-
+		// Window properties
 		int screenWidth;
 		int screenHeight;
 		int screenBPP;
-
+		// Number (and max number) of mobs
 		int numZombies;
 		int maxZombies;
 		int numBabies;
 		int maxBabies;
 		int numTanks;
 		int maxTanks;
+		
+		// Sounds
 		deque<Mix_Music *>::iterator trackNumber;
 
+		// Player deque (only single player, but uses deque to make display easier)
 		deque<Player> PC;
 		deque<Power> PCpower;
 
+		// Mob deques
 		deque<Zombie> zombies;
 		deque<Axebaby> babies;
 		deque<Frankenstein> tanks;
+		
+		// Inanimate object deques
 		deque<Text> textBoxes;
 		deque<Button> buttons;
 		deque<Counter> counters;
 		deque<Terrain> boardTerrain;
 		deque<Mix_Music *> playlist;
 
+		// Display elements
 		SDL_Surface * screen;
 		SDL_Surface * background;
+		
+		// Powerup sounds
 		Mix_Chunk * micDeath;
 		Mix_Chunk * guitarSlow;
 		Mix_Chunk * bassWeaken;
@@ -85,6 +96,8 @@ class Board
 		SDL_Event event;
 
 		SDL_Surface * optimizeImage(string);
+		
+		// Function prototypes
 		void startState();
 		void selectState();
 		void pauseState();

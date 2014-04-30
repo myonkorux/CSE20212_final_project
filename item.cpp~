@@ -71,7 +71,7 @@ SDL_Surface * Item::loadImage(string filename)
 
 	if( loadedImage != NULL )
 	{
-		optimizedImage = SDL_DisplayFormatAlpha( loadedImage );
+		optimizedImage = SDL_DisplayFormat( loadedImage );
 
 		SDL_FreeSurface( loadedImage );
 

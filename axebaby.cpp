@@ -353,6 +353,7 @@ void Axebaby::setEnable(int e)
 	enable = e;
 }
 
+// Applied by powerups
 void Axebaby::setHandicap(int h)
 {
 	handicap = h;

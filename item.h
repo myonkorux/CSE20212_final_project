@@ -22,6 +22,7 @@ class Item
 {
 	public:
 		Item();
+		// Function prototypes
 		virtual void display(SDL_Surface*) = 0;
 		int getX();
 		int getY();
@@ -32,6 +33,7 @@ class Item
 		SDL_Surface * loadImage(string);
 	
 	private:
+		// Properties
 		int x;
 		int y;
 		int type;

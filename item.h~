@@ -22,7 +22,7 @@ class Item
 {
 	public:
 		Item();
-		virtual void display(SDL_Surface *) = 0;
+		virtual void display(SDL_Surface*) = 0;
 		int getX();
 		int getY();
 		int getType();

@@ -33,6 +33,7 @@ Box::Box()
 	font = NULL;
 }
 
+// Set functions
 void Box::setX(int newX)
 {
 	x = newX;
@@ -79,6 +80,7 @@ void Box::setBoxColor(Uint8 red, Uint8 green, Uint8 blue)
 	boxB = blue;
 }
 
+// Get functions
 int Box::getX()
 {
 	return x;
@@ -104,6 +106,7 @@ string Box::getMessage()
 	return message;
 }
 
+// Sends box to render function
 void Box::display(SDL_Surface* destination )
 {
 	SDL_Rect offset;
@@ -116,6 +119,7 @@ void Box::display(SDL_Surface* destination )
 	SDL_BlitSurface( messageSurface, NULL, destination, &offset );
 }
 
+// Applies box to screen
 void Box::renderBox()
 {
 	if((font != NULL) && (messageSurface != NULL))
@@ -128,6 +132,7 @@ void Box::renderBox()
 	messageSurface = TTF_RenderText_Solid(font, message.c_str(), textColor);
 }
 
+// Free allocated memory
 void Box::cleanBox()
 {
 	SDL_FreeSurface(messageSurface);

@@ -22,6 +22,7 @@ class Box
 {
 	public:
 		Box();
+		// Function prototypes
 		void display(SDL_Surface *);
 		void setX(int);
 		void setY(int);
@@ -42,6 +43,7 @@ class Box
 		virtual int update(SDL_Event) = 0;
 	
 	private:
+		// Properties
 		int height;
 		int width;
 		int x;

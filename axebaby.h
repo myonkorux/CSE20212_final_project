@@ -36,6 +36,7 @@ class Axebaby
 	
 	
 	private:
+		// Attributes
 		int x;
 		int y;
 		int health;
@@ -51,16 +52,20 @@ class Axebaby
 		int points;
 		int enable;
 		int handicap;
+		// Sprites
 		SDL_Surface* SpriteAxebaby;
 		SDL_Rect moving[4];
 		SDL_Rect attacking[1];
 		SDL_Rect movingL[4];
 		SDL_Rect attackingL[1];
 		SDL_Rect dying[9];
+		//Sounds
 		Mix_Chunk * spawn;
 		Mix_Chunk * die;
+		
 		int clipSelect;
-
+		
+		// Private optimize function
 		SDL_Surface * optimizeImage(string);
 };
 

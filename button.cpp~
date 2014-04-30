@@ -1,7 +1,6 @@
 #include"box.h"
 #include"button.h"
 
-// Constructor
 Button::Button(int newWidth, int newHeight, int newX, int newY, int newFontSize, string newMessage)
 {
 	setWidth(newWidth);
@@ -15,7 +14,6 @@ Button::Button(int newWidth, int newHeight, int newX, int newY, int newFontSize,
 	renderBox();
 }
 
-// Update button based on events
 int Button::update(SDL_Event event)
 {
 	int x = 0;
