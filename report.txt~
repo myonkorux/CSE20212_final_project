@@ -86,7 +86,7 @@ the player when he is injured.  Normally this effect causes the player to
 jump back a bit away from the enemy.  However, the effect can sometimes
 cause the player to be knocked further up or down the screen than intended,
 which more often than not results in the player being jettisoned out of 
-the back of zombies into a clear area.  There is also a chance that the 
+a pack of zombies into a clear area.  There is also a chance that the 
 recoil effect could knock the player off the screen or into the sky area,
 causing him to be stuck, though the chances of this happening are slim
 due to the powerups spawning dead center on the screen and the middle
@@ -102,6 +102,88 @@ slight lag while going through the game menus as well as a bug where the
 user starts a game and is immediately thrown into normal difficulty due
 to the "Start" and "Normal" buttons on the start and difficulty select
 screen respectively overlapping each other.
+
+
+Credits:
+
+Sprite Sheets
+
+Scott Pigrim:  Bryan Lee O'Malley, Paul Robertson, OmegaSonic0
+http://www.spriters-resource.com/other_systems/scottpilgrimvstheworld/sheet/33605/
+
+Zombie:  paper boo
+http://www.spriters-resource.com/snes/zombiesneighbours/sheet/4066/
+
+Axe Baby:  paper boo
+http://www.spriters-resource.com/snes/zombiesneighbours/sheet/4066/
+
+Frankenstein:  Moniker 321
+http://www.spriters-resource.com/snes/zombiesneighbours/sheet/31836/
+
+
+Background/Terrain
+
+background:  Matthew Burton
+https://www.kickstarter.com/projects/561303485/hiro-fodder-a-blue-hope-a-late-16-bit-era-inspired/posts/230986
+
+tree:  ClawsTheCat
+http://clawsthecat.deviantart.com/art/RPG-Tree-Sprite-Day-304273153
+
+rock:  http://img200.imageshack.us/img200/8732/rock2f.png
+
+
+Audio:
+
+"Run to the Hills" - Iron Maiden
+"Master of Puppets" - Metallica
+"Ace of Spades" - Motorhead
+"Crazy Train" - Ozzy Osbourne
+"Iron Man" - Black Sabbath
+"The Number of the Beast" - Iron Maiden
+"War Pigs" - Black Sabbath
+"Paranoid" - Black Sabbath
+"Enter Sandman" - Metallica
+"The Metal" - Tenacious D
+
+"Justin Bieber vs. Slipknot - Psychosocial Baby" - Isosine, Justin Bieber, Slipknot
+https://www.youtube.com/watch?v=kspPE9E1yGM
+
+PCinjured - Blizzard Entertainment
+http://www.wowhead.com/sound=1263/humanmaleaggroa
+
+PCpunch - Blizzard Entertainment
+http://www.wowhead.com/sound=234/lightweaponcritical
+
+Zombie Spawn - Blizzard Entertainment
+http://www.wowhead.com/sound=12940/northrendghoulpreaggro
+
+Zombie Death - Blizzard Entertainment
+http://www.wowhead.com/sound=12944/northrendghouldeath
+
+Axebaby Spawn - Blizzard Entertainment
+http://www.wowhead.com/sound=770/grellaggro
+
+Axebaby Death - Blizzard Entertainment
+http://www.wowhead.com/sound=769/grelldeath
+
+Frankenstein spawn - Blizzard Entertainment
+http://www.wowhead.com/sound=1446/fleshgolemaggro
+
+Frankstein Death - Blizzard Entertainment
+http://www.wowhead.com/npc=16028#sounds
+
+Mic - Blizzard Entertainment
+http://www.wowhead.com/sound=17656/halion-fiery-explosion
+
+Guitar - Blizzard Entertainment
+http://www.wowhead.com/sound=3092/maimimpact
+
+Bass - Blizzard Entertainment
+http://www.wowhead.com/sound=3325/stealth
+
+Drums - Blizzard Entertainment
+http://www.wowhead.com/sound=10009/ice-lance-impact
+
 
 
  
