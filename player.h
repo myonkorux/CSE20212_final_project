@@ -59,7 +59,7 @@ class Player
 		Mix_Chunk * attackSound; 	//attack sound clip
 		Mix_Chunk * hitSound; 		//sound clip for taking damage
 
-		int clipSelect; 		//used to increment throught the clip arrays
+		int clipSelect; 		//used to increment through the clip arrays
 		int isStanding; 		//returns 1 if the player is standing
 		int isAttacking; 		//returns 1 if the player is attacking
 		int Dead; 			//1 if dead, 0 if alive

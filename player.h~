@@ -26,7 +26,7 @@ class Player
 	public:
 		Player(); 			//constructor
 		void display( SDL_Surface* ); 	//function for displaying player on screen (handles animations specifically)
-		void update( SDL_Event ); 	//function for updating position, stats, and status
+		void update( SDL_Event ); 	//function for updating position, stats, and status depending on SDL event
 		int attack(int, int); 		//function for attacking (specifically outputting damage amount)
 		void apply_damage( int, int ); 	//function for taking damage
 		int isDead(); 			//returns 1 if the player is dead, 0 if he's still fighting
